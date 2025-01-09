@@ -45,14 +45,10 @@ import SignIn from "./pages/SignIn";
 import Layout from "./pages/Layout"; // New Layout component
 
 function App() {
-    const [message, setMessage] = useState("");
+   
     const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
-    useEffect(() => {
-        fetch("http://127.0.0.1:8080/")
-            .then((response) => response.json())
-            .then((data) => setMessage(data.message));
-    }, []);
+    
 
     return (
         <Router>

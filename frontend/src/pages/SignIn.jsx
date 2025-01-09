@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/SignIn.css";
+import Logo from "../assets/logo.svg";
 
 const SignIn = () => {
   // State for form fields
@@ -17,7 +18,7 @@ const SignIn = () => {
   return (
     <div className="sign-in">
       <div className="left-container">
-        <img></img>
+        <img src={Logo}></img>
       </div>
       <div className="sign-in-box">
         <form
