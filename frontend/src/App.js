@@ -46,7 +46,7 @@ import Layout from "./pages/Layout"; // New Layout component
 
 function App() {
     const [message, setMessage] = useState("");
-    const [isAuthenticated, setIsAuthenticated] = useState(false); // Example auth state
+    const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
     useEffect(() => {
         fetch("http://127.0.0.1:8080/")
@@ -60,8 +60,8 @@ function App() {
                 {/* Wrap everything in the Layout component */}
                 <Route path="/" element={<Layout />}>
                     <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <SignIn />} />
-                    <Route path="/home" element={isAuthenticated ? <Home /> : <Navigate to="/sign-in" />} />
-                    <Route path="/sign-in" element={<SignIn />} />
+                    <Route path="/home" element={isAuthenticated ? <Home /> : <Navigate to="/" />} />
+                   
                 </Route>
             </Routes>
         </Router>

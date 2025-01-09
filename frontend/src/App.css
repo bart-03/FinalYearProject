@@ -1,0 +1,17 @@
+   /* Reset margin and padding on html and body */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make sure body and html cover the full height */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+
+
