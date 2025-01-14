@@ -39,7 +39,7 @@ input{
     outline: none;
 }
 
-button{
+.button-singin{
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     position: relative;
@@ -55,7 +55,7 @@ button{
     box-shadow: 0 7px 4px -2px rgba(0, 0, 0, 0.316); 
 }
 
-button:hover{
+.button-singin:hover{
     background-color: #948da2;
 }
 

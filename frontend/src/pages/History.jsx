@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-const Home = () => {
+import "../styles/History.css";
+
+const History = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -8,7 +10,11 @@ const Home = () => {
       .then((data) => setMessage(data.message));
   }, []);
 
-  return <h1>{message}</h1>;
+  return (
+    <div className="history">
+      <h1>History</h1>
+    </div>
+  );
 };
 
-export default Home;
+export default History;

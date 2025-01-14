@@ -47,7 +47,11 @@ const SignIn = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleSubmit} type="submit">
+          <button
+            className="button-singin"
+            onClick={handleSubmit}
+            type="submit"
+          >
             Sign In
           </button>
         </form>
