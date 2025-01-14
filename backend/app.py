@@ -1,13 +1,13 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
+from SignIn import signin
 
 app = Flask(__name__)
-CORS(app)
-
-@app.route('/', methods=['GET'])
-def hello_world():
-    return jsonify({"message": "Hello from Flask!"})
+app.app_context().push()
+CORS(app, origins=r".*")
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=8080)
+    
+    app.register_blueprint(signin)
+    app.run(debug=True,  port=8080)
     

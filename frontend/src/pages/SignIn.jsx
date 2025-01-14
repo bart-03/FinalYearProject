@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../styles/SignIn.css";
 import Logo from "../assets/logo.svg";
 
 const SignIn = () => {
-  // State for form fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Add your form submission logic here (e.g., API call)
+
+    axios
+      .post("http://localhost:8080/SignIn", { email, password })
+      .then((response) => {
+        localStorage.setItem("token", response.data[1]);
+        console.log(response.data);
+        window.location.reload();
+      });
   };
 
   return (
@@ -28,13 +32,24 @@ const SignIn = () => {
             flexDirection: "column",
             position: "relative",
           }}
-          onSubmit={handleSubmit}
         >
           <label htmlFor="email">Email</label>
-          <input type="email" />
+          <input
+            type="email"
+            name="email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <label htmlFor="password">Password</label>
-          <input type="password" />
-          <button type="submit">Sign In</button>
+          <input
+            type="password"
+            name="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={handleSubmit} type="submit">
+            Sign In
+          </button>
         </form>
         <h3>For an account reach out to contact@XDetect.com</h3>
       </div>

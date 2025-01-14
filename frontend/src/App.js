@@ -48,6 +48,12 @@ function App() {
    
     const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
+   const token = localStorage.getItem("token");
+    useEffect(() => {
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, [token]);
     
 
     return (
