@@ -16,9 +16,9 @@
 }
 
 .help-instructions {
-    position: fixed; /* Use fixed positioning to place it relative to the viewport */
-    bottom: 20px; /* Distance from the bottom of the screen */
-    right: 20px; /* Distance from the left of the screen (optional, adjust as needed) */
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
     width: 40px; 
     height: 40px; 
     border-radius: 50%; 
@@ -38,19 +38,39 @@
     border-top: 200px solid #483078;
     border-left: 200px solid transparent;
     z-index: 1;
-    transition: all 0.3s ease;
 }
 
 .navbar-triangle.open {
-    width: 200px; 
+    width: 250px; 
     height: 100vh; 
     border: none; 
     background-color: #483078;
     right: 0; 
     top: 0; 
+    z-index: 1;
 }
 
+.navbar-title{
+    position: absolute;
+    right: 80px;
+    top: 35px;
+    font-size: 27px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    color: #ffffff;
+    z-index: 10;
+}
 
+.seperator{
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffffff;
+    z-index: 15;
+    position: absolute;
+    right: 0px;
+    top: 90px;
+    width: 250px;
+    transition: all 0.7s ease-in-out;
+}
 
 .navbar-hamburger {
     position: absolute;
@@ -63,7 +83,7 @@
    
 }
 .navbar-hamburger.open {
-    right: 75px; 
+    right: 20px; 
 }
 
 .humburger1, .humburger2, .humburger3 {
@@ -114,6 +134,16 @@
     
 }
 
+.navbar-link1 , .navbar-link2, .navbar-link3{
+    display: flex;
+    flex-direction: row;
+}
+.logout-icon{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+
 .link{ 
     text-decoration: none;
     color: white;
@@ -132,7 +162,6 @@
     border: none;
     font-size: 20px;
     margin-top: 20px;
-    
     font-family: 'Roboto', sans-serif;
 }
 

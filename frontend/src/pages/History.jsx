@@ -12,7 +12,7 @@ const History = () => {
 
   return (
     <div className="history">
-      <h1>History</h1>
+      <h1 className="title-history">History</h1>
     </div>
   );
 };

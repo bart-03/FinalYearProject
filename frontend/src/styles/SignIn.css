@@ -27,7 +27,18 @@ label{
     margin-top: 10px;
     font-family: 'Roboto', sans-serif;
 }
-input{
+.input-email{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 75%;
+    height: 30px;
+    background-color: #EEE5EE;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+.input-password{
     margin-left: 10px;
     margin-top: 10px;
     width: 75%;
@@ -77,7 +88,8 @@ h4{
     font-size: 15px;
     font-weight: 300;   
 }
-img{
+
+.logo{
     scale: 7;
     position: absolute;
     left: 15%;
