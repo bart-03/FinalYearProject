@@ -61,8 +61,6 @@ gap: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     color: #000000;
-    
-    
 }
 
 .content{
@@ -77,8 +75,44 @@ gap: 20px;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .form-multi-select{
     width: 500px;
 }
+
+.dropdown{
+    position: relative;
+    bottom: 10px;
+    left: 20px;
+    font: 15px 'Roboto', sans-serif;
+}
+
+.image-analysis-button1{
+    height: 50px;
+    width: 100px;
+    background-color: #906090;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.image-analysis-button2{
+    height: 50px;
+    width: 100px;
+    background-color: #001848;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+}
+
+
