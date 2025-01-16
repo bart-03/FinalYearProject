@@ -119,11 +119,12 @@ gap: 20px;
 
 /* CLINICAL DATA */
 .clinical-data{
-    height: 1000px;
+    height: 1500px;
     display: flex;
-    justify-content: center;
+   
     align-items: center;
     flex-direction: column;
+    background-color: #EEE5EE;
 
 }
 
@@ -142,11 +143,12 @@ gap: 20px;
     border-radius: 7px;
     border: 1px solid #000000;
     width: 700px;
-    height: 1400px;
+    height: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
+    
 }

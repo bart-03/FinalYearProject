@@ -36,15 +36,15 @@ const Analysis = () => {
 
   const questions = [
     { id: 1, text: "What is the patient’s age?", type: "input" },
-    { id: 2, text: "What is the patient’s gender?", type: "input" },
+    { id: 2, text: "What is the patient’s sex?", type: "input" },
     {
       id: 3,
-      text: "What is the patient’s weight? (in kg or lbs)",
+      text: "What is the patient’s weight? (in kg)",
       type: "input",
     },
     {
       id: 4,
-      text: "What is the patient’s height? (in cm or ft/in)",
+      text: "What is the patient’s height? (in cm)",
       type: "input",
     },
     { id: 5, text: "Does the patient have a fever?", type: "checkbox" },
@@ -61,18 +61,127 @@ const Analysis = () => {
     },
     { id: 9, text: "Does the patient have chest pain?", type: "checkbox" },
     { id: 10, text: "Does the patient have wheezing?", type: "checkbox" },
-    // Add remaining questions with their respective types
+    {
+      id: 11,
+      text: "Has the patient experienced loss of smell or taste?",
+      type: "checkbox",
+    },
+    {
+      id: 12,
+      text: "Does the patient have fatigue or weakness?",
+      type: "checkbox",
+    },
+    {
+      id: 13,
+      text: "Is the patient experiencing chills or rigors?",
+      type: "checkbox",
+    },
+    {
+      id: 14,
+      text: "Is the patient experiencing a sore throat?",
+      type: "checkbox",
+    },
+    { id: 15, text: "Does the patient have muscle aches?", type: "checkbox" },
+    {
+      id: 16,
+      text: "Is the patient experiencing nausea, vomiting, or diarrhea?",
+      type: "checkbox",
+    },
+    {
+      id: 17,
+      text: "Is the patient experiencing severe difficulty breathing?",
+      type: "checkbox",
+    },
+    {
+      id: 18,
+      text: "Has the patient fainted or felt dizzy?",
+      type: "checkbox",
+    },
+    {
+      id: 19,
+      text: "Is there bluish discoloration of the lips or nails (cyanosis)?",
+      type: "checkbox",
+    },
+    {
+      id: 20,
+      text: "Does the patient feel chest tightness or heaviness?",
+      type: "checkbox",
+    },
+    {
+      id: 21,
+      text: "Does the patient have a history of lung disease?",
+      type: "input",
+    },
+    {
+      id: 22,
+      text: "Does the patient have a history of heart disease?",
+      type: "input",
+    },
+    {
+      id: 23,
+      text: "Does the patient take any medications regularly? (Please list)",
+      type: "input",
+    },
+    {
+      id: 24,
+      text: "Does the patient have known allergies? (Please List)",
+      type: "input",
+    },
+    {
+      id: 25,
+      text: "Does the patient have a history of smoking?",
+      type: "checkbox",
+    },
+    {
+      id: 26,
+      text: "Has the patient been in contact with someone sick or tested positive for COVID-19?",
+      type: "checkbox",
+    },
+    { id: 27, text: "Has the patient traveled recently?", type: "input" },
+    {
+      id: 28,
+      text: "Is the patient vaccinated for COVID-19, influenza, and pneumonia?",
+      type: "input",
+    },
+    {
+      id: 29,
+      text: "Does the patient have occupational or environmental exposure to irritants or pollutants?",
+      type: "checkbox",
+    },
+    {
+      id: 30,
+      text: "Does the patient drink alcohol or use recreational drugs?",
+      type: "input",
+    },
+    {
+      id: 31,
+      text: "When did the symptoms start? (dd/mm/yyyy)",
+      type: "input",
+    },
+    {
+      id: 32,
+      text: "Are the symptoms improving, worsening, or unchanged over time? (type 'improving' or 'worseneing'",
+      type: "input",
+    },
   ];
 
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState(false);
 
-  const handleChange = (id) => {
+  // const handleChange = (id) => {
+  //   setAnswers((prevAnswers) => ({
+  //     ...prevAnswers,
+  //     [id]: !prevAnswers[id],
+  //   }));
+  // };
+
+  const handleChange = (id, value) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
-      [id]: !prevAnswers[id],
+      [id]: value, // Update the specific question's value
     }));
   };
 
+  console.log(answers);
   return (
     <div className="analysis">
       <h1 className="title-analysis">Analysis</h1>
@@ -127,7 +236,9 @@ const Analysis = () => {
       {checked2 && !checked1 && (
         <div className="clinical-data">
           <div className="image-analysis-toolbar">
-            <h1 className="clinical-data-title">Clinical Data Review</h1>
+            <h1 className="clinical-data-title">
+              Clinical Data Review - Input
+            </h1>
 
             <div
               className="dropdown"
@@ -146,15 +257,20 @@ const Analysis = () => {
             </div>
           </div>
           <div className="cd-content">
-            <h1>Patient Questionnaire</h1>
             <form>
               {questions.map((question) => (
                 <div key={question.id} style={{ marginBottom: "10px" }}>
-                  <label>
+                  <label style={{ fontSize: "12px" }}>
+                    {question.id + ". "}
                     {question.text}
                     {question.type === "checkbox" ? (
                       <input
                         type="checkbox"
+                        style={{
+                          marginLeft: "10px",
+                          fontSize: "12px",
+                          padding: "2px",
+                        }}
                         checked={answers[question.id] || false}
                         onChange={(e) =>
                           handleChange(question.id, e.target.checked)
@@ -163,6 +279,11 @@ const Analysis = () => {
                     ) : (
                       <input
                         type="text"
+                        style={{
+                          marginLeft: "10px",
+                          fontSize: "12px",
+                          padding: "2px",
+                        }}
                         value={answers[question.id] || ""}
                         onChange={(e) =>
                           handleChange(question.id, e.target.value)
@@ -174,7 +295,12 @@ const Analysis = () => {
               ))}
             </form>
           </div>
-          <button className="image-analysis-button2">Analyse</button>
+          <button
+            className="image-analysis-button2"
+            onClick={console.log("final", answers)}
+          >
+            Analyse
+          </button>
         </div>
       )}
       {checked1 && checked2 && <div className="iaAndcd">george droid</div>}
