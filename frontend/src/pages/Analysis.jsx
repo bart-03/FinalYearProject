@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/Analysis.css";
 import Select from "react-select";
+import ReusableSection from "./Report";
 
 const Analysis = () => {
-  const [checked1, setChecked1] = useState(false);
+  const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(false);
 
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -198,104 +199,13 @@ const Analysis = () => {
           <label className="checkbox-label2">Clinical Data</label>
         </div>
       </div>
+      {!checked1 && !checked2 && (
+        <div className="nothing-selected">
+          Nothing selected, plaese select a view.
+        </div>
+      )}
       {checked1 && !checked2 && (
-        <div className="image-analysis-container">
-          <div className="image-analysis-toolbar">
-            <h1 className="image-analysis-title">Image Analysis</h1>
-
-            <div
-              className="dropdown"
-              ref={dropdownRef}
-              style={{ marginTop: "20px" }}
-            >
-              <Select
-                isMulti
-                options={options}
-                value={selectedOptions}
-                onChange={setSelectedOptions}
-                placeholder="Select options..."
-                menuIsOpen={isDropdownOpen}
-                onMenuOpen={() => setIsDropdownOpen(true)}
-              />
-            </div>
-            <div></div>
-          </div>
-          <div className="content">
-            <button className="image-analysis-button1">Upload</button>
-          </div>
-          <button className="image-analysis-button2">Analyse</button>
-        </div>
-      )}
-      {checked2 && !checked1 && (
-        <div className="clinical-data">
-          <div className="clinical-data-toolbar">
-            <h1 className="clinical-data-title">Clinical Data - Input</h1>
-
-            <div
-              className="dropdown"
-              ref={dropdownRef}
-              style={{ marginTop: "20px" }}
-            >
-              <Select
-                isMulti
-                options={options}
-                value={selectedOptions}
-                onChange={setSelectedOptions}
-                placeholder="Select options..."
-                menuIsOpen={isDropdownOpen}
-                onMenuOpen={() => setIsDropdownOpen(true)}
-              />
-            </div>
-          </div>
-          <div className="cd-content">
-            <form>
-              {questions.map((question) => (
-                <div key={question.id} style={{ marginBottom: "10px" }}>
-                  <label style={{ fontSize: "12px" }}>
-                    {question.id + ". "}
-                    {question.text}
-                    {question.type === "checkbox" ? (
-                      <input
-                        type="checkbox"
-                        style={{
-                          marginLeft: "10px",
-                          fontSize: "12px",
-                          padding: "2px",
-                        }}
-                        checked={answers[question.id] || false}
-                        onChange={(e) =>
-                          handleChange(question.id, e.target.checked)
-                        }
-                      />
-                    ) : (
-                      <input
-                        type="text"
-                        style={{
-                          marginLeft: "10px",
-                          fontSize: "12px",
-                          padding: "2px",
-                        }}
-                        value={answers[question.id] || ""}
-                        onChange={(e) =>
-                          handleChange(question.id, e.target.value)
-                        }
-                      />
-                    )}
-                  </label>
-                </div>
-              ))}
-            </form>
-          </div>
-          <button
-            className="image-analysis-button2"
-            onClick={console.log("final", answers)}
-          >
-            Analyse
-          </button>
-        </div>
-      )}
-      {checked1 && checked2 && (
-        <div className="iaAndcd">
+        <>
           <div className="image-analysis-container">
             <div className="image-analysis-toolbar">
               <h1 className="image-analysis-title">Image Analysis</h1>
@@ -322,6 +232,11 @@ const Analysis = () => {
             </div>
             <button className="image-analysis-button2">Analyse</button>
           </div>
+          <ReusableSection checked1={checked1} checked2={checked2} />
+        </>
+      )}
+      {checked2 && !checked1 && (
+        <>
           <div className="clinical-data">
             <div className="clinical-data-toolbar">
               <h1 className="clinical-data-title">Clinical Data - Input</h1>
@@ -388,7 +303,108 @@ const Analysis = () => {
               Analyse
             </button>
           </div>
-        </div>
+          <ReusableSection checked1={checked1} checked2={checked2} />
+        </>
+      )}
+      {checked1 && checked2 && (
+        <>
+          <div className="iaAndcd">
+            <div className="combined-image-analysis-container">
+              <div className="combined-image-analysis-toolbar">
+                <h1 className="combined-image-analysis-title">
+                  Image Analysis
+                </h1>
+
+                <div
+                  className="dropdown"
+                  ref={dropdownRef}
+                  style={{ marginTop: "20px" }}
+                >
+                  <Select
+                    isMulti
+                    options={options}
+                    value={selectedOptions}
+                    onChange={setSelectedOptions}
+                    placeholder="Select options..."
+                    menuIsOpen={isDropdownOpen}
+                    onMenuOpen={() => setIsDropdownOpen(true)}
+                  />
+                </div>
+                <div></div>
+              </div>
+              <div className="combined-content">
+                <button className="image-analysis-button1">Upload</button>
+              </div>
+            </div>
+            <div className="combined-clinical-data">
+              <div className="combined-clinical-data-toolbar">
+                <h1 className="clinical-data-title">Clinical Data - Input</h1>
+
+                <div
+                  className="dropdown"
+                  ref={dropdownRef}
+                  style={{ marginTop: "20px" }}
+                >
+                  <Select
+                    isMulti
+                    options={options}
+                    value={selectedOptions}
+                    onChange={setSelectedOptions}
+                    placeholder="Select options..."
+                    menuIsOpen={isDropdownOpen}
+                    onMenuOpen={() => setIsDropdownOpen(true)}
+                  />
+                </div>
+              </div>
+              <div className="combined-cd-content">
+                <form>
+                  {questions.map((question) => (
+                    <div key={question.id} style={{ marginBottom: "10px" }}>
+                      <label style={{ fontSize: "12px" }}>
+                        {question.id + ". "}
+                        {question.text}
+                        {question.type === "checkbox" ? (
+                          <input
+                            type="checkbox"
+                            style={{
+                              marginLeft: "10px",
+                              fontSize: "12px",
+                              padding: "2px",
+                            }}
+                            checked={answers[question.id] || false}
+                            onChange={(e) =>
+                              handleChange(question.id, e.target.checked)
+                            }
+                          />
+                        ) : (
+                          <input
+                            type="text"
+                            style={{
+                              marginLeft: "10px",
+                              fontSize: "12px",
+                              padding: "2px",
+                            }}
+                            value={answers[question.id] || ""}
+                            onChange={(e) =>
+                              handleChange(question.id, e.target.value)
+                            }
+                          />
+                        )}
+                      </label>
+                    </div>
+                  ))}
+                </form>
+              </div>
+              <button
+                className="combined-button"
+                onClick={console.log("final", answers)}
+              >
+                Analyse
+              </button>
+            </div>
+          </div>
+          <ReusableSection checked1={checked1} checked2={checked2} />
+        </>
       )}
     </div>
   );

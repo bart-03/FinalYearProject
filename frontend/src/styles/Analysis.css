@@ -21,6 +21,7 @@ justify-content: center;
 align-items: center;
 height:80px;
 gap: 70px;
+
 }
 
 .checkbox1, .checkbox2{
@@ -36,19 +37,37 @@ gap: 70px;
     margin-top: 5px;
 }
 
+.nothing-selected{
+    width: 400px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000000;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+}
+
 .image-analysis-container{
 
-height: 500px;
+height: 450px;
 display: flex;
-justify-content: center;
+/* justify-content: center; */
 align-items: center;
 flex-direction: column;
+background-color: #EEE5EE;
+margin-top: 20px;
+
+
 
 }
 
 .image-analysis-toolbar{
 height: 50px;
-
 width: 700px;
 display: flex;
 gap: 20px;
@@ -119,9 +138,8 @@ gap: 20px;
 
 /* CLINICAL DATA */
 .clinical-data{
-    height: 1500px;
+    height: 670px;
     display: flex;
-   
     align-items: center;
     flex-direction: column;
     background-color: #EEE5EE;
@@ -138,8 +156,7 @@ gap: 20px;
 }
 
 .clinical-data-toolbar{
-    height: 50px;
-
+height: 50px;
 width: 700px;
 display: flex;
 gap: 20px;
@@ -151,13 +168,15 @@ margin-top: 20px;
     border-radius: 7px;
     border: 1px solid #000000;
     width: 700px;
-    height: 1000px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
+    overflow-y: auto ;
+    padding-top: 10px;
     
 }
 
@@ -168,5 +187,101 @@ margin-top: 20px;
     flex-direction: row;
     gap: 30px;
     justify-content: center;
+    height: 700; 
+    background-color: #EEE5EE;
+  
+
+}
+
+.combined-image-analysis-container{
+
+    height: 500px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    
+    }
+
+.combined-content{
+
+    background-color: rgb(255, 255, 255) ;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    width: 700px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    }
+
+.combined-image-analysis-title{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+    
+}
+
+.combined-image-analysis-toolbar{
+    height: 50px;
+    width: 700px;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    
+    
+}
+
+.combined-clinical-data-toolbar{
+    height: 50px;
+    width: 700px;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.combined-cd-content{
+    background-color: rgb(255, 255, 255) ;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow-y: auto ;
+    padding-top: 10px;
+}
+
+.combined-button{
+    height: 50px;
+    width: 100px;
+    background-color: #001848;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px; 
+    position: relative;
+    right: 50%;
+    bottom: -15px;
+}
+
+.combined-clinical-data{
+    height: 700px;
+    display: flex;
+   
+    align-items: center;
+    flex-direction: column;
+    background-color: #EEE5EE;
 
 }

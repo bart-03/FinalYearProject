@@ -1,0 +1,234 @@
+.ia-report-main{
+    background-color: #EEE5EE;
+    height: 500px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ia-report-toolbar{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+}
+.ia-report-content{
+    position: relative;
+    background-color: #ffffff;
+    height: 300px;
+    width: 700px; 
+    border-radius: 7px;
+    /* border: 1px solid #000000; */
+    
+}
+.ia-report-title{
+    
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+
+}
+.ia-line{
+    position:absolute;
+    right: 50%;
+    top:0px;
+    width: 3px; /* Thin line */
+    background-color: black; /* Line color */
+    height: 100%; /* Full height of the container */
+}
+
+.ia-left-box{
+    position: absolute;
+    /* border-radius: 7px; */
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border: 1px solid #000000;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ia-right-box{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+/* CLINICAL DATA ANALYSIS */
+
+.cd-report-main{
+    background-color: #EEE5EE;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cd-report-toolbar{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+}
+.cd-report-content{
+    position: relative;
+    background-color: #ffffff;
+    height: 300px;
+    width: 700px; 
+    border-radius: 7px;
+    /* border: 1px solid #000000; */
+    
+}
+.cd-report-title{
+    
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000000;
+
+}
+.cd-line{
+    position:absolute;
+    right: 50%;
+    top:0px;
+    width: 3px; /* Thin line */
+    background-color: black; /* Line color */
+    height: 100%; /* Full height of the container */
+}
+
+.cd-left-box{
+    position: absolute;
+    /* border-radius: 7px; */
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border: 1px solid #000000;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cd-right-box{
+    
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+/* BOTH REPORT VIEWS */
+.report-main{
+    background-color: #EEE5EE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.both-ia-report-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.both-cd-report-main{
+    background-color: #EEE5EE;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.both-cd-left-box{
+    position: absolute;
+    border-bottom-left-radius: 7px;
+    border: 1px solid #000000;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.both-cd-right-box{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    border-bottom-right-radius: 7px;
+}
+
+.both-ia-left-box{
+    position: absolute;
+    border-top-left-radius: 7px;
+    border: 1px solid #000000;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.both-ia-right-box{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    border-top-right-radius: 7px;
+}
