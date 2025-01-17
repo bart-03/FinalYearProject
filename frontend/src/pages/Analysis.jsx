@@ -36,14 +36,14 @@ const Analysis = () => {
   }, []);
 
   useEffect(() => {
-    const confirmchange = window.confirm(
-      "Are you sure you want to switch? Doing so you will loose any unsaved work."
-    );
-    if (confirmchange) {
-      setIaButtonPressed(false);
-      setCdButtonPressed(false);
-      setBothButtonPressed(false);
-    }
+    // const confirmchange = window.confirm(
+    //   "Are you sure you want to switch? Doing so you will loose any unsaved work."
+    // );
+    // if (confirmchange) {
+    setIaButtonPressed(false);
+    setCdButtonPressed(false);
+    setBothButtonPressed(false);
+    // }
   }, [checked1, checked2]);
 
   const questions = [

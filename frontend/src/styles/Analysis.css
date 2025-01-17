@@ -13,6 +13,7 @@
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
     color: #000000;
+    z-index: 1;
 }
 .analysis-checbox{
 width: 100%;
@@ -170,7 +171,7 @@ margin-top: 20px;
     height: 500px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
