@@ -6,11 +6,14 @@ import ReusableSection from "./Report";
 const Analysis = () => {
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(false);
-
+  const [iaButtonPressed, setIaButtonPressed] = useState(false);
+  const [cdButtonPressed, setCdButtonPressed] = useState(false);
+  const [bothButtonPressed, setBothButtonPressed] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   const dropdownRef = useRef(null);
+  const checkHandler1 = () => setChecked1(!checked1);
+  const checkHandler2 = () => setChecked2(!checked2);
 
   const options = [
     { value: "disease1", label: "Disease 1" },
@@ -18,9 +21,6 @@ const Analysis = () => {
     { value: "disease3", label: "Disease 3" },
     { value: "disease4", label: "Disease 4" },
   ];
-
-  const checkHandler1 = () => setChecked1(!checked1);
-  const checkHandler2 = () => setChecked2(!checked2);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -34,6 +34,17 @@ const Analysis = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    const confirmchange = window.confirm(
+      "Are you sure you want to switch? Doing so you will loose any unsaved work."
+    );
+    if (confirmchange) {
+      setIaButtonPressed(false);
+      setCdButtonPressed(false);
+      setBothButtonPressed(false);
+    }
+  }, [checked1, checked2]);
 
   const questions = [
     { id: 1, text: "What is the patient’s age?", type: "input" },
@@ -175,7 +186,6 @@ const Analysis = () => {
     }));
   };
 
-  console.log(answers);
   return (
     <div className="analysis">
       <h1 className="title-analysis">Analysis</h1>
@@ -230,9 +240,20 @@ const Analysis = () => {
             <div className="content">
               <button className="image-analysis-button1">Upload</button>
             </div>
-            <button className="image-analysis-button2">Analyse</button>
+            <button
+              className="image-analysis-button2"
+              onClick={() => setIaButtonPressed(true)}
+            >
+              Analyse
+            </button>
           </div>
-          <ReusableSection checked1={checked1} checked2={checked2} />
+          <ReusableSection
+            checked1={checked1}
+            checked2={checked2}
+            iaButtonPressed={iaButtonPressed}
+            cdButtonPressed={cdButtonPressed}
+            bothButtonPressed={bothButtonPressed}
+          />
         </>
       )}
       {checked2 && !checked1 && (
@@ -298,12 +319,18 @@ const Analysis = () => {
             </div>
             <button
               className="image-analysis-button2"
-              onClick={console.log("final", answers)}
+              onClick={() => setCdButtonPressed(true)}
             >
               Analyse
             </button>
           </div>
-          <ReusableSection checked1={checked1} checked2={checked2} />
+          <ReusableSection
+            checked1={checked1}
+            checked2={checked2}
+            iaButtonPressed={iaButtonPressed}
+            cdButtonPressed={cdButtonPressed}
+            bothButtonPressed={bothButtonPressed}
+          />
         </>
       )}
       {checked1 && checked2 && (
@@ -397,13 +424,19 @@ const Analysis = () => {
               </div>
               <button
                 className="combined-button"
-                onClick={console.log("final", answers)}
+                onClick={() => setBothButtonPressed(true)}
               >
                 Analyse
               </button>
             </div>
           </div>
-          <ReusableSection checked1={checked1} checked2={checked2} />
+          <ReusableSection
+            checked1={checked1}
+            checked2={checked2}
+            iaButtonPressed={iaButtonPressed}
+            cdButtonPressed={cdButtonPressed}
+            bothButtonPressed={bothButtonPressed}
+          />
         </>
       )}
     </div>
