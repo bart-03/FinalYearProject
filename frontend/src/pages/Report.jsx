@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Report.css";
+import Copy from "../assets/copy.svg";
 
 const Report = ({ checked1, checked2 }) => {
   let content = null;
@@ -10,7 +11,10 @@ const Report = ({ checked1, checked2 }) => {
         <div className="both-ia-report-main">
           <div className="ia-report-toolbar">
             <h1 className="ia-report-title">Report</h1>
-            <img src="" alt="copy"></img>
+            <div className="copy-text">
+              <img src={Copy} alt="copy"></img>
+              <p>Copy</p>
+            </div>
           </div>
           <div className="ia-report-content">
             <div className="both-ia-left-box">Images</div>
@@ -31,7 +35,10 @@ const Report = ({ checked1, checked2 }) => {
       <div className="ia-report-main">
         <div className="ia-report-toolbar">
           <h1 className="ia-report-title">Report</h1>
-          <img src="" alt="copy"></img>
+          <div className="copy-text">
+            <img src={Copy} alt="copy"></img>
+            <p>Copy</p>
+          </div>
         </div>
         <div className="ia-report-content">
           <div className="ia-left-box">Images</div>
@@ -44,7 +51,10 @@ const Report = ({ checked1, checked2 }) => {
       <div className="cd-report-main">
         <div className="cd-report-toolbar">
           <h1 className="cd-report-title">Report</h1>
-          <img src="" alt="copy"></img>
+          <div className="copy-text">
+            <img src={Copy} alt="copy"></img>
+            <p>Copy</p>
+          </div>
         </div>
         <div className="cd-report-content">
           <div className="cd-left-box">Clinical Data Input</div>
