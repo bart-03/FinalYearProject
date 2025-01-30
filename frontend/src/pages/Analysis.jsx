@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "../styles/Analysis.css";
 import Select from "react-select";
 import ReusableSection from "./Report";
+import axios from "axios";
 
 const Analysis = () => {
   const [checked1, setChecked1] = useState(true);
@@ -36,14 +37,9 @@ const Analysis = () => {
   }, []);
 
   useEffect(() => {
-    // const confirmchange = window.confirm(
-    //   "Are you sure you want to switch? Doing so you will loose any unsaved work."
-    // );
-    // if (confirmchange) {
     setIaButtonPressed(false);
     setCdButtonPressed(false);
     setBothButtonPressed(false);
-    // }
   }, [checked1, checked2]);
 
   const questions = [
@@ -178,6 +174,7 @@ const Analysis = () => {
   ];
 
   const [answers, setAnswers] = useState(false);
+  const [image, setImage] = useState(null);
 
   const handleChange = (id, value) => {
     setAnswers((prevAnswers) => ({
@@ -186,6 +183,39 @@ const Analysis = () => {
     }));
   };
 
+  const handleUpload = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  // const handleAnalysis = () => {
+  //   axios
+  //     .post("http://localhost:8080/PnuemoniaPredict", { image })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error signing in:", err);
+  //     });
+  // };
+  const handleAnalysis = () => {
+    const formData = new FormData();
+    formData.append("image", image); // 'image' should match the field name in your Flask route
+
+    axios
+      .post("http://localhost:8080/PnuemoniaPredict", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Important for file upload
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.error("Error uploading image:", err);
+      });
+  };
+
+  console.log("image", image);
   return (
     <div className="analysis">
       <h1 className="title-analysis">Analysis</h1>
@@ -238,11 +268,19 @@ const Analysis = () => {
               <div></div>
             </div>
             <div className="content">
-              <button className="image-analysis-button1">Upload</button>
+              <input
+                type="file"
+                className="image-analysis-button1"
+                onChange={handleUpload}
+              />
             </div>
             <button
               className="image-analysis-button2"
-              onClick={() => setIaButtonPressed(true)}
+              // onClick={() => setIaButtonPressed(true)}
+              onClick={() => {
+                setIaButtonPressed(true);
+                handleAnalysis();
+              }}
             >
               Analyse
             </button>

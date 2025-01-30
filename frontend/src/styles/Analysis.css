@@ -109,18 +109,19 @@ gap: 20px;
 }
 
 .image-analysis-button1{
-    height: 50px;
-    width: 100px;
-    background-color: #906090;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 7px;
-    font-size: 15px;
-    font-family: 'Roboto', sans-serif;
-    margin-left: 20px;
+   
     position: absolute;
     bottom: 10px;
     right: 10px;
+    background-color: #906090;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 230px;
+
+
 }
 .image-analysis-button2{
     height: 50px;

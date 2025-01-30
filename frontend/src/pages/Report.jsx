@@ -36,7 +36,7 @@ const Report = ({
   bothButtonPressed,
 }) => {
   let content = null;
-  console.log(iaButtonPressed, cdButtonPressed, bothButtonPressed);
+  // console.log(iaButtonPressed, cdButtonPressed, bothButtonPressed);
   if (checked1 && checked2 && bothButtonPressed) {
     content = (
       <div className="report-main">
