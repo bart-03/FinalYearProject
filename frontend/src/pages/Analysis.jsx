@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "../styles/Analysis.css";
 import Select from "react-select";
 import ReusableSection from "./Report";
 import axios from "axios";
+import { MyContext } from "./MyContext";
 
 const Analysis = () => {
   const [checked1, setChecked1] = useState(true);
@@ -15,6 +16,14 @@ const Analysis = () => {
   const dropdownRef = useRef(null);
   const checkHandler1 = () => setChecked1(!checked1);
   const checkHandler2 = () => setChecked2(!checked2);
+
+  const { navbarValue } = useContext(MyContext);
+  console.log("Navbar Value", navbarValue);
+  const [isNavbarOpen, setIsNavbarOpen] = useState(navbarValue);
+
+  useEffect(() => {
+    setIsNavbarOpen(navbarValue);
+  }, [navbarValue]); // Re-run effect when navbarValue changes
 
   const options = [
     { value: "disease1", label: "Disease 1" },
@@ -215,9 +224,12 @@ const Analysis = () => {
       });
   };
 
-  console.log("image", image);
   return (
-    <div className="analysis">
+    <div
+      // className={navbarValue ? "analysis-blur" : "analysis"}
+
+      className={isNavbarOpen ? "analysis-blur" : "analysis"}
+    >
       <h1 className="title-analysis">Analysis</h1>
       <div className="analysis-checbox">
         <div className="checkbox1-Container">
@@ -245,7 +257,7 @@ const Analysis = () => {
         </div>
       )}
       {checked1 && !checked2 && (
-        <>
+        <div className="main-container">
           <div className="image-analysis-container">
             <div className="image-analysis-toolbar">
               <h1 className="image-analysis-title">Image Analysis</h1>
@@ -292,10 +304,10 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
           />
-        </>
+        </div>
       )}
       {checked2 && !checked1 && (
-        <>
+        <div className="main-container">
           <div className="clinical-data">
             <div className="clinical-data-toolbar">
               <h1 className="clinical-data-title">Clinical Data - Input</h1>
@@ -369,10 +381,10 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
           />
-        </>
+        </div>
       )}
       {checked1 && checked2 && (
-        <>
+        <div className="main-container">
           <div className="iaAndcd">
             <div className="combined-image-analysis-container">
               <div className="combined-image-analysis-toolbar">
@@ -475,7 +487,7 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
           />
-        </>
+        </div>
       )}
     </div>
   );

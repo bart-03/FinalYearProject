@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../styles/Navbar.css";
 import Logo from "../assets/logo.svg";
 import Logout from "../assets/logout.svg";
 import Analysis from "../assets/analyse.svg";
 import History from "../assets/history.svg";
+import { MyContext } from "./MyContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const { setNavbarValue } = useContext(MyContext);
+  console.log("Navpage open", isOpen);
 
   const toggleHamburger = () => {
     setIsOpen(!isOpen);
+    setNavbarValue(!isOpen);
   };
 
   const handleLogout = () => {

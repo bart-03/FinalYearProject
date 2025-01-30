@@ -5,6 +5,7 @@ import Analysis from "./pages/Analysis";
 import SignIn from "./pages/SignIn";
 import History from "./pages/History";
 import Layout from "./pages/Layout"; // New Layout component
+import { MyProvider } from "./pages/MyProvider";
 
 function App() {
    
@@ -19,6 +20,7 @@ function App() {
     
 
     return (
+        <MyProvider>
         <Router>
             <Routes>
                 {/* Wrap everything in the Layout component */}
@@ -30,6 +32,7 @@ function App() {
                 </Route>
             </Routes>
         </Router>
+        </MyProvider>
     );
 }
 

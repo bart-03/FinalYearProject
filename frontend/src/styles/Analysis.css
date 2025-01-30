@@ -1,6 +1,16 @@
 .analysis{
     background-color: #EEE5EE;
-    height: 83.75vh;
+    /* height: 100vh; */
+    min-height: 100vh;
+    
+    
+}
+
+.analysis-blur{
+    background-color: #EEE5EE;
+    filter: blur(10px);
+;
+    min-height: 100vh;
     
 }
 
@@ -286,3 +296,4 @@ margin-top: 20px;
     background-color: #EEE5EE;
 
 }
+
