@@ -10,7 +10,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const { setNavbarValue } = useContext(MyContext);
-  console.log("Navpage open", isOpen);
 
   const toggleHamburger = () => {
     setIsOpen(!isOpen);

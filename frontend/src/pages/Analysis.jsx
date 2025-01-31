@@ -18,21 +18,19 @@ const Analysis = () => {
   const checkHandler2 = () => setChecked2(!checked2);
 
   const { navbarValue } = useContext(MyContext);
-  console.log("Navbar Value", navbarValue);
+
   const [isNavbarOpen, setIsNavbarOpen] = useState(navbarValue);
 
   useEffect(() => {
     setIsNavbarOpen(navbarValue);
-  }, [navbarValue]); // Re-run effect when navbarValue changes
+  }, [navbarValue]);
 
   const options = [
-    { value: "disease1", label: "Disease 1" },
-    { value: "disease2", label: "Disease 2" },
+    { value: "disease1", label: "Pnuemonia" },
+    { value: "disease2", label: "Pulmonary Edema" },
     { value: "disease3", label: "Disease 3" },
-    { value: "disease4", label: "Disease 4" },
   ];
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -184,6 +182,7 @@ const Analysis = () => {
 
   const [answers, setAnswers] = useState(false);
   const [image, setImage] = useState(null);
+  const [imageLocal, setImageLocal] = useState(null);
 
   const handleChange = (id, value) => {
     setAnswers((prevAnswers) => ({
@@ -194,7 +193,11 @@ const Analysis = () => {
 
   const handleUpload = (e) => {
     setImage(e.target.files[0]);
+    setImageLocal(URL.createObjectURL(e.target.files[0]));
   };
+
+  console.log(image);
+  console.log(imageLocal);
 
   // const handleAnalysis = () => {
   //   axios
@@ -208,12 +211,12 @@ const Analysis = () => {
   // };
   const handleAnalysis = () => {
     const formData = new FormData();
-    formData.append("image", image); // 'image' should match the field name in your Flask route
+    formData.append("image", image);
 
     axios
       .post("http://localhost:8080/PnuemoniaPredict", formData, {
         headers: {
-          "Content-Type": "multipart/form-data", // Important for file upload
+          "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
@@ -225,11 +228,7 @@ const Analysis = () => {
   };
 
   return (
-    <div
-      // className={navbarValue ? "analysis-blur" : "analysis"}
-
-      className={isNavbarOpen ? "analysis-blur" : "analysis"}
-    >
+    <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
       <h1 className="title-analysis">Analysis</h1>
       <div className="analysis-checbox">
         <div className="checkbox1-Container">
@@ -279,7 +278,18 @@ const Analysis = () => {
               </div>
               <div></div>
             </div>
+
             <div className="content">
+              {imageLocal && (
+                <>
+                  <img
+                    src={imageLocal}
+                    alt="Uploaded Preview"
+                    style={{ maxWidth: "100px" }}
+                  />
+                  <label>Selected Image </label>
+                </>
+              )}
               <input
                 type="file"
                 className="image-analysis-button1"

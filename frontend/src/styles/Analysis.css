@@ -2,6 +2,7 @@
     background-color: #EEE5EE;
     /* height: 100vh; */
     min-height: 100vh;
+    padding-top: 80px;
     
     
 }
@@ -9,7 +10,7 @@
 .analysis-blur{
     background-color: #EEE5EE;
     filter: blur(10px);
-;
+;padding-top: 80px;
     min-height: 100vh;
     
 }
