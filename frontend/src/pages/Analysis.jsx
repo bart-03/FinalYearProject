@@ -13,6 +13,7 @@ const Analysis = () => {
   const [bothButtonPressed, setBothButtonPressed] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [response, setResponse] = useState(null);
   const dropdownRef = useRef(null);
   const checkHandler1 = () => setChecked1(!checked1);
   const checkHandler2 = () => setChecked2(!checked2);
@@ -209,22 +210,40 @@ const Analysis = () => {
   //       console.error("Error signing in:", err);
   //     });
   // };
-  const handleAnalysis = () => {
-    const formData = new FormData();
-    formData.append("image", image);
 
-    axios
-      .post("http://localhost:8080/PnuemoniaPredict", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.error("Error uploading image:", err);
-      });
+  if (selectedOptions.length > 0) {
+    console.log(selectedOptions[0].value);
+  }
+
+  const handleAnalysis = async () => {
+    if (selectedOptions[0].value === "disease1") {
+      const formData = new FormData();
+      formData.append("image", image);
+
+      await axios
+        .post("http://localhost:8080/PnuemoniaPredict", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setResponse(response.data);
+        })
+        .catch((err) => {
+          console.error("Error uploading image:", err);
+        });
+    }
+  };
+
+  let render;
+  if (selectedOptions.length === 0) {
+    render = <div className="nothing-selected">Plaese select a disease.</div>;
+  }
+
+  const test = () => {
+    setIaButtonPressed(true);
+    handleAnalysis();
   };
 
   return (
@@ -271,7 +290,7 @@ const Analysis = () => {
                   options={options}
                   value={selectedOptions}
                   onChange={setSelectedOptions}
-                  placeholder="Select options..."
+                  placeholder="Select Disease"
                   menuIsOpen={isDropdownOpen}
                   onMenuOpen={() => setIsDropdownOpen(true)}
                 />
@@ -280,6 +299,7 @@ const Analysis = () => {
             </div>
 
             <div className="content">
+              {render}
               {imageLocal && (
                 <>
                   <img
@@ -290,19 +310,22 @@ const Analysis = () => {
                   <label>Selected Image </label>
                 </>
               )}
+
               <input
                 type="file"
                 className="image-analysis-button1"
                 onChange={handleUpload}
               />
             </div>
+
             <button
-              className="image-analysis-button2"
-              // onClick={() => setIaButtonPressed(true)}
-              onClick={() => {
-                setIaButtonPressed(true);
-                handleAnalysis();
-              }}
+              className={`${
+                selectedOptions.length > 0 && image !== null
+                  ? "image-analysis-button2"
+                  : "image-analysis-button-disabled"
+              }`}
+              onClick={test}
+              disabled={!selectedOptions.length || image === null}
             >
               Analyse
             </button>
@@ -313,6 +336,7 @@ const Analysis = () => {
             iaButtonPressed={iaButtonPressed}
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
+            response={response}
           />
         </div>
       )}

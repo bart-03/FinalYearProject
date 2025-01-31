@@ -146,6 +146,19 @@ gap: 20px;
     margin-left: 20px;
 }
 
+.image-analysis-button-disabled{
+    height: 50px;
+    width: 100px;
+    background-color: #001848;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 
 /* CLINICAL DATA */
@@ -298,3 +311,13 @@ margin-top: 20px;
 
 }
 
+.nothing-selected{
+    border: none;
+   position: absolute;
+    top: 20%;
+    left: 50%;
+    background-color: rgba(246, 245, 245, 0);
+    color: #000000;
+    font-size: 28px;
+    
+}

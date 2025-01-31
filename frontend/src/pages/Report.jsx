@@ -34,7 +34,9 @@ const Report = ({
   iaButtonPressed,
   cdButtonPressed,
   bothButtonPressed,
+  response,
 }) => {
+  console.log("report page", response);
   let content = null;
   if (checked1 && checked2 && bothButtonPressed) {
     content = (
@@ -82,7 +84,9 @@ const Report = ({
         </div>
         <div className="ia-report-content" id="report1">
           <div className="ia-left-box">Images</div>
-          <div className="ia-right-box">Results</div>
+          <div className="ia-right-box">
+            Results: {response ? response.predictionzino : ""}
+          </div>
         </div>
       </div>
     );
