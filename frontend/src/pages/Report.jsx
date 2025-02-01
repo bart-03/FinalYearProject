@@ -36,8 +36,9 @@ const Report = ({
   bothButtonPressed,
   response,
   imageLocal,
+  dateTime,
+  selectedOptions,
 }) => {
-  console.log("report page", response);
   let content = null;
 
   // BOTH  VIEWS SELECTED OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -87,41 +88,73 @@ const Report = ({
           </div>
         </div>
         <div className="ia-report-content" id="report1">
-
           <div className="ia-left-box">
             <img src={imageLocal} alt="placeholder" className="image-report" />
             <label htmlFor="images">Image</label>
+            <button type="submit" className="button-append">Append Data</button>
           </div>
+          <form>
+            <div className="ia-right-box">
+              <div className="label-box">
+                <label className="report-label">Date:</label>
+                <label className="report-label">Report ID:</label>
+                <label className="report-label">Suspected Disease:</label>
+                <label className="report-label">Findings:</label>
 
-          <div className="ia-right-box">
-            <div className="label-box">
-            <label className="report-label">Date:</label>
-            <label className="report-label">Report ID:</label>
-            <label className="report-label" >Suspected Disease:</label>
-            <label className="report-label">Findings:</label>
-                
-                <label className="report-label" >Name:</label>
-                <label  className="report-label">Surname:</label>
-                <label  className="report-label">Age:</label>
+                <label className="report-label">Name:</label>
+                <label className="report-label">Surname:</label>
+                <label className="report-label">Age:</label>
                 <label className="report-label">Sex:</label>
-                <label  className="report-label">Additional Notes:</label>
+                <label className="report-label">Additional Notes:</label>
+              </div>
+              <div className="input-or-text-box">
+                <div className="report-box"> {dateTime}</div>
+                <div className="report-box"></div>
+                <div className="report-box">
+                  {selectedOptions[0]?.label || ""}
+                </div>
+                <div className="report-box">
+                  <p>
+                    {response
+                      ? response.predictionzino
+                      : "No findings available"}
+                  </p>
+                </div>
+                <div className="">
+                  <input type="text" className="custom-input"></input>
+                </div>
+                <div className="">
+                  <input type="text" className="custom-input"></input>
+                </div>
+                <div className="">
+                  <input type="number" className="custom-input"></input>
+                </div>
+                <div className="checkbox-group">
+                  <label>
+                    <input
+                      type="radio"
+                      className="radio-input"
+                      name="sex"
+                      value="Male"
+                    />
+                    Male
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      className="radio-input"
+                      name="sex"
+                      value="Female"
+                    />
+                    Female
+                  </label>
+                </div>
+                <div className="">
+                  <input type="text" className="custom-input-notes"></input>
+                </div>
+              </div>
             </div>
-            <div className="input-or-text-box">
-              <div className="report-box"></div>
-              <div className="report-box"></div>
-              <div className="report-box"></div>
-              <div className="report-box"><p >
-                  {response ? response.predictionzino : "No findings available"}
-                </p> </div>
-              <div className="report-box" ></div>
-              <div className="report-box"></div>
-              <div className="report-box"></div>
-              <div className="report-box"></div>
-              <div className="report-box"></div>
-            
-            </div>
-            
-          </div>
+          </form>
         </div>
       </div>
     );

@@ -117,6 +117,50 @@
     justify-content: center;
 }
 
+
+.custom-input{
+display: block; 
+  width: 90%; 
+  height: 23px; 
+  padding: 10px;
+  position: relative;
+  box-sizing: border-box; 
+  border: 1px solid #ffffff;
+  border-radius: 0px;
+  font-size: 16px;
+  border: 1px solid #000000;
+  text-align: center;
+
+}
+
+.custom-input-notes{
+   
+    width: 90%;
+    height: 150px;
+    
+   
+
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+  }
+  
+  
+  
+  .checkbox-input {
+    margin-right: 8px;
+    gap: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    padding-right: 20px;
+  }
+
+  .button-append{
+    
+  }
 /* CLINICAL DATA ANALYSIS */
 
 .cd-report-main{

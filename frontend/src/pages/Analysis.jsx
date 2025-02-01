@@ -5,6 +5,7 @@ import ReusableSection from "./Report";
 import axios from "axios";
 import { MyContext } from "./MyContext";
 import questions from "./PromptQuestions";
+import dayjs from "dayjs";
 
 const Analysis = () => {
   const [checked1, setChecked1] = useState(true);
@@ -18,6 +19,7 @@ const Analysis = () => {
   const [answers, setAnswers] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLocal, setImageLocal] = useState(null);
+  const [dateTime, setDateTime] = useState("");
 
   const dropdownRef = useRef(null);
   const checkHandler1 = () => setChecked1(!checked1);
@@ -98,9 +100,15 @@ const Analysis = () => {
     }
   };
 
+  const handleSaveDateTime = () => {
+    setDateTime(dayjs().format("YYYY-MM-DD HH:mm"));
+  };
+
+
   const test = () => {
     setIaButtonPressed(true);
     handleAnalysis();
+   handleSaveDateTime();
   };
 
   return (
@@ -192,6 +200,7 @@ const Analysis = () => {
                   : "image-analysis-button-disabled"
               }`}
               onClick={test}
+              
               disabled={!selectedOptions.length || image === null}
             >
               Analyse
@@ -205,6 +214,8 @@ const Analysis = () => {
             bothButtonPressed={bothButtonPressed}
             response={response}
             imageLocal={imageLocal}
+            dateTime={dateTime}
+            selectedOptions={selectedOptions}
           />
         </div>
       )}
