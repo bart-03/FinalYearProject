@@ -62,7 +62,7 @@ const SignIn = () => {
             position: "relative",
           }}
         >
-          <label htmlFor="email">Email</label>
+          <label className="signin-label" htmlFor="email">Email</label>
           <input
             className="input-email"
             type="email"
@@ -70,7 +70,7 @@ const SignIn = () => {
             required
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="password">Password</label>
+          <label className="signin-label"htmlFor="password">Password</label>
           <input
             className="input-password"
             type="password"

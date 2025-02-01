@@ -33,18 +33,6 @@ const Analysis = () => {
     );
   }
 
-  let render2;
-  if (image) {
-    render2 = (
-      <button
-        className="remove-img-button"
-        onClick={() => setImageLocal(null) && setImage(null)}
-      >
-        X
-      </button>
-    );
-  }
-
   useEffect(() => {
     setIsNavbarOpen(navbarValue);
   }, [navbarValue]);
@@ -116,6 +104,7 @@ const Analysis = () => {
   };
 
   return (
+    // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
       <h1 className="title-analysis">Analysis</h1>
       <div className="analysis-checbox">
@@ -143,6 +132,7 @@ const Analysis = () => {
           Nothing selected, plaese select a view.
         </div>
       )}
+      {/* ANALYSIS VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
       {checked1 && !checked2 && (
         <div className="main-container">
           <div className="image-analysis-container">
@@ -186,7 +176,13 @@ const Analysis = () => {
                 className="image-analysis-button1"
                 onChange={handleUpload}
               />
-              {render2}
+
+              <button
+                className="remove-img-button"
+                onClick={() => setImageLocal(null) && setImage(null)}
+              >
+                X
+              </button>
             </div>
 
             <button
@@ -208,9 +204,11 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
             response={response}
+            imageLocal={imageLocal}
           />
         </div>
       )}
+      {/* CLINICAL DATA VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/}
       {checked2 && !checked1 && (
         <div className="main-container">
           <div className="clinical-data">
@@ -288,6 +286,7 @@ const Analysis = () => {
           />
         </div>
       )}
+      {/* DOUBLE VIEW OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
       {checked1 && checked2 && (
         <div className="main-container">
           <div className="iaAndcd">

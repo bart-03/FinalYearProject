@@ -35,9 +35,12 @@ const Report = ({
   cdButtonPressed,
   bothButtonPressed,
   response,
+  imageLocal,
 }) => {
   console.log("report page", response);
   let content = null;
+
+  // BOTH  VIEWS SELECTED OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
   if (checked1 && checked2 && bothButtonPressed) {
     content = (
       <div className="report-main">
@@ -69,6 +72,7 @@ const Report = ({
         </div>
       </div>
     );
+    // ANALYSIS VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
   } else if (checked1 && iaButtonPressed && !checked2) {
     content = (
       <div className="ia-report-main">
@@ -83,13 +87,45 @@ const Report = ({
           </div>
         </div>
         <div className="ia-report-content" id="report1">
-          <div className="ia-left-box">Images</div>
+
+          <div className="ia-left-box">
+            <img src={imageLocal} alt="placeholder" className="image-report" />
+            <label htmlFor="images">Image</label>
+          </div>
+
           <div className="ia-right-box">
-            Results: {response ? response.predictionzino : ""}
+            <div className="label-box">
+            <label className="report-label">Date:</label>
+            <label className="report-label">Report ID:</label>
+            <label className="report-label" >Suspected Disease:</label>
+            <label className="report-label">Findings:</label>
+                
+                <label className="report-label" >Name:</label>
+                <label  className="report-label">Surname:</label>
+                <label  className="report-label">Age:</label>
+                <label className="report-label">Sex:</label>
+                <label  className="report-label">Additional Notes:</label>
+            </div>
+            <div className="input-or-text-box">
+              <div className="report-box"></div>
+              <div className="report-box"></div>
+              <div className="report-box"></div>
+              <div className="report-box"><p >
+                  {response ? response.predictionzino : "No findings available"}
+                </p> </div>
+              <div className="report-box" ></div>
+              <div className="report-box"></div>
+              <div className="report-box"></div>
+              <div className="report-box"></div>
+              <div className="report-box"></div>
+            
+            </div>
+            
           </div>
         </div>
       </div>
     );
+    // CLINICAL DATA VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
   } else if (checked2 && cdButtonPressed && !checked1) {
     content = (
       <div className="cd-report-main">
