@@ -76,11 +76,11 @@ const Analysis = () => {
   };
 
   if (selectedOptions.length > 0) {
-    console.log(selectedOptions[0].value);
+    console.log(selectedOptions.value);
   }
 
   const handleAnalysis = async () => {
-    if (selectedOptions[0].value === "disease1") {
+    if (selectedOptions.value === "disease1") {
       const formData = new FormData();
       formData.append("image", image);
 
@@ -104,11 +104,10 @@ const Analysis = () => {
     setDateTime(dayjs().format("YYYY-MM-DD HH:mm"));
   };
 
-
   const test = () => {
     setIaButtonPressed(true);
     handleAnalysis();
-   handleSaveDateTime();
+    handleSaveDateTime();
   };
 
   return (
@@ -153,7 +152,7 @@ const Analysis = () => {
                 style={{ marginTop: "20px" }}
               >
                 <Select
-                  isMulti
+                  // isMulti
                   options={options}
                   value={selectedOptions}
                   onChange={setSelectedOptions}
@@ -195,13 +194,12 @@ const Analysis = () => {
 
             <button
               className={`${
-                selectedOptions.length > 0 && image !== null
+                selectedOptions.value && image !== null
                   ? "image-analysis-button2"
                   : "image-analysis-button-disabled"
               }`}
               onClick={test}
-              
-              disabled={!selectedOptions.length || image === null}
+              disabled={!selectedOptions.value || image === null}
             >
               Analyse
             </button>

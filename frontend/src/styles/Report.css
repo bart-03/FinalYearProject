@@ -47,10 +47,7 @@
     right: 10px;
 }
 
-  .image-report{
-    width: 200px;
-    
-}
+
 
 .ia-left-box{
     position: absolute;
@@ -59,8 +56,36 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
-    margin-left: 30px;
+    width: 230px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+    border-right: 1px solid #000000;
+}
+.image-box{
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.image-report{
+    width: 200px;
+}
+
+.button-append{
+    position: absolute;
+    bottom: 10px;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+    background-color: #906090;
+    color: white;
+    border: none;
+    border-radius: 9px;
 }
 
 .ia-right-box{
@@ -158,9 +183,7 @@ display: block;
     padding-right: 20px;
   }
 
-  .button-append{
-    
-  }
+  
 /* CLINICAL DATA ANALYSIS */
 
 .cd-report-main{

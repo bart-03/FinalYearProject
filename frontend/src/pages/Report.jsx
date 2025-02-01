@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Report.css";
 import Copy from "../assets/copy.svg";
 import html2canvas from "html2canvas";
@@ -39,6 +39,12 @@ const Report = ({
   dateTime,
   selectedOptions,
 }) => {
+  const [image, setImage] = useState(imageLocal);
+  useEffect(() => {
+    if (imageLocal) {
+      setImage(imageLocal); // Update only when there's a new valid image
+    }
+  }, [imageLocal]);
   let content = null;
 
   // BOTH  VIEWS SELECTED OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -89,9 +95,13 @@ const Report = ({
         </div>
         <div className="ia-report-content" id="report1">
           <div className="ia-left-box">
-            <img src={imageLocal} alt="placeholder" className="image-report" />
-            <label htmlFor="images">Image</label>
-            <button type="submit" className="button-append">Append Data</button>
+            <div className="image-box">
+              <img src={image} alt="placeholder" className="image-report" />
+              <label htmlFor="images">Image</label>
+            </div>
+            <button type="submit" className="button-append">
+              Append Data
+            </button>
           </div>
           <form>
             <div className="ia-right-box">
@@ -116,7 +126,7 @@ const Report = ({
                 <div className="report-box">
                   <p>
                     {response
-                      ? response.predictionzino
+                      ? response.prediction
                       : "No findings available"}
                   </p>
                 </div>
