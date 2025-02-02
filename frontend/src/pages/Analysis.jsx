@@ -97,6 +97,23 @@ const Analysis = () => {
         .catch((err) => {
           console.error("Error uploading image:", err);
         });
+    }else if(selectedOptions.value === "disease2"){
+      const formData = new FormData();
+      formData.append("image", image);
+
+      await axios
+        .post("http://localhost:8080/EdemaPredict", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setResponse(response.data);
+        })
+        .catch((err) => {
+          console.error("Error uploading image:", err);
+        });
     }
   };
 
