@@ -204,6 +204,7 @@ margin-top: 20px;
     position: relative;
     overflow-y: auto ;
     padding-top: 10px;
+  
     
 }
 
@@ -356,4 +357,13 @@ margin-top: 20px;
     cursor: pointer;
     height: 40px;
     width: 40px;
+}
+
+.cd-label{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000000;
 }

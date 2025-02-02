@@ -35,16 +35,18 @@ const Report = ({
   cdButtonPressed,
   bothButtonPressed,
   response,
-  imageLocal,
+  // imageLocal,
+  imageReport,
   dateTime,
-  selectedOptions,
+  // selectedOptions,
+  selectedOptionReport,
 }) => {
-  const [image, setImage] = useState(imageLocal);
+  const [image, setImage] = useState(imageReport);
   useEffect(() => {
-    if (imageLocal) {
-      setImage(imageLocal); // Update only when there's a new valid image
+    if (imageReport) {
+      setImage(imageReport); // Update only when there's a new valid image
     }
-  }, [imageLocal]);
+  }, [imageReport]);
   let content = null;
 
   // BOTH  VIEWS SELECTED OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -120,7 +122,7 @@ const Report = ({
               <div className="input-or-text-box">
                 <div className="report-box"> {dateTime}</div>
                 <div className="report-box"></div>
-                <div className="report-box">{selectedOptions?.label || ""}</div>
+                <div className="report-box">{selectedOptionReport?.label || ""}</div>
                 <div className="report-box">
                   <p>
                     {response ? response.prediction : "No findings available"}

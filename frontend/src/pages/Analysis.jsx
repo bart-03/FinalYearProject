@@ -14,11 +14,13 @@ const Analysis = () => {
   const [cdButtonPressed, setCdButtonPressed] = useState(false);
   const [bothButtonPressed, setBothButtonPressed] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptionReport, setSelectedOptionReport] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [response, setResponse] = useState(null);
   const [answers, setAnswers] = useState(false);
   const [image, setImage] = useState(null);
   const [imageLocal, setImageLocal] = useState(null);
+  const [imageReport, setImageReport] = useState(null);
   const [dateTime, setDateTime] = useState("");
 
   const dropdownRef = useRef(null);
@@ -80,6 +82,8 @@ const Analysis = () => {
   }
 
   const handleAnalysis = async () => {
+    setImageReport(imageLocal);
+    setSelectedOptionReport(selectedOptions);
     if (selectedOptions.value === "disease1") {
       const formData = new FormData();
       formData.append("image", image);
@@ -97,7 +101,7 @@ const Analysis = () => {
         .catch((err) => {
           console.error("Error uploading image:", err);
         });
-    }else if(selectedOptions.value === "disease2"){
+    } else if (selectedOptions.value === "disease2") {
       const formData = new FormData();
       formData.append("image", image);
 
@@ -127,6 +131,11 @@ const Analysis = () => {
     handleSaveDateTime();
   };
 
+  useEffect(() => {
+    setAnswers({}); // Clear all answers when toggling views
+  }, [checked1, checked2]);
+
+  console.log('answers', answers);
   return (
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
@@ -190,7 +199,14 @@ const Analysis = () => {
                       src={imageLocal}
                       alt="Uploaded Preview"
                     />
-                    <label style={{ fontSize: "15px" }}>Selected Image </label>
+                    <label
+                      style={{
+                        fontSize: "15px",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Selected Image
+                    </label>
                   </div>
                 </>
               )}
@@ -228,9 +244,11 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
             response={response}
-            imageLocal={imageLocal}
+            // imageLocal={imageLocal}
+            imageReport={imageReport}
             dateTime={dateTime}
-            selectedOptions={selectedOptions}
+            // selectedOptions={selectedOptions}
+            selectedOptionReport={selectedOptionReport}
           />
         </div>
       )}
@@ -247,7 +265,7 @@ const Analysis = () => {
                 style={{ marginTop: "20px" }}
               >
                 <Select
-                  isMulti
+                  // isMulti
                   options={options}
                   value={selectedOptions}
                   onChange={setSelectedOptions}
@@ -261,7 +279,7 @@ const Analysis = () => {
               <form>
                 {questions.map((question) => (
                   <div key={question.id} style={{ marginBottom: "10px" }}>
-                    <label style={{ fontSize: "12px" }}>
+                    <label className="cd-label" >
                       {question.id + ". "}
                       {question.text}
                       {question.type === "checkbox" ? (
@@ -367,7 +385,7 @@ const Analysis = () => {
                 <form>
                   {questions.map((question) => (
                     <div key={question.id} style={{ marginBottom: "10px" }}>
-                      <label style={{ fontSize: "12px" }}>
+                      <label className="cd-label">
                         {question.id + ". "}
                         {question.text}
                         {question.type === "checkbox" ? (
