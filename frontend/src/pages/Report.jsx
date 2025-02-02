@@ -120,14 +120,10 @@ const Report = ({
               <div className="input-or-text-box">
                 <div className="report-box"> {dateTime}</div>
                 <div className="report-box"></div>
-                <div className="report-box">
-                  {selectedOptions[0]?.label || ""}
-                </div>
+                <div className="report-box">{selectedOptions?.label || ""}</div>
                 <div className="report-box">
                   <p>
-                    {response
-                      ? response.prediction
-                      : "No findings available"}
+                    {response ? response.prediction : "No findings available"}
                   </p>
                 </div>
                 <div className="">
