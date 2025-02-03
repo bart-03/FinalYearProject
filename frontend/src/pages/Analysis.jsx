@@ -135,7 +135,7 @@ const Analysis = () => {
     setAnswers({}); // Clear all answers when toggling views
   }, [checked1, checked2]);
 
-  console.log('answers', answers);
+  console.log("answers", answers);
   return (
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
@@ -279,12 +279,13 @@ const Analysis = () => {
               <form>
                 {questions.map((question) => (
                   <div key={question.id} style={{ marginBottom: "10px" }}>
-                    <label className="cd-label" >
+                    <label className="cd-label">
                       {question.id + ". "}
                       {question.text}
                       {question.type === "checkbox" ? (
                         <input
                           type="checkbox"
+                          required
                           style={{
                             marginLeft: "10px",
                             fontSize: "12px",
@@ -298,6 +299,7 @@ const Analysis = () => {
                       ) : (
                         <input
                           type="text"
+                          required
                           style={{
                             marginLeft: "10px",
                             fontSize: "12px",
@@ -312,14 +314,15 @@ const Analysis = () => {
                     </label>
                   </div>
                 ))}
+                <button
+                  type="submit"
+                  className="image-analysis-button2"
+                  onClick={() => setCdButtonPressed(true)}
+                >
+                  Analyse
+                </button>
               </form>
             </div>
-            <button
-              className="image-analysis-button2"
-              onClick={() => setCdButtonPressed(true)}
-            >
-              Analyse
-            </button>
           </div>
           <ReusableSection
             checked1={checked1}
