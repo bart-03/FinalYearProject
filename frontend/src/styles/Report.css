@@ -254,15 +254,15 @@ display: block;
     border-bottom-right-radius: 7px;
 }
 
-.cd-report-qeustions{
+.cd-report-questions{
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 50%;
+    /* align-items: left; */
+    /* justify-content: center; */
+    gap: 5px;
+    /* width: 50%; */
+   
+    
 }
 
 .cd-report-inputs{
@@ -271,15 +271,18 @@ display: block;
     align-items: left;
     justify-content: center;
     gap: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
     width: 50%;
     position: absolute;
     right: 0;
     top: 0;
+    
 }
 
+.input-text-number{
 
+}
 
 /* BOTH REPORT VIEWS */
 .report-main{
