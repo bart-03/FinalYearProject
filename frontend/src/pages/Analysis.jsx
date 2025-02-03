@@ -6,6 +6,7 @@ import axios from "axios";
 import { MyContext } from "./MyContext";
 import questions from "./PromptQuestions";
 import dayjs from "dayjs";
+import Questions2 from "./Questions2";
 
 const Analysis = () => {
   const [checked1, setChecked1] = useState(true);
@@ -136,6 +137,7 @@ const Analysis = () => {
   }, [checked1, checked2]);
 
   console.log("answers", answers);
+  console.log("questions", questions);
   return (
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
@@ -276,7 +278,8 @@ const Analysis = () => {
               </div>
             </div>
             <div className="cd-content">
-              <form>
+              <Questions2 />
+              {/* <form>
                 {questions.map((question) => (
                   <div key={question.id} style={{ marginBottom: "10px" }}>
                     <label className="cd-label">
@@ -321,7 +324,7 @@ const Analysis = () => {
                 >
                   Analyse
                 </button>
-              </form>
+              </form> */}
             </div>
           </div>
           <ReusableSection
