@@ -279,52 +279,6 @@ const Analysis = () => {
             </div>
             <div className="cd-content">
               <Questions2 />
-              {/* <form>
-                {questions.map((question) => (
-                  <div key={question.id} style={{ marginBottom: "10px" }}>
-                    <label className="cd-label">
-                      {question.id + ". "}
-                      {question.text}
-                      {question.type === "checkbox" ? (
-                        <input
-                          type="checkbox"
-                          required
-                          style={{
-                            marginLeft: "10px",
-                            fontSize: "12px",
-                            padding: "2px",
-                          }}
-                          checked={answers[question.id] || false}
-                          onChange={(e) =>
-                            handleChange(question.id, e.target.checked)
-                          }
-                        />
-                      ) : (
-                        <input
-                          type="text"
-                          required
-                          style={{
-                            marginLeft: "10px",
-                            fontSize: "12px",
-                            padding: "2px",
-                          }}
-                          value={answers[question.id] || ""}
-                          onChange={(e) =>
-                            handleChange(question.id, e.target.value)
-                          }
-                        />
-                      )}
-                    </label>
-                  </div>
-                ))}
-                <button
-                  type="submit"
-                  className="image-analysis-button2"
-                  onClick={() => setCdButtonPressed(true)}
-                >
-                  Analyse
-                </button>
-              </form> */}
             </div>
           </div>
           <ReusableSection

@@ -3,6 +3,7 @@ from flask_cors import CORS
 from SignIn import signin
 from PnuemoniaModel2 import PnuemoniaModel2
 from PulmoneryEdema import PulmonaryEdema
+from openAI import OpenAI
 
 app = Flask(__name__)
 app.app_context().push()
@@ -13,5 +14,7 @@ if __name__ == '__main__':
     app.register_blueprint(signin)
     app.register_blueprint(PnuemoniaModel2)
     app.register_blueprint(PulmonaryEdema)
+    app.register_blueprint(OpenAI)
+    
     app.run(debug=True,  port=8080)
     
