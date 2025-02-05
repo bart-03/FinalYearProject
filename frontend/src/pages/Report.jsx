@@ -385,10 +385,6 @@ const Report = ({
             </div>
           </div>
           <div id="report3">
-            {/* <div className="ia-report-content">
-              <div className="both-ia-left-box">Images</div>
-              <div className="both-ia-right-box">Results</div>
-            </div> */}
             <div className="both-cd-report-main">
               <div className="cd-report-content">
                 <div className="both-cd-left-box">Clinical Data Input</div>
