@@ -183,7 +183,7 @@
 //           </div>
 //         </div>
 //         <div className="cd-report-content" id="report2">
-          
+
 //           {/* <div className="cd-right-box">Response</div> */}
 //           <div className="">{cdResponse}</div>
 //         </div>
@@ -195,7 +195,6 @@
 // };
 
 // export default Report;
-
 
 import React, { useState, useEffect, useContext } from "react";
 import "../styles/Report.css";
@@ -260,13 +259,25 @@ const Report = ({
 
       return (
         <div key={index} className="section">
-          <h3>{sectionTitle}</h3>
+          <br />
+          <br />
+          <h3 style={{ color: "#800080", fontSize: "24px" }}>{sectionTitle}</h3>
+          <br />
           {lines.map((line, idx) => {
             if (line.startsWith("##")) {
-              return <p key={idx} className="section-title">{line.replace("##", "").trim()}</p>;
+              return (
+                <ul key={idx} className="section-title">
+                  <li>{line.replace("##", "").trim()}</li>
+                </ul>
+              );
             }
             if (line.startsWith("--")) {
-              return <ul   className="points" key={idx}><li>{line.replace("--", "").trim()}</li></ul>;
+              return (
+                <>
+                  <p key={idx}>{line.replace("--", "").trim()}</p>
+                  <br />
+                </>
+              );
             }
             return <p key={idx}>{line.trim()}</p>;
           })}
@@ -280,19 +291,104 @@ const Report = ({
   if (checked1 && checked2 && bothButtonPressed) {
     content = (
       <div className="report-main">
+        <div className="ia-report-main">
+          <div className="ia-report-toolbar">
+            <h1 className="ia-report-title">Report</h1>
+            <div
+              className="copy-text"
+              onClick={() => captureScreenshot("report1")}
+            >
+              <img src={Copy} alt="copy" />
+              <p>Copy</p>
+            </div>
+          </div>
+          <div className="ia-report-content" id="report1">
+            <div className="ia-left-box">
+              <div className="image-box">
+                <img src={image} alt="placeholder" className="image-report" />
+                <label htmlFor="images">Image</label>
+              </div>
+              <button type="submit" className="button-append">
+                Append Data
+              </button>
+            </div>
+            <form>
+              <div className="ia-right-box">
+                <div className="label-box">
+                  <label className="report-label">Date:</label>
+                  <label className="report-label">Report ID:</label>
+                  <label className="report-label">Suspected Disease:</label>
+                  <label className="report-label">Findings:</label>
+                  <label className="report-label">Name:</label>
+                  <label className="report-label">Surname:</label>
+                  <label className="report-label">Age:</label>
+                  <label className="report-label">Sex:</label>
+                  <label className="report-label">Additional Notes:</label>
+                </div>
+                <div className="input-or-text-box">
+                  <div className="report-box">{dateTime}</div>
+                  <div className="report-box"></div>
+                  <div className="report-box">
+                    {selectedOptionReport?.label || ""}
+                  </div>
+                  <div className="report-box">
+                    <p>
+                      {response ? response.prediction : "No findings available"}
+                    </p>
+                  </div>
+                  <div className="">
+                    <input type="text" className="custom-input" />
+                  </div>
+                  <div className="">
+                    <input type="text" className="custom-input" />
+                  </div>
+                  <div className="">
+                    <input type="number" className="custom-input" />
+                  </div>
+                  <div className="checkbox-group">
+                    <label>
+                      <input
+                        type="radio"
+                        className="radio-input"
+                        name="sex"
+                        value="Male"
+                      />
+                      Male
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        className="radio-input"
+                        name="sex"
+                        value="Female"
+                      />
+                      Female
+                    </label>
+                  </div>
+                  <div className="">
+                    <input type="text" className="custom-input-notes" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
         <div className="both-ia-report-main">
           <div className="ia-report-toolbar">
             <h1 className="ia-report-title">Report</h1>
-            <div className="copy-text" onClick={() => captureScreenshot("report3")}>
+            <div
+              className="copy-text"
+              onClick={() => captureScreenshot("report3")}
+            >
               <img src={Copy} alt="copy" />
               <p>Copy</p>
             </div>
           </div>
           <div id="report3">
-            <div className="ia-report-content">
+            {/* <div className="ia-report-content">
               <div className="both-ia-left-box">Images</div>
               <div className="both-ia-right-box">Results</div>
-            </div>
+            </div> */}
             <div className="both-cd-report-main">
               <div className="cd-report-content">
                 <div className="both-cd-left-box">Clinical Data Input</div>
@@ -308,7 +404,10 @@ const Report = ({
       <div className="ia-report-main">
         <div className="ia-report-toolbar">
           <h1 className="ia-report-title">Report</h1>
-          <div className="copy-text" onClick={() => captureScreenshot("report1")}>
+          <div
+            className="copy-text"
+            onClick={() => captureScreenshot("report1")}
+          >
             <img src={Copy} alt="copy" />
             <p>Copy</p>
           </div>
@@ -339,9 +438,13 @@ const Report = ({
               <div className="input-or-text-box">
                 <div className="report-box">{dateTime}</div>
                 <div className="report-box"></div>
-                <div className="report-box">{selectedOptionReport?.label || ""}</div>
                 <div className="report-box">
-                  <p>{response ? response.prediction : "No findings available"}</p>
+                  {selectedOptionReport?.label || ""}
+                </div>
+                <div className="report-box">
+                  <p>
+                    {response ? response.prediction : "No findings available"}
+                  </p>
                 </div>
                 <div className="">
                   <input type="text" className="custom-input" />
@@ -354,11 +457,21 @@ const Report = ({
                 </div>
                 <div className="checkbox-group">
                   <label>
-                    <input type="radio" className="radio-input" name="sex" value="Male" />
+                    <input
+                      type="radio"
+                      className="radio-input"
+                      name="sex"
+                      value="Male"
+                    />
                     Male
                   </label>
                   <label>
-                    <input type="radio" className="radio-input" name="sex" value="Female" />
+                    <input
+                      type="radio"
+                      className="radio-input"
+                      name="sex"
+                      value="Female"
+                    />
                     Female
                   </label>
                 </div>
@@ -376,16 +489,17 @@ const Report = ({
       <div className="cd-report-main">
         <div className="cd-report-toolbar">
           <h1 className="cd-report-title">Report</h1>
-          <div className="copy-text" onClick={() => captureScreenshot("report2")}>
+          <div
+            className="copy-text"
+            onClick={() => captureScreenshot("report2")}
+          >
             <img src={Copy} alt="copy" />
             <p>Copy</p>
           </div>
         </div>
         <div className="cd-report-content" id="report2">
           {/* Render parsed clinical response */}
-          <div className="clinical-response">
-            {parseResponse(cdResponse)}
-          </div>
+          <div className="clinical-response">{parseResponse(cdResponse)}</div>
         </div>
       </div>
     );

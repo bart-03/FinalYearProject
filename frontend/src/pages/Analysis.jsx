@@ -138,13 +138,13 @@ const Analysis = () => {
     handleSaveDateTime();
     setCdButtonPressed(true);
     handleAnalyseClick();
+    setBothButtonPressed(true);
   };
 
   useEffect(() => {
     setAnswers({}); // Clear all answers when toggling views
   }, [checked1, checked2]);
 
- 
   return (
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
@@ -246,7 +246,7 @@ const Analysis = () => {
               Analyse
             </button>
           </div>
-          
+
           <ReusableSection
             checked1={checked1}
             checked2={checked2}
@@ -289,10 +289,7 @@ const Analysis = () => {
               <Questions2 ref={questions2Ref} />
             </div>
 
-            <button
-              className="image-analysis-button2"
-              onClick={test}
-            >
+            <button className="image-analysis-button2" onClick={test}>
               Analyse
             </button>
           </div>
@@ -307,101 +304,186 @@ const Analysis = () => {
       )}
       {/* DOUBLE VIEW OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
       {checked1 && checked2 && (
-        <div className="main-container">
-          <div className="iaAndcd">
-            <div className="combined-image-analysis-container">
-              <div className="combined-image-analysis-toolbar">
-                <h1 className="combined-image-analysis-title">
-                  Image Analysis
-                </h1>
+        // <div className="main-container">
+        //   <div className="iaAndcd">
+        //     <div className="combined-image-analysis-container">
+        //       <div className="combined-image-analysis-toolbar">
+        //         <h1 className="combined-image-analysis-title">
+        //           Image Analysis
+        //         </h1>
 
-                <div
-                  className="dropdown"
-                  ref={dropdownRef}
-                  style={{ marginTop: "20px" }}
-                >
-                  {/* <Select
-                    isMulti
-                    options={options}
-                    value={selectedOptions}
-                    onChange={setSelectedOptions}
-                    placeholder="Select options..."
-                    menuIsOpen={isDropdownOpen}
-                    onMenuOpen={() => setIsDropdownOpen(true)}
-                  /> */}
-                </div>
-                <div></div>
-              </div>
-              <div className="combined-content">
-                <button className="image-analysis-button1">Upload</button>
+        //         <div
+        //           className="dropdown"
+        //           ref={dropdownRef}
+        //           style={{ marginTop: "20px" }}
+        //         >
+        //           {/* <Select
+        //             isMulti
+        //             options={options}
+        //             value={selectedOptions}
+        //             onChange={setSelectedOptions}
+        //             placeholder="Select options..."
+        //             menuIsOpen={isDropdownOpen}
+        //             onMenuOpen={() => setIsDropdownOpen(true)}
+        //           /> */}
+        //         </div>
+        //         <div></div>
+        //       </div>
+        //       <div className="combined-content">
+        //         <button className="image-analysis-button1">Upload</button>
+        //       </div>
+        //     </div>
+        //     <div className="combined-clinical-data">
+        //       <div className="combined-clinical-data-toolbar">
+        //         <h1 className="clinical-data-title">Clinical Data - Input</h1>
+
+        //         <div
+        //           className="dropdown"
+        //           ref={dropdownRef}
+        //           style={{ marginTop: "20px" }}
+        //         >
+        //           <Select
+        //             isMulti
+        //             options={options}
+        //             value={selectedOptions}
+        //             onChange={setSelectedOptions}
+        //             placeholder="Select options..."
+        //             menuIsOpen={isDropdownOpen}
+        //             onMenuOpen={() => setIsDropdownOpen(true)}
+        //           />
+        //         </div>
+        //       </div>
+        //       <div className="combined-cd-content">
+        //         <form>
+        //           {questions.map((question) => (
+        //             <div key={question.id} style={{ marginBottom: "10px" }}>
+        //               <label className="cd-label">
+        //                 {question.id + ". "}
+        //                 {question.text}
+        //                 {question.type === "checkbox" ? (
+        //                   <input
+        //                     type="checkbox"
+        //                     style={{
+        //                       marginLeft: "10px",
+        //                       fontSize: "12px",
+        //                       padding: "2px",
+        //                     }}
+        //                     checked={answers[question.id] || false}
+        //                     onChange={(e) =>
+        //                       handleChange(question.id, e.target.checked)
+        //                     }
+        //                   />
+        //                 ) : (
+        //                   <input
+        //                     type="text"
+        //                     style={{
+        //                       marginLeft: "10px",
+        //                       fontSize: "12px",
+        //                       padding: "2px",
+        //                     }}
+        //                     value={answers[question.id] || ""}
+        //                     onChange={(e) =>
+        //                       handleChange(question.id, e.target.value)
+        //                     }
+        //                   />
+        //                 )}
+        //               </label>
+        //             </div>
+        //           ))}
+        //         </form>
+        //       </div>
+        //       <button
+        //         className="combined-button"
+        //         onClick={() => setBothButtonPressed(true)}
+        //       >
+        //         Analyse
+        //       </button>
+        //     </div>
+        //   </div>
+        //   <ReusableSection
+        //     checked1={checked1}
+        //     checked2={checked2}
+        //     iaButtonPressed={iaButtonPressed}
+        //     cdButtonPressed={cdButtonPressed}
+        //     bothButtonPressed={bothButtonPressed}
+        //   />
+        // </div>
+        <div className="main-container">
+          <div className="image-analysis-container">
+            <div className="image-analysis-toolbar">
+              <h1 className="image-analysis-title">Image Analysis</h1>
+
+              <div
+                className="dropdown"
+                ref={dropdownRef}
+                style={{ marginTop: "20px" }}
+              >
+                <Select
+                  // isMulti
+                  options={options}
+                  value={selectedOptions}
+                  onChange={setSelectedOptions}
+                  placeholder="Select Disease"
+                  menuIsOpen={isDropdownOpen}
+                  onMenuOpen={() => setIsDropdownOpen(true)}
+                />
               </div>
             </div>
-            <div className="combined-clinical-data">
-              <div className="combined-clinical-data-toolbar">
-                <h1 className="clinical-data-title">Clinical Data - Input</h1>
 
-                <div
-                  className="dropdown"
-                  ref={dropdownRef}
-                  style={{ marginTop: "20px" }}
-                >
-                  <Select
-                    isMulti
-                    options={options}
-                    value={selectedOptions}
-                    onChange={setSelectedOptions}
-                    placeholder="Select options..."
-                    menuIsOpen={isDropdownOpen}
-                    onMenuOpen={() => setIsDropdownOpen(true)}
-                  />
-                </div>
-              </div>
-              <div className="combined-cd-content">
-                <form>
-                  {questions.map((question) => (
-                    <div key={question.id} style={{ marginBottom: "10px" }}>
-                      <label className="cd-label">
-                        {question.id + ". "}
-                        {question.text}
-                        {question.type === "checkbox" ? (
-                          <input
-                            type="checkbox"
-                            style={{
-                              marginLeft: "10px",
-                              fontSize: "12px",
-                              padding: "2px",
-                            }}
-                            checked={answers[question.id] || false}
-                            onChange={(e) =>
-                              handleChange(question.id, e.target.checked)
-                            }
-                          />
-                        ) : (
-                          <input
-                            type="text"
-                            style={{
-                              marginLeft: "10px",
-                              fontSize: "12px",
-                              padding: "2px",
-                            }}
-                            value={answers[question.id] || ""}
-                            onChange={(e) =>
-                              handleChange(question.id, e.target.value)
-                            }
-                          />
-                        )}
-                      </label>
-                    </div>
-                  ))}
-                </form>
-              </div>
+            <div className="content">
+              {render}
+              {imageLocal && (
+                <>
+                  <div className="image-preview-container">
+                    <img
+                      className="image-preview"
+                      src={imageLocal}
+                      alt="Uploaded Preview"
+                    />
+                    <label
+                      style={{
+                        fontSize: "15px",
+                        fontFamily: "'Roboto', sans-serif",
+                      }}
+                    >
+                      Selected Image
+                    </label>
+                  </div>
+                </>
+              )}
+
+              <input
+                type="file"
+                className="image-analysis-button1"
+                onChange={handleUpload}
+              />
+
               <button
-                className="combined-button"
-                onClick={() => setBothButtonPressed(true)}
+                className="remove-img-button"
+                onClick={() => setImageLocal(null) && setImage(null)}
               >
-                Analyse
+                X
               </button>
             </div>
+
+            <button
+              className={`${
+                selectedOptions.value && image !== null
+                  ? "image-analysis-button2"
+                  : "image-analysis-button-disabled"
+              }`}
+              onClick={test}
+              // onClick={() => setBothButtonPressed(true)}
+              disabled={!selectedOptions.value || image === null}
+            >
+              Analyse
+            </button>
+            {/* <button
+              className="combined-button"
+              onClick={() => setBothButtonPressed(true)}
+            >
+              Analyse
+            </button> */}
           </div>
           <ReusableSection
             checked1={checked1}
@@ -409,6 +491,12 @@ const Analysis = () => {
             iaButtonPressed={iaButtonPressed}
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
+            response={response}
+            // imageLocal={imageLocal}
+            imageReport={imageReport}
+            dateTime={dateTime}
+            // selectedOptions={selectedOptions}
+            selectedOptionReport={selectedOptionReport}
           />
         </div>
       )}

@@ -188,18 +188,16 @@ display: block;
 .section{
     margin-left: 30px;
 }
-.points{
+.section-title{
   
     font-family: 'Roboto', sans-serif;
-   
-  
- 
-  
+    font-weight: 900;
+    
 }
 
 .cd-report-main{
     background-color: #EEE5EE;
-    height: 1500px;
+    height: 1650px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -215,7 +213,7 @@ display: block;
 .cd-report-content{
     position: relative;
     background-color: #ffffff;
-    height: 950px;
+    height: 1550px;
     width: 800px; 
     border-radius: 7px;
     font-family: 'Roboto', sans-serif;
