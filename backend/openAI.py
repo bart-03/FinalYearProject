@@ -1,32 +1,3 @@
-# from openai import OpenAI
- 
-# client = OpenAI(
-#   api_key="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"
-# )
- 
-# completion = client.chat.completions.create(
-#     model="gpt-4o-mini",
-#     store=True,
-#     messages=[
-#         {
-#             "role": "developer", 
-#             "content": """You are an advanced medical assistant tasked with helping healthcare professionals assess thoracic diseases and conditions. Based on the patient information provided:  
-
-# 1. Estimate the most likely diagnosis and provide a percentage likelihood for each suspected disease.  
-# 2. Suggest alternative diagnoses that should be considered.  
-# 3. Recommend additional examinations, diagnostic tests, or medical referrals necessary to confirm or rule out the suspected conditions.  
-# 4. If the information is inconclusive, suggest questions or further information that could aid diagnosis."""
-#         },
-#         {
-#             "role": "user",
-#             "content": """Patient information:"""
-#             }
-#     ]
-# )
-
- 
-# print(completion.choices[0].message);
-
 from flask import Blueprint, jsonify, request
 # from flask_cors import CORS
 import openai
@@ -58,10 +29,27 @@ def diagnose():
                     "role": "developer",
                     "content": """You are an advanced medical assistant tasked with helping healthcare professionals assess thoracic diseases and conditions. Based on the patient information provided:
 
-1. Estimate the most likely diagnosis and provide a percentage likelihood for each suspected disease.  
+1. Estimate the most likely diagnosis and provide a percentage likelihood for each suspected disease, give top 5 suspected.  
 2. Suggest alternative diagnoses that should be considered.  
 3. Recommend additional examinations, diagnostic tests, or medical referrals necessary to confirm or rule out the suspected conditions.  
-4. If the information is inconclusive, suggest questions or further information that could aid diagnosis."""
+4. If the information is inconclusive, suggest questions or further information that could aid diagnosis.
+
+I need the response to be 4 seperate sections, no intros or conclusions.
+Please provide the assessment with structured formatting using these markers:
+- Use `@@Section:` for major sections titles.
+- Use `##` for bold labels within a section.
+- Use `--` for list items.
+- Provide a double newline between sections for clear separation.
+  
+Example:
+@@Section: Estimated Diagnosis and Likelihoods
+## Pneumonia (bacterial or viral): 40%
+-- Symptoms: fever, chills, shortness of breath.
+  
+@@Section: Alternative Diagnoses to Consider
+## Pulmonary Embolism
+-- Particularly given the history of smoking and sharp chest pain.
+"""
                 },
                 {
                     "role": "user",

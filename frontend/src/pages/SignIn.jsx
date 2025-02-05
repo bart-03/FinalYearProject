@@ -87,7 +87,7 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-        <h3>For an account reach out to contact@XDetect.com</h3>
+        <h3 className="">For an account reach out to contact@XDetect.com</h3>
       </div>
 
       <h4>App created by BC</h4>

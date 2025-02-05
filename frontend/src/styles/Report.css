@@ -185,10 +185,21 @@ display: block;
 
   
 /* CLINICAL DATA ANALYSIS */
+.section{
+    margin-left: 30px;
+}
+.points{
+  
+    font-family: 'Roboto', sans-serif;
+   
+  
+ 
+  
+}
 
 .cd-report-main{
     background-color: #EEE5EE;
-    height: 500px;
+    height: 1500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,10 +215,12 @@ display: block;
 .cd-report-content{
     position: relative;
     background-color: #ffffff;
-    height: 300px;
-    width: 700px; 
+    height: 950px;
+    width: 800px; 
     border-radius: 7px;
     font-family: 'Roboto', sans-serif;
+    border: 1px solid #000000;
+    padding: 10px;
     
 }
 .cd-report-title{
@@ -221,28 +234,13 @@ display: block;
 }
 
 
-.cd-left-box{
-    position: absolute;
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    border: 1px solid #000000;
-    left: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background-color: #ffffff;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+
 .cd-right-box{
     
     position: absolute;
     right: 0;
     top: 0;
-    width: 50%;
+    width: 100%;
     height: 100%;
     background-color: #ffffff;
     display: flex;
@@ -254,47 +252,52 @@ display: block;
     border-bottom-right-radius: 7px;
 }
 
-/* .cd-report-questions{
+  .cd-report-questions {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.cd-report-questions label{
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-}
-
-.cd-report-questions input{
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    
-} */
-
-.cd-report-questions {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Adjust the gap between rows */
+    gap: 20px;
   }
   
   .cd-report-questions div {
     display: flex;
-    align-items: center; /* Vertically center the label and input */
-    gap: 10px; /* Add space between the label and input */
+    justify-content: space-between; /* Align label and inputs properly */
+    align-items: center; /* Center vertically */
+    
   }
   
   .cd-report-questions label {
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    width: 300px; /* Set a fixed width for labels */
+    width: 600px; /* Consistent label width */
+    margin-right: 20px;
   }
   
-  .cd-report-questions input,
+  .cd-report-questions input[type="number"],
+  .cd-report-questions input[type="text"],
+  .cd-report-questions input[type="date"],
   .cd-report-questions select {
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    width: 200px; /* Set a fixed width for inputs */
+    font-size: 16px;
+    padding: 6px;
+    width: 170px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
   }
+
+  .group-radio-mf{
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    margin-right: 7px;
+  }
+  
+
+  .group-radio{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-right: 7px;
+  }
+  
   
 
 /* BOTH REPORT VIEWS */

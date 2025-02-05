@@ -27,7 +27,7 @@ const Questions2 = forwardRef((props, ref) => {
       });
   };
 
-  console.log("response", response);
+ 
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -233,7 +233,7 @@ const Questions2 = forwardRef((props, ref) => {
       .map((q) => `${q.question} Answer: ${q.answer}`)
       .join("\n");
 
-    console.log("final", formattedData);
+   
 
     handleAnalysis(formattedData);
   };
@@ -258,16 +258,17 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>2. What is the patient’s sex?</label>
-          <div>
-            <input
+          <div className="group-radio-mf">
+            <input 
               type="radio"
               name="patientSex"
               value="male"
               required
               onChange={handleChange}
+              
             />{" "}
             Male
-            <input
+            <input 
               type="radio"
               name="patientSex"
               value="female"
@@ -300,7 +301,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>5. Does the patient have a fever?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="fever"
@@ -322,7 +323,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>6. Is the patient experiencing a cough?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="cough"
@@ -354,7 +355,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>8. Is the patient experiencing shortness of breath?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="shortBreath"
@@ -376,7 +377,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>9. Does the patient have chest pain?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="chestPain"
@@ -398,7 +399,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>10. Does the patient have wheezing?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="wheezing"
@@ -420,7 +421,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>11. Has the patient experienced loss of smell or taste?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="lossSmellTaste"
@@ -442,7 +443,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>12. Does the patient have fatigue or weakness?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="fatigue"
@@ -464,7 +465,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>13. Is the patient experiencing chills or rigors?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="chills"
@@ -486,7 +487,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>14. Is the patient experiencing a sore throat?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="soreThroat"
@@ -508,7 +509,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>15. Does the patient have muscle aches?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="aches"
@@ -532,7 +533,7 @@ const Questions2 = forwardRef((props, ref) => {
           <label>
             16. Is the patient experiencing nausea, vomiting, or diarrhea?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="nausea"
@@ -556,7 +557,7 @@ const Questions2 = forwardRef((props, ref) => {
           <label>
             17. Is the patient experiencing severe difficulty breathing?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="difficultBreathing"
@@ -578,7 +579,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>18. Has the patient fainted or felt dizzy?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="dizzy"
@@ -602,7 +603,7 @@ const Questions2 = forwardRef((props, ref) => {
           <label>
             19. Is there bluish discoloration of the lips or nails (cyanosis)?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="cyanosis"
@@ -624,7 +625,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>20. Does the patient feel chest tightness or heaviness?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="tightChest"
@@ -666,7 +667,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>25. Does the patient have a history of smoking?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="smokes"
@@ -691,7 +692,7 @@ const Questions2 = forwardRef((props, ref) => {
             26. Has the patient been in contact with someone sick or tested
             positive for COVID-19?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="covid"
@@ -713,7 +714,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
           <label>27. Has the patient traveled recently?</label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="travelled"
@@ -738,7 +739,7 @@ const Questions2 = forwardRef((props, ref) => {
             28. Is the patient vaccinated for COVID-19, influenza, and
             pneumonia?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="vaccinated"
@@ -763,7 +764,7 @@ const Questions2 = forwardRef((props, ref) => {
             29. Does the patient have occupational or environmental exposure to
             irritants or pollutants?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="pollutantExposure"
@@ -787,7 +788,7 @@ const Questions2 = forwardRef((props, ref) => {
           <label>
             30. Does the patient drink alcohol or use recreational drugs?
           </label>
-          <div>
+          <div className="group-radio">
             <input
               type="radio"
               name="recreational"
@@ -884,7 +885,7 @@ const Questions2 = forwardRef((props, ref) => {
         <label>
           37. Does the patient have a history of recurrent lung infections?
         </label>
-        <div>
+        <div className="group-radio">
           <input
             type="radio"
             name="lungInfections"
@@ -909,7 +910,7 @@ const Questions2 = forwardRef((props, ref) => {
           38. Has the patient recently experienced rapid or irregular heartbeats
           (palpitations)?
         </label>
-        <div>
+        <div className="group-radio">
           <input
             type="radio"
             name="palpitations"
@@ -934,7 +935,7 @@ const Questions2 = forwardRef((props, ref) => {
           39. Does the patient notice changes in appetite or significant weight
           loss?
         </label>
-        <div>
+        <div className="group-radio">
           <input
             type="radio"
             name="weightChange"
@@ -958,7 +959,7 @@ const Questions2 = forwardRef((props, ref) => {
         <label>
           40. Has the patient recently had surgery or been immobilized?
         </label>
-        <div>
+        <div className="group-radio">
           <input
             type="radio"
             name="surgeryImmobilized"
@@ -983,7 +984,7 @@ const Questions2 = forwardRef((props, ref) => {
           41. Does the patient experience difficulty breathing while sleeping
           (orthopnea)?
         </label>
-        <div>
+        <div className="group-radio">
           <input
             type="radio"
             name="orthopnea"
@@ -1005,7 +1006,7 @@ const Questions2 = forwardRef((props, ref) => {
 
         <div>
         <label>42. Are there any symptoms of night sweats?</label>
-        <div>
+        <div className="group-radio">
           <input
             type="radio"
             name="nightSweats"
@@ -1026,10 +1027,10 @@ const Questions2 = forwardRef((props, ref) => {
         </div>
 
         <div>
-        <label>
+        <label style={{ marginBottom: "30px" }}>
           43. Has the patient experienced hemoptysis (coughing up blood)?
         </label>
-        <div>
+        <div  className="group-radio" style={{ marginBottom: "30px" }}>
           <input
             type="radio"
             name="hemoptysis"

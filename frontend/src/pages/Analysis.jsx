@@ -144,8 +144,7 @@ const Analysis = () => {
     setAnswers({}); // Clear all answers when toggling views
   }, [checked1, checked2]);
 
-  console.log("answers", answers);
-  console.log("questions", questions);
+ 
   return (
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
@@ -275,7 +274,7 @@ const Analysis = () => {
                 ref={dropdownRef}
                 style={{ marginTop: "20px" }}
               >
-                <Select
+                {/* <Select
                   // isMulti
                   options={options}
                   value={selectedOptions}
@@ -283,7 +282,7 @@ const Analysis = () => {
                   placeholder="Select options..."
                   menuIsOpen={isDropdownOpen}
                   onMenuOpen={() => setIsDropdownOpen(true)}
-                />
+                /> */}
               </div>
             </div>
             <div className="cd-content">
@@ -321,7 +320,7 @@ const Analysis = () => {
                   ref={dropdownRef}
                   style={{ marginTop: "20px" }}
                 >
-                  <Select
+                  {/* <Select
                     isMulti
                     options={options}
                     value={selectedOptions}
@@ -329,7 +328,7 @@ const Analysis = () => {
                     placeholder="Select options..."
                     menuIsOpen={isDropdownOpen}
                     onMenuOpen={() => setIsDropdownOpen(true)}
-                  />
+                  /> */}
                 </div>
                 <div></div>
               </div>
