@@ -23,7 +23,13 @@ const Analysis = () => {
   const [imageLocal, setImageLocal] = useState(null);
   const [imageReport, setImageReport] = useState(null);
   const [dateTime, setDateTime] = useState("");
+  const questions2Ref = useRef();
 
+  const handleAnalyseClick = () => {
+    if (questions2Ref.current) {
+      questions2Ref.current.handleSubmit(new Event("submit"));
+    }
+  };
   const dropdownRef = useRef(null);
   const checkHandler1 = () => setChecked1(!checked1);
   const checkHandler2 = () => setChecked2(!checked2);
@@ -130,6 +136,8 @@ const Analysis = () => {
     setIaButtonPressed(true);
     handleAnalysis();
     handleSaveDateTime();
+    setCdButtonPressed(true);
+    handleAnalyseClick();
   };
 
   useEffect(() => {
@@ -239,6 +247,7 @@ const Analysis = () => {
               Analyse
             </button>
           </div>
+          
           <ReusableSection
             checked1={checked1}
             checked2={checked2}
@@ -278,8 +287,15 @@ const Analysis = () => {
               </div>
             </div>
             <div className="cd-content">
-              <Questions2 />
+              <Questions2 ref={questions2Ref} />
             </div>
+
+            <button
+              className="image-analysis-button2"
+              onClick={test}
+            >
+              Analyse
+            </button>
           </div>
           <ReusableSection
             checked1={checked1}

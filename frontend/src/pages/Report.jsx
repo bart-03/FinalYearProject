@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/Report.css";
 import Copy from "../assets/copy.svg";
 import html2canvas from "html2canvas";
+import { MyContext } from "./MyContext";
 
 export const captureScreenshot = (elementId) => {
   const element = document.getElementById(elementId);
@@ -42,6 +43,7 @@ const Report = ({
   selectedOptionReport,
 }) => {
   const [image, setImage] = useState(imageReport);
+  const { cdResponse } = useContext(MyContext);
   useEffect(() => {
     if (imageReport) {
       setImage(imageReport); // Update only when there's a new valid image
@@ -183,6 +185,7 @@ const Report = ({
         <div className="cd-report-content" id="report2">
           <div className="cd-left-box">Clinical Data Input</div>
           <div className="cd-right-box">Response</div>
+          <div className="">{cdResponse}</div>
         </div>
       </div>
     );

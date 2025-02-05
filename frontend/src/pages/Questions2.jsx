@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext, forwardRef, useImperativeHandle } from "react";
 import "../styles/Report.css";
 import axios from "axios";
+import { MyContext } from "./MyContext";
 
-const Questions2 = () => {
+// const Questions2 = () => {
+  const Questions2 = forwardRef((props, ref) => {
   const [response, setResponse] = useState(null);
   const [formData, setFormData] = useState({});
+  const { setCDResponse } = useContext(MyContext);
 
   const handleAnalysis = async (formattedData) => {
     await axios
@@ -15,33 +18,12 @@ const Questions2 = () => {
       .then((response) => {
         console.log(response.data.diagnosis);
         setResponse(response.data.diagnosis);
+        setCDResponse(response.data.diagnosis);
       })
       .catch((err) => {
         console.error("Error prompting", err);
       });
   };
-
-  // import React, { useState } from "react";
-  // import "../styles/Report.css";
-  // import axios from "axios";
-
-  // const Questions2 = () => {
-  //   const [response, setResponse] = useState(null);
-  //   const [formData, setFormData] = useState({});
-
-  // const handleAnalysis = async (formattedData) => {
-  //   try {
-  //     const response = await axios.post("http://localhost:8080/OpenAI", { data: formattedData }, {
-  //       headers: {
-  //         "Content-Type": "text/plain",
-  //       },
-  //     });
-  //     console.log("Response from API:", response.data);
-  //     setResponse(response.data);
-  //   } catch (err) {
-  //     console.error("Error uploading data:", err);
-  //   }
-  // };
 
   console.log("response", response);
 
@@ -123,8 +105,13 @@ const Questions2 = () => {
     handleAnalysis(formattedData);
   };
 
+  useImperativeHandle(ref, () => ({
+    handleSubmit,
+  }));
+
   return (
-    <form onSubmit={handleSubmit}>
+    // <form onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit}>
       <div className="cd-report-questions">
         <label>1. What is the patient’s age?</label>
         <input
@@ -412,10 +399,12 @@ const Questions2 = () => {
   <input type="radio" name="hemoptysis" value="no" required onChange={handleChange} /> No
 </div> */}
 
-        <button type="submit">Analyse</button>
+        {/* <button type="submit">Analyse</button> */}
       </div>
     </form>
   );
-};
+});
 
 export default Questions2;
+
+
