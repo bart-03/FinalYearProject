@@ -291,9 +291,11 @@ const Report = ({
   if (checked1 && checked2 && bothButtonPressed) {
     content = (
       <div className="report-main">
-        <div className="ia-report-main">
+        <div className="ia-report-main-combined">
           <div className="ia-report-toolbar">
-            <h1 className="ia-report-title">Report</h1>
+            <h1 className="ia-report-title">
+              Report - Image Analysis & Clinical Data
+            </h1>
             <div
               className="copy-text"
               onClick={() => captureScreenshot("report1")}
@@ -302,7 +304,7 @@ const Report = ({
               <p>Copy</p>
             </div>
           </div>
-          <div className="ia-report-content" id="report1">
+          <div className="ia-report-content-combined" id="report1">
             <div className="ia-left-box">
               <div className="image-box">
                 <img src={image} alt="placeholder" className="image-report" />
@@ -374,7 +376,7 @@ const Report = ({
           </div>
         </div>
         <div className="both-ia-report-main">
-          <div className="ia-report-toolbar">
+          {/* <div className="ia-report-toolbar">
             <h1 className="ia-report-title">Report</h1>
             <div
               className="copy-text"
@@ -383,7 +385,7 @@ const Report = ({
               <img src={Copy} alt="copy" />
               <p>Copy</p>
             </div>
-          </div>
+          </div> */}
           <div id="report3">
             <div className="both-cd-report-main">
               {/* <div className="cd-report-content">
