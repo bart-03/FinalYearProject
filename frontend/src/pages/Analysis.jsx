@@ -324,6 +324,17 @@ const Analysis = () => {
                 onMenuOpen={() => setIsDropdownOpen(true)}
               />
             </div>
+            <button
+              className={`${
+                selectedOptions.value && image !== null
+                  ? "image-analysis-button2"
+                  : "image-analysis-button-disabled"
+              }`}
+              onClick={test}
+              disabled={!selectedOptions.value || image === null}
+            >
+              Analyse
+            </button>
           </div>
           <div className="combined-containers">
             <div className="image-analysis-container-combined">
@@ -331,9 +342,9 @@ const Analysis = () => {
                 {render}
                 {imageLocal && (
                   <>
-                    <div className="image-preview-container">
+                    <div className="image-preview-container-combined">
                       <img
-                        className="image-preview"
+                        className="image-preview-combined"
                         src={imageLocal}
                         alt="Uploaded Preview"
                       />
@@ -362,30 +373,27 @@ const Analysis = () => {
                   X
                 </button>
               </div>
-
-              <button
-                className={`${
-                  selectedOptions.value && image !== null
-                    ? "image-analysis-button2"
-                    : "image-analysis-button-disabled"
-                }`}
-                onClick={test}
-                disabled={!selectedOptions.value || image === null}
-              >
-                Analyse
-              </button>
             </div>
 
             <div className="clinical-data-combined">
               <div className="cd-content-combined">
                 <Questions2 ref={questions2Ref} />
               </div>
-
-              <button className="image-analysis-button2" onClick={test}>
-                Analyse
-              </button>
             </div>
           </div>
+          <ReusableSection
+            checked1={checked1}
+            checked2={checked2}
+            iaButtonPressed={iaButtonPressed}
+            cdButtonPressed={cdButtonPressed}
+            bothButtonPressed={bothButtonPressed}
+            response={response}
+            // imageLocal={imageLocal}
+            imageReport={imageReport}
+            dateTime={dateTime}
+            // selectedOptions={selectedOptions}
+            selectedOptionReport={selectedOptionReport}
+          />
         </div>
       )}
     </div>

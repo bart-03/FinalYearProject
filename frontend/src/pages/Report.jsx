@@ -386,9 +386,15 @@ const Report = ({
           </div>
           <div id="report3">
             <div className="both-cd-report-main">
-              <div className="cd-report-content">
+              {/* <div className="cd-report-content">
                 <div className="both-cd-left-box">Clinical Data Input</div>
                 <div className="both-cd-right-box">Response</div>
+              </div> */}
+              <div className="cd-report-content" id="report2">
+                {/* Render parsed clinical response */}
+                <div className="clinical-response">
+                  {parseResponse(cdResponse)}
+                </div>
               </div>
             </div>
           </div>

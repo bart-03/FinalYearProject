@@ -263,7 +263,23 @@ height: 1205px;
     margin-bottom: 10px;
     position: absolute;
     left: 40px;
-    top: 40px;
+    /* top: 40px; */
+    
+}
+
+.image-preview-combined{
+    width: 100px;
+    object-fit: contain;
+    
+}
+
+.image-preview-container-combined{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    
     
 }
 
