@@ -55,176 +55,176 @@ const Questions2 = forwardRef((props, ref) => {
       question: "4. What is the patient’s height?",
       answer: formData.patientHeight,
     },
-    // { question: "5. Does the patient have a fever?", answer: formData.fever },
-    // {
-    //   question: "6. Is the patient experiencing a cough?",
-    //   answer: formData.cough,
-    // },
-    // {
-    //   question: "7. If productive, what is the color of the sputum?",
-    //   answer: formData.sputumColor,
-    // },
-    // {
-    //   question: "8. Is the patient experiencing shortness of breath?",
-    //   answer: formData.shortBreath,
-    // },
-    // {
-    //   question: "9. Does the patient have chest pain?",
-    //   answer: formData.chestPain,
-    // },
-    // {
-    //   question: "10. Does the patient have wheezing?",
-    //   answer: formData.wheezing,
-    // },
-    // {
-    //   question: "11. Has the patient experienced loss of smell or taste?",
-    //   answer: formData.lossSmellTaste,
-    // },
-    // {
-    //   question: "12. Does the patient have fatigue or weakness?",
-    //   answer: formData.fatigue,
-    // },
-    // {
-    //   question: "13. Is the patient experiencing chills or rigors?",
-    //   answer: formData.chills,
-    // },
-    // {
-    //   question: "14. Is the patient experiencing a sore throat?",
-    //   answer: formData.soreThroat,
-    // },
-    // {
-    //   question: "15. Does the patient have muscle aches?",
-    //   answer: formData.aches,
-    // },
-    // {
-    //   question:
-    //     "16. Is the patient experiencing nausea, vomiting, or diarrhea?",
-    //   answer: formData.nausea,
-    // },
-    // {
-    //   question:
-    //     "17. Is the patient experiencing severe difficulty breathing?",
-    //   answer: formData.difficultBreathing,
-    // },
-    // {
-    //   question: "18. Has the patient fainted or felt dizzy?",
-    //   answer: formData.dizzy,
-    // },
-    // {
-    //   question:
-    //     "19. Is there bluish discoloration of the lips or nails (cyanosis)?",
-    //   answer: formData.cyanosis,
-    // },
-    // {
-    //   question: "20. Does the patient feel chest tightness or heaviness?",
-    //   answer: formData.tightChest,
-    // },
-    // {
-    //   question: "21. Does the patient have a history of lung disease?",
-    //   answer: formData.history,
-    // },
-    // {
-    //   question: "22. Does the patient have a history of heart disease?",
-    //   answer: formData.historyHeart,
-    // },
-    // {
-    //   question: "23. Does the patient take any medications regularly?",
-    //   answer: formData.medicationsList,
-    // },
-    // {
-    //   question: "24. Does the patient have known allergies?",
-    //   answer: formData.allergiesList,
-    // },
-    // {
-    //   question: "25. Does the patient have a history of smoking?",
-    //   answer: formData.smokes,
-    // },
-    // {
-    //   question:
-    //     "26. Has the patient been in contact with someone sick or tested positive for COVID-19?",
-    //   answer: formData.covid,
-    // },
-    // {
-    //   question: "27. Has the patient traveled recently?",
-    //   answer: formData.travelled,
-    // },
-    // {
-    //   question:
-    //     "28. Is the patient vaccinated for COVID-19, influenza, and pneumonia?",
-    //   answer: formData.vaccinated,
-    // },
-    // {
-    //   question:
-    //     "29. Does the patient have occupational or environmental exposure to irritants or pollutants?",
-    //   answer: formData.pollutantExposure,
-    // },
-    // {
-    //   question:
-    //     "30. Does the patient drink alcohol or use recreational drugs?",
-    //   answer: formData.recreational,
-    // },
-    // {
-    //   question: "31. When did the symptoms start?",
-    //   answer: formData.symptomsStartDate,
-    // },
-    // {
-    //   question:
-    //     "32. Are the symptoms improving, worsening, or unchanged over time?",
-    //   answer: formData.symptomProgression,
-    // },
-    // {
-    //   question:
-    //     "33. What type of chest pain does the patient describe (sharp, dull, burning, stabbing)?",
-    //   answer: formData.chestPainType,
-    // },
-    // {
-    //   question:
-    //     "34. Is the chest pain associated with physical activity, eating, or rest?",
-    //   answer: formData.chestPainAssociation,
-    // },
-    // {
-    //   question: "35. Does the pain radiate to the arm, back, or jaw?",
-    //   answer: formData.painRadiation,
-    // },
-    // {
-    //   question:
-    //     "36. Is shortness of breath triggered by exertion, lying down, or at rest?",
-    //   answer: formData.shortBreathTrigger,
-    // },
-    // {
-    //   question:
-    //     "37. Does the patient have a history of recurrent lung infections?",
-    //   answer: formData.lungInfections,
-    // },
-    // {
-    //   question:
-    //     "38. Has the patient recently experienced rapid or irregular heartbeats (palpitations)?",
-    //   answer: formData.palpitations,
-    // },
-    // {
-    //   question:
-    //     "39. Does the patient notice changes in appetite or significant weight loss?",
-    //   answer: formData.weightChange,
-    // },
-    // {
-    //   question:
-    //     "40. Has the patient recently had surgery or been immobilized?",
-    //   answer: formData.surgeryImmobilized,
-    // },
-    // {
-    //   question:
-    //     "41. Does the patient experience difficulty breathing while sleeping (orthopnea)?",
-    //   answer: formData.orthopnea,
-    // },
-    // {
-    //   question: "42. Are there any symptoms of night sweats?",
-    //   answer: formData.nightSweats,
-    // },
-    // {
-    //   question:
-    //     "43. Has the patient experienced hemoptysis (coughing up blood)?",
-    //   answer: formData.hemoptysis,
-    // },
+    { question: "5. Does the patient have a fever?", answer: formData.fever },
+    {
+      question: "6. Is the patient experiencing a cough?",
+      answer: formData.cough,
+    },
+    {
+      question: "7. If productive, what is the color of the sputum?",
+      answer: formData.sputumColor,
+    },
+    {
+      question: "8. Is the patient experiencing shortness of breath?",
+      answer: formData.shortBreath,
+    },
+    {
+      question: "9. Does the patient have chest pain?",
+      answer: formData.chestPain,
+    },
+    {
+      question: "10. Does the patient have wheezing?",
+      answer: formData.wheezing,
+    },
+    {
+      question: "11. Has the patient experienced loss of smell or taste?",
+      answer: formData.lossSmellTaste,
+    },
+    {
+      question: "12. Does the patient have fatigue or weakness?",
+      answer: formData.fatigue,
+    },
+    {
+      question: "13. Is the patient experiencing chills or rigors?",
+      answer: formData.chills,
+    },
+    {
+      question: "14. Is the patient experiencing a sore throat?",
+      answer: formData.soreThroat,
+    },
+    {
+      question: "15. Does the patient have muscle aches?",
+      answer: formData.aches,
+    },
+    {
+      question:
+        "16. Is the patient experiencing nausea, vomiting, or diarrhea?",
+      answer: formData.nausea,
+    },
+    {
+      question:
+        "17. Is the patient experiencing severe difficulty breathing?",
+      answer: formData.difficultBreathing,
+    },
+    {
+      question: "18. Has the patient fainted or felt dizzy?",
+      answer: formData.dizzy,
+    },
+    {
+      question:
+        "19. Is there bluish discoloration of the lips or nails (cyanosis)?",
+      answer: formData.cyanosis,
+    },
+    {
+      question: "20. Does the patient feel chest tightness or heaviness?",
+      answer: formData.tightChest,
+    },
+    {
+      question: "21. Does the patient have a history of lung disease?",
+      answer: formData.history,
+    },
+    {
+      question: "22. Does the patient have a history of heart disease?",
+      answer: formData.historyHeart,
+    },
+    {
+      question: "23. Does the patient take any medications regularly?",
+      answer: formData.medicationsList,
+    },
+    {
+      question: "24. Does the patient have known allergies?",
+      answer: formData.allergiesList,
+    },
+    {
+      question: "25. Does the patient have a history of smoking?",
+      answer: formData.smokes,
+    },
+    {
+      question:
+        "26. Has the patient been in contact with someone sick or tested positive for COVID-19?",
+      answer: formData.covid,
+    },
+    {
+      question: "27. Has the patient traveled recently?",
+      answer: formData.travelled,
+    },
+    {
+      question:
+        "28. Is the patient vaccinated for COVID-19, influenza, and pneumonia?",
+      answer: formData.vaccinated,
+    },
+    {
+      question:
+        "29. Does the patient have occupational or environmental exposure to irritants or pollutants?",
+      answer: formData.pollutantExposure,
+    },
+    {
+      question:
+        "30. Does the patient drink alcohol or use recreational drugs?",
+      answer: formData.recreational,
+    },
+    {
+      question: "31. When did the symptoms start?",
+      answer: formData.symptomsStartDate,
+    },
+    {
+      question:
+        "32. Are the symptoms improving, worsening, or unchanged over time?",
+      answer: formData.symptomProgression,
+    },
+    {
+      question:
+        "33. What type of chest pain does the patient describe (sharp, dull, burning, stabbing)?",
+      answer: formData.chestPainType,
+    },
+    {
+      question:
+        "34. Is the chest pain associated with physical activity, eating, or rest?",
+      answer: formData.chestPainAssociation,
+    },
+    {
+      question: "35. Does the pain radiate to the arm, back, or jaw?",
+      answer: formData.painRadiation,
+    },
+    {
+      question:
+        "36. Is shortness of breath triggered by exertion, lying down, or at rest?",
+      answer: formData.shortBreathTrigger,
+    },
+    {
+      question:
+        "37. Does the patient have a history of recurrent lung infections?",
+      answer: formData.lungInfections,
+    },
+    {
+      question:
+        "38. Has the patient recently experienced rapid or irregular heartbeats (palpitations)?",
+      answer: formData.palpitations,
+    },
+    {
+      question:
+        "39. Does the patient notice changes in appetite or significant weight loss?",
+      answer: formData.weightChange,
+    },
+    {
+      question:
+        "40. Has the patient recently had surgery or been immobilized?",
+      answer: formData.surgeryImmobilized,
+    },
+    {
+      question:
+        "41. Does the patient experience difficulty breathing while sleeping (orthopnea)?",
+      answer: formData.orthopnea,
+    },
+    {
+      question: "42. Are there any symptoms of night sweats?",
+      answer: formData.nightSweats,
+    },
+    {
+      question:
+        "43. Has the patient experienced hemoptysis (coughing up blood)?",
+      answer: formData.hemoptysis,
+    },
   ];
   const undefinedAnswers = questionsAndAnswers.filter(
     (item) => item.answer === undefined
@@ -329,7 +329,7 @@ console.log("formattedData", formattedData);
           />
         </div>
 
-        {/* <div>
+        <div>
           <label>5. Does the patient have a fever?</label>
           <div className="group-radio">
             <input
@@ -1078,7 +1078,7 @@ console.log("formattedData", formattedData);
             />{" "}
             No
           </div>
-        </div> */}
+        </div>
       </div>
     </form>
   );
