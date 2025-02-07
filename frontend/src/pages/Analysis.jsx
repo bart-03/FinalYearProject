@@ -4,7 +4,6 @@ import Select from "react-select";
 import ReusableSection from "./Report";
 import axios from "axios";
 import { MyContext } from "./MyContext";
-import questions from "./PromptQuestions";
 import dayjs from "dayjs";
 import Questions2 from "./Questions2";
 
@@ -142,7 +141,7 @@ const Analysis = () => {
   };
 
   useEffect(() => {
-    setAnswers({}); // Clear all answers when toggling views
+    setAnswers({});
   }, [checked1, checked2]);
 
   return (
@@ -151,12 +150,7 @@ const Analysis = () => {
       <h1 className="title-analysis">Analysis</h1>
       <div className="analysis-checbox">
         <div className="checkbox1-Container">
-          <input
-            className="checkbox1"
-            type="checkbox"
-            checked={checked1}
-            onChange={checkHandler1}
-          />
+          <input className="checkbox1" type="checkbox" checked={checked1} onChange={checkHandler1} />
           <label className="checkbox-label1">Image Analysis</label>
         </div>
         <div className="checkbox2-Container">
@@ -187,7 +181,6 @@ const Analysis = () => {
                 style={{ marginTop: "20px" }}
               >
                 <Select
-                  // isMulti
                   options={options}
                   value={selectedOptions}
                   onChange={setSelectedOptions}
@@ -254,10 +247,8 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
             response={response}
-            // imageLocal={imageLocal}
             imageReport={imageReport}
             dateTime={dateTime}
-            // selectedOptions={selectedOptions}
             selectedOptionReport={selectedOptionReport}
           />
         </div>
@@ -273,17 +264,7 @@ const Analysis = () => {
                 className="dropdown"
                 ref={dropdownRef}
                 style={{ marginTop: "20px" }}
-              >
-                {/* <Select
-                  // isMulti
-                  options={options}
-                  value={selectedOptions}
-                  onChange={setSelectedOptions}
-                  placeholder="Select options..."
-                  menuIsOpen={isDropdownOpen}
-                  onMenuOpen={() => setIsDropdownOpen(true)}
-                /> */}
-              </div>
+              ></div>
             </div>
             <div className="cd-content">
               <Questions2 ref={questions2Ref} />
@@ -307,7 +288,7 @@ const Analysis = () => {
         <div className="main-container-combined">
           <div className="toolbar-combined">
             <h1 className="title-combined">
-              Clinical Data - Input - Image Analysis
+              Clinical Data & Image Analysis
             </h1>
             <div
               className="dropdown-combined"
@@ -315,7 +296,6 @@ const Analysis = () => {
               style={{ marginTop: "20px" }}
             >
               <Select
-                // isMulti
                 options={options}
                 value={selectedOptions}
                 onChange={setSelectedOptions}
@@ -327,7 +307,7 @@ const Analysis = () => {
             <button
               className={`${
                 selectedOptions.value && image !== null
-                  ? "image-analysis-button2"
+                  ? "image-analysis-button2-combined"
                   : "image-analysis-button-disabled"
               }`}
               onClick={test}
@@ -388,10 +368,8 @@ const Analysis = () => {
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
             response={response}
-            // imageLocal={imageLocal}
             imageReport={imageReport}
             dateTime={dateTime}
-            // selectedOptions={selectedOptions}
             selectedOptionReport={selectedOptionReport}
           />
         </div>

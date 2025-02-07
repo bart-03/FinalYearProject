@@ -8,7 +8,6 @@ import "../styles/Report.css";
 import axios from "axios";
 import { MyContext } from "./MyContext";
 
-// const Questions2 = () => {
 const Questions2 = forwardRef((props, ref) => {
   const [response, setResponse] = useState(null);
   const [formData, setFormData] = useState({});
@@ -26,8 +25,6 @@ const Questions2 = forwardRef((props, ref) => {
         console.error("Error prompting", err);
       });
   };
-
- 
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -233,8 +230,6 @@ const Questions2 = forwardRef((props, ref) => {
       .map((q) => `${q.question} Answer: ${q.answer}`)
       .join("\n");
 
-   
-
     handleAnalysis(formattedData);
   };
 
@@ -243,7 +238,6 @@ const Questions2 = forwardRef((props, ref) => {
   }));
 
   return (
-    // <form onSubmit={handleSubmit}>
     <form onSubmit={handleSubmit}>
       <div className="cd-report-questions">
         <div>
@@ -259,16 +253,15 @@ const Questions2 = forwardRef((props, ref) => {
         <div>
           <label>2. What is the patient’s sex?</label>
           <div className="group-radio-mf">
-            <input 
+            <input
               type="radio"
               name="patientSex"
               value="male"
               required
               onChange={handleChange}
-              
             />{" "}
             Male
-            <input 
+            <input
               type="radio"
               name="patientSex"
               value="female"
@@ -858,198 +851,197 @@ const Questions2 = forwardRef((props, ref) => {
         </div>
 
         <div>
-        <label>35. Does the pain radiate to the arm, back, or jaw?</label>
-        <select name="painRadiation" required onChange={handleChange}>
-          <option value="">Select</option>
-          <option value="arm">Arm</option>
-          <option value="back">Back</option>
-          <option value="jaw">Jaw</option>
-          <option value="none">None</option>
-        </select>
-        </div>
-            
-        <div>
-        <label>
-          36. Is shortness of breath triggered by exertion, lying down, or at
-          rest?
-        </label>
-        <select name="shortBreathTrigger" required onChange={handleChange}>
-          <option value="">Select</option>
-          <option value="exertion">Exertion</option>
-          <option value="lyingDown">Lying Down</option>
-          <option value="rest">Rest</option>
-        </select>
+          <label>35. Does the pain radiate to the arm, back, or jaw?</label>
+          <select name="painRadiation" required onChange={handleChange}>
+            <option value="">Select</option>
+            <option value="arm">Arm</option>
+            <option value="back">Back</option>
+            <option value="jaw">Jaw</option>
+            <option value="none">None</option>
+          </select>
         </div>
 
         <div>
-        <label>
-          37. Does the patient have a history of recurrent lung infections?
-        </label>
-        <div className="group-radio">
-          <input
-            type="radio"
-            name="lungInfections"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="lungInfections"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
+          <label>
+            36. Is shortness of breath triggered by exertion, lying down, or at
+            rest?
+          </label>
+          <select name="shortBreathTrigger" required onChange={handleChange}>
+            <option value="">Select</option>
+            <option value="exertion">Exertion</option>
+            <option value="lyingDown">Lying Down</option>
+            <option value="rest">Rest</option>
+          </select>
         </div>
 
         <div>
-        <label>
-          38. Has the patient recently experienced rapid or irregular heartbeats
-          (palpitations)?
-        </label>
-        <div className="group-radio">
-          <input
-            type="radio"
-            name="palpitations"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="palpitations"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
-        </div>
-            
-        <div>
-        <label>
-          39. Does the patient notice changes in appetite or significant weight
-          loss?
-        </label>
-        <div className="group-radio">
-          <input
-            type="radio"
-            name="weightChange"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="weightChange"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
+          <label>
+            37. Does the patient have a history of recurrent lung infections?
+          </label>
+          <div className="group-radio">
+            <input
+              type="radio"
+              name="lungInfections"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="lungInfections"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
         </div>
 
         <div>
-        <label>
-          40. Has the patient recently had surgery or been immobilized?
-        </label>
-        <div className="group-radio">
-          <input
-            type="radio"
-            name="surgeryImmobilized"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="surgeryImmobilized"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
-        </div>
-
-        <div>
-        <label>
-          41. Does the patient experience difficulty breathing while sleeping
-          (orthopnea)?
-        </label>
-        <div className="group-radio">
-          <input
-            type="radio"
-            name="orthopnea"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="orthopnea"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
+          <label>
+            38. Has the patient recently experienced rapid or irregular
+            heartbeats (palpitations)?
+          </label>
+          <div className="group-radio">
+            <input
+              type="radio"
+              name="palpitations"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="palpitations"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
         </div>
 
         <div>
-        <label>42. Are there any symptoms of night sweats?</label>
-        <div className="group-radio">
-          <input
-            type="radio"
-            name="nightSweats"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="nightSweats"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
+          <label>
+            39. Does the patient notice changes in appetite or significant
+            weight loss?
+          </label>
+          <div className="group-radio">
+            <input
+              type="radio"
+              name="weightChange"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="weightChange"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
         </div>
 
         <div>
-        <label style={{ marginBottom: "30px" }}>
-          43. Has the patient experienced hemoptysis (coughing up blood)?
-        </label>
-        <div  className="group-radio" style={{ marginBottom: "30px" }}>
-          <input
-            type="radio"
-            name="hemoptysis"
-            value="yes"
-            required
-            onChange={handleChange}
-          />{" "}
-          Yes
-          <input
-            type="radio"
-            name="hemoptysis"
-            value="no"
-            required
-            onChange={handleChange}
-          />{" "}
-          No
-        </div>
+          <label>
+            40. Has the patient recently had surgery or been immobilized?
+          </label>
+          <div className="group-radio">
+            <input
+              type="radio"
+              name="surgeryImmobilized"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="surgeryImmobilized"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
         </div>
 
+        <div>
+          <label>
+            41. Does the patient experience difficulty breathing while sleeping
+            (orthopnea)?
+          </label>
+          <div className="group-radio">
+            <input
+              type="radio"
+              name="orthopnea"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="orthopnea"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
+        </div>
+
+        <div>
+          <label>42. Are there any symptoms of night sweats?</label>
+          <div className="group-radio">
+            <input
+              type="radio"
+              name="nightSweats"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="nightSweats"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
+        </div>
+
+        <div>
+          <label style={{ marginBottom: "30px" }}>
+            43. Has the patient experienced hemoptysis (coughing up blood)?
+          </label>
+          <div className="group-radio" style={{ marginBottom: "30px" }}>
+            <input
+              type="radio"
+              name="hemoptysis"
+              value="yes"
+              required
+              onChange={handleChange}
+            />{" "}
+            Yes
+            <input
+              type="radio"
+              name="hemoptysis"
+              value="no"
+              required
+              onChange={handleChange}
+            />{" "}
+            No
+          </div>
+        </div>
       </div>
     </form>
   );

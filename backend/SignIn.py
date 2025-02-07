@@ -14,8 +14,6 @@ def login():
     
     results = database.SignIn.find_one({ "email": email, "password": password }, { "_id": 0 })
 
-   
-    
     expiry = (datetime.datetime.now() + datetime.timedelta(days=1)).timestamp()
     payload = { "email": results['email'], "password": results['password'], "expiry": expiry }
 

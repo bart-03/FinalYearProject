@@ -1,15 +1,13 @@
-.navbar{  
+.navbar {
     background-color: #EEE5EE;
     display: flex;
-    /* height: 200px; */
     align-items: center;
     position: relative;
     z-index: 10;
-    
- 
 }
-.navbar-logo{
- 
+
+.navbar-logo {
+
     scale: 2;
     position: absolute;
     left: 35px;
@@ -17,16 +15,16 @@
 }
 
 .help-instructions {
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     background-color: #483078;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 10;
 }
 
@@ -43,20 +41,19 @@
 }
 
 .navbar-triangle.open {
-    width: 250px; 
-    /* height: 100vh;  */
+    width: 250px;
     height: auto;
     min-height: 100vh;
-    border: none; 
+    border: none;
     background-color: #483078;
-    right: 0; 
-    top: 0; 
+    right: 0;
+    top: 0;
     z-index: 1;
     position: fixed;
-    
+
 }
 
-.navbar-title{
+.navbar-title {
     position: absolute;
     right: 80px;
     top: 35px;
@@ -67,7 +64,7 @@
     z-index: 10;
 }
 
-.seperator{
+.seperator {
     margin-bottom: 20px;
     border-bottom: 2px solid #ffffff;
     z-index: 15;
@@ -86,18 +83,21 @@
     height: 30px;
     cursor: pointer;
     z-index: 2;
-   
-}
-.navbar-hamburger.open {
-    right: 20px; 
+
 }
 
-.humburger1, .humburger2, .humburger3 {
+.navbar-hamburger.open {
+    right: 20px;
+}
+
+.humburger1,
+.humburger2,
+.humburger3 {
     position: absolute;
     width: 40px;
     height: 5px;
     background-color: #ffffff;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 
 .humburger1 {
@@ -115,54 +115,58 @@
 .navbar-hamburger.open .humburger1 {
     transform: rotate(45deg);
     top: 12px;
-    
+
 }
 
 .navbar-hamburger.open .humburger2 {
-    opacity: 0; 
+    opacity: 0;
 }
 
 .navbar-hamburger.open .humburger3 {
     transform: rotate(-45deg);
-    top: 12px; 
-    
+    top: 12px;
+
 }
 
-.navbar-links{
+.navbar-links {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 100px;
     right: 60px;
     z-index: 1;
-    transition: all 0.3s ease; 
- 
-    
+    transition: all 0.3s ease;
+
+
 }
 
-.navbar-link1 , .navbar-link2, .navbar-link3{
+.navbar-link1,
+.navbar-link2,
+.navbar-link3 {
     display: flex;
     flex-direction: row;
 }
-.logout-icon{
+
+.logout-icon {
     margin-right: 10px;
     margin-top: 20px;
 }
 
 
-.link{ 
+.link {
     text-decoration: none;
     color: white;
     font-size: 20px;
     margin-top: 20px;
     font-family: 'Roboto', sans-serif;
-    
+
 }
 
-.link:hover{
+.link:hover {
     color: #8e8e8e;
 }
-.sign-out-button{
+
+.sign-out-button {
     background-color: #483078;
     color: white;
     border: none;
@@ -171,7 +175,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.sign-out-button:hover{
+.sign-out-button:hover {
     color: #8e8e8e;
 }
-

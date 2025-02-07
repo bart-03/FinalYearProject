@@ -6,7 +6,7 @@ from torchvision import transforms
 from io import BytesIO
 from transformers import AutoModelForImageClassification
 
-# Define the Flask blueprint
+
 PulmonaryEdema = Blueprint("PulmonaryEdema", __name__)
 
 # Load the custom-trained model
@@ -16,7 +16,6 @@ model = AutoModelForImageClassification.from_pretrained(model_path)
 # Set the model to evaluation mode
 model.eval()
 
-# Define the preprocessing function consistent with training
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),

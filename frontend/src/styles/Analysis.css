@@ -1,22 +1,19 @@
-.analysis{
+.analysis {
     background-color: #EEE5EE;
-    /* height: 100vh; */
     min-height: 100vh;
     padding-top: 80px;
     margin-bottom: 100px;
-    
-    
 }
 
-.analysis-blur{
+.analysis-blur {
     background-color: #EEE5EE;
     filter: blur(10px);
-;padding-top: 80px;
+    padding-top: 80px;
     min-height: 100vh;
-    
+
 }
 
-.title-analysis{
+.title-analysis {
     position: absolute;
     right: 60px;
     top: 105px;
@@ -27,23 +24,25 @@
     color: #000000;
     z-index: 1;
 }
-.analysis-checbox{
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-height:80px;
-gap: 70px;
-font-family: 'Roboto', sans-serif;
 
+.analysis-checbox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    gap: 70px;
+    font-family: 'Roboto', sans-serif;
 }
 
-.checkbox1, .checkbox2{
+.checkbox1,
+.checkbox2 {
     height: 30px;
     width: 30px;
-
 }
-.checkbox1-Container, .checkbox2-Container{
+
+.checkbox1-Container,
+.checkbox2-Container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +50,7 @@ font-family: 'Roboto', sans-serif;
     margin-top: 5px;
 }
 
-.nothing-selected{
+.nothing-selected {
     width: 400px;
     position: absolute;
     top: 60%;
@@ -66,23 +65,23 @@ font-family: 'Roboto', sans-serif;
     font-size: large;
 }
 
-.image-analysis-container{
-height: 450px;
-display: flex;
-align-items: center;
-flex-direction: column;
-background-color: #EEE5EE;
-margin-top: 20px;
+.image-analysis-container {
+    height: 450px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #EEE5EE;
+    margin-top: 20px;
 }
 
-.image-analysis-toolbar{
-height: 50px;
-width: 700px;
-display: flex;
-gap: 20px;
+.image-analysis-toolbar {
+    height: 50px;
+    width: 700px;
+    display: flex;
+    gap: 20px;
 }
 
-.image-analysis-title{
+.image-analysis-title {
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
@@ -91,9 +90,9 @@ gap: 20px;
     color: #000000;
 }
 
-.content{
+.content {
 
-    background-color: rgb(255, 255, 255) ;
+    background-color: rgb(255, 255, 255);
     border-radius: 7px;
     border: 1px solid #000000;
     width: 700px;
@@ -106,33 +105,31 @@ gap: 20px;
     position: relative;
 }
 
-.form-multi-select{
+.form-multi-select {
     width: 500px;
 }
 
-.dropdown{
+.dropdown {
     position: relative;
     bottom: 10px;
     left: 20px;
     font: 15px 'Roboto', sans-serif;
 }
 
-.image-analysis-button1{
-   
+.image-analysis-button1 {
     position: absolute;
     bottom: 10px;
     right: 10px;
     background-color: #906090;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 230px;
-
-
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 230px;
 }
-.image-analysis-button2{
+
+.image-analysis-button2 {
     height: 50px;
     width: 100px;
     background-color: #001848;
@@ -144,7 +141,7 @@ gap: 20px;
     margin-left: 20px;
 }
 
-.image-analysis-button-disabled{
+.image-analysis-button-disabled {
     height: 50px;
     width: 100px;
     background-color: #001848;
@@ -160,16 +157,15 @@ gap: 20px;
 
 
 /* CLINICAL DATA */
-.clinical-data{
+.clinical-data {
     height: 1200px;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #EEE5EE;
-
 }
 
-.clinical-data-title{
+.clinical-data-title {
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
@@ -178,80 +174,79 @@ gap: 20px;
     color: #000000;
 }
 
-.clinical-data-toolbar{
-height: 50px;
-width: 700px;
-display: flex;
-gap: 20px;
-margin-top: 20px;
+.clinical-data-toolbar {
+    height: 50px;
+    width: 700px;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
 }
-.cd-content{
-    background-color: rgb(255, 255, 255) ;
+
+.cd-content {
+    background-color: rgb(255, 255, 255);
     border-radius: 7px;
     border: 1px solid #000000;
     width: 1000px;
     height: 1000px;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
-    overflow-y: auto ;
+    overflow-y: auto;
     padding: 30px 20px 40px 10px;
 }
 
 /* IA AND CD */
 
 
-.main-container-combined{
-position: relative;
-
-height: 1205px;
+.main-container-combined {
+    position: relative;
+    height: 1050px;
 }
 
-.toolbar-combined{
+.toolbar-combined {
     height: 60px;
     width: 100%;
     display: flex;
     gap: 20px;
-   
-    }
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.title-combined{
+.title-combined {
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     color: #000000;
-    /* width: 100%; */
 }
 
-.dropdown-combined{
-    /* position: absolute; */
-    /* bottom: 10px; */
-    /* left: 200px;
-    top: 0px; */
+.dropdown-combined {
     font: 15px 'Roboto', sans-serif;
 }
 
-.combined-containers{
+.combined-containers {
     position: relative;
-    /* background-color: bisque; */
     height: 100%;
+    background-color: #EEE5EE;
 }
-.image-analysis-container-combined{
+
+.image-analysis-container-combined {
     height: 100%;
     position: absolute;
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* background-color: #ba2bba; */
-    /* margin-top: 20px; */
     width: 30%;
-    }
-.content-ia-combined{
-    background-color: rgb(255, 255, 255) ;
+
+}
+
+.content-ia-combined {
+    background-color: rgb(255, 255, 255);
     border-radius: 7px;
     border: 1px solid #000000;
     width: 350px;
@@ -263,134 +258,49 @@ height: 1205px;
     margin-bottom: 10px;
     position: absolute;
     left: 40px;
-    /* top: 40px; */
-    
 }
 
-.image-preview-combined{
+.image-preview-combined {
     width: 100px;
     object-fit: contain;
-    
 }
 
-.image-preview-container-combined{
+.image-preview-container-combined {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: absolute;
-    
-    
 }
 
-.clinical-data-combined{
+.clinical-data-combined {
     height: 1080px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* background-color: #a211a2; */
     position: absolute;
     right: 0;
     top: 0;
     width: 70%;
-    
+
 }
 
-.cd-content-combined{
-    background-color: rgb(255, 255, 255) ;
+.cd-content-combined {
+    background-color: rgb(255, 255, 255);
     border-radius: 7px;
     border: 1px solid #000000;
     width: 1000px;
     height: 1000px;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
-    overflow-y: auto ;
+    overflow-y: auto;
     padding: 30px 20px 40px 10px;
 }
 
-/* .iaAndcd{
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    justify-content: center;
-    height: 700; 
-    background-color: #EEE5EE;
-  
-
-}
-
-.combined-image-analysis-container{
-
-    height: 500px;
-    display: flex;
-   
-    align-items: center;
-    flex-direction: column;
-    
-    }
-
-.combined-content{
-
-    background-color: rgb(255, 255, 255) ;
-    border-radius: 7px;
-    border: 1px solid #000000;
-    width: 700px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    }
-
-.combined-image-analysis-title{
-    font-size: 30px;
-    font-family: 'Roboto', sans-serif;
-    margin-left: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #000000;
-    
-}
-
-.combined-image-analysis-toolbar{
-    height: 50px;
-    width: 700px;
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    
-    
-}
-
-.combined-clinical-data-toolbar{
-    height: 50px;
-    width: 700px;
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.combined-cd-content{
-    background-color: rgb(255, 255, 255) ;
-    border-radius: 7px;
-    border: 1px solid #000000;
-    width: 700px;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    position: relative;
-    overflow-y: auto ;
-    padding-top: 10px;
-}
-
-.combined-button{
+.image-analysis-button2-combined {
     height: 50px;
     width: 100px;
     background-color: #001848;
@@ -399,23 +309,27 @@ height: 1205px;
     border-radius: 7px;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
-    margin-left: 20px; 
-    position: relative;
-    right: 50%;
-    bottom: -15px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
-.combined-clinical-data{
-    height: 700px;
-    display: flex;
-   
-    align-items: center;
-    flex-direction: column;
-    background-color: #EEE5EE;
+.image-analysis-button-disabled-combined {
+    height: 50px;
+    width: 100px;
+    background-color: #001848;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
-} */
+/* general styles */
 
-.nothing-selected-content{
+.nothing-selected-content {
     border: none;
     position: absolute;
     top: 20%;
@@ -424,31 +338,28 @@ height: 1205px;
     font-size: 28px;
     font-family: 'Roboto', sans-serif;
     font-size: large;
-    
+
 }
 
-
-.image-preview-container{
+.image-preview-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* height: 100px; */
-    /* width: 100px; */
     position: relative;
     top: 80px;
     left: -230px;
-    
 }
-.image-preview{
+
+.image-preview {
     width: 100px;
     object-fit: contain;
 }
 
-.remove-img-button{
+.remove-img-button {
     position: absolute;
     bottom: 10px;
-    right:260px;
+    right: 260px;
     background-color: #906090;
     color: #FFFFFF;
     border: none;
@@ -460,7 +371,7 @@ height: 1205px;
     width: 40px;
 }
 
-.cd-label{
+.cd-label {
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
