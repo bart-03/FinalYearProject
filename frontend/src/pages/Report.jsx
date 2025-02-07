@@ -42,6 +42,7 @@ const Report = ({
 }) => {
   const [image, setImage] = useState(imageReport);
   const { cdResponse } = useContext(MyContext);
+  
 
   useEffect(() => {
     if (imageReport) {

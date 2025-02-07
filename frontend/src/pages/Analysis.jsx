@@ -23,6 +23,8 @@ const Analysis = () => {
   const [imageReport, setImageReport] = useState(null);
   const [dateTime, setDateTime] = useState("");
   const questions2Ref = useRef();
+ 
+
 
   const handleAnalyseClick = () => {
     if (questions2Ref.current) {
@@ -35,6 +37,8 @@ const Analysis = () => {
 
   const { navbarValue } = useContext(MyContext);
   const [isNavbarOpen, setIsNavbarOpen] = useState(navbarValue);
+
+  const {undefinedData} = useContext(MyContext);
 
   let render;
   if (selectedOptions.length === 0) {
@@ -270,7 +274,18 @@ const Analysis = () => {
               <Questions2 ref={questions2Ref} />
             </div>
 
-            <button className="image-analysis-button2" onClick={test}>
+            {/* <button className="image-analysis-button2" onClick={test}>
+              Analyse
+            </button> */}
+            <button
+              className={`${
+                undefinedData === false
+                  ? "image-analysis-button2-combined"
+                  : "image-analysis-button-disabled"
+              }`}
+              onClick={test}
+              disabled={!selectedOptions.value || image === null}
+            >
               Analyse
             </button>
           </div>
@@ -306,7 +321,7 @@ const Analysis = () => {
             </div>
             <button
               className={`${
-                selectedOptions.value && image !== null
+                selectedOptions.value && image !== null  && undefinedData === false
                   ? "image-analysis-button2-combined"
                   : "image-analysis-button-disabled"
               }`}
