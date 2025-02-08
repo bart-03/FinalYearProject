@@ -30,18 +30,23 @@ def generate_report():
         
        
     }
+    
+    elif data.get("reportType") == "Combined Analysis":
+        report_data = {
+        "user_id": data.get("userID"),
+        "image": data.get("image"),
+        "report_type": data.get("reportType"),
+        "date": data.get("date"),
+        "findings": data.get("findings"),
+        "QandAs": data.get("questionsAndAnswers"),
+        "report_type": data.get("reportType"),
+        "response": data.get("response"),
+        
+       
+    }
         
     print("Report Data:", report_data)
         
-
-    # report_data = {
-    #     "user_id": data.get("userID"),
-    #     "image": data.get("image"),
-    #     "report_type": data.get("reportType"),
-    #     "date": data.get("date"),
-    #     "findings": data.get("findings")
-       
-    # }
      
     try:
         insert_result = database.reports.insert_one(report_data)
