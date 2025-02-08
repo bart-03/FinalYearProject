@@ -3,6 +3,7 @@ import "../styles/Report.css";
 import Copy from "../assets/copy.svg";
 import html2canvas from "html2canvas";
 import { MyContext } from "./MyContext";
+import axios from "axios";
 
 export const captureScreenshot = (elementId) => {
   const element = document.getElementById(elementId);
@@ -42,13 +43,47 @@ const Report = ({
 }) => {
   const [image, setImage] = useState(imageReport);
   const { cdResponse } = useContext(MyContext);
+  const [values, setValues] = useState({
+    userID: localStorage.getItem("user_id"),
+    reportType: "Image Analysis",
+    image: imageReport || "",
+    date: dateTime || "",
+    findings: response?.prediction || "",
+    name: "",
+    surname: "",
+    age: "",
+    sex: "",
+    additionalNotes: "",
+  });
   
+  useEffect(() => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      image: imageReport || prevValues.image,
+      date: dateTime || prevValues.date,
+      findings: response?.prediction || prevValues.findings,
+    }));
+  }, [imageReport, dateTime, response]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
 
   useEffect(() => {
     if (imageReport) {
       setImage(imageReport); // Update only when there's a new valid image
     }
   }, [imageReport]);
+
+const postReportData = async () => {
+  try {
+    const response = await axios.post("http://localhost:8080/generate_report", values);
+    console.log("Data successfully posted:", response.data);
+  } catch (error) {
+    console.error("Error posting data:", error);
+  }
+};
 
   // Function to parse the structured clinical data response
   const parseResponse = (response) => {
@@ -213,7 +248,18 @@ const Report = ({
               <img src={image} alt="placeholder" className="image-report" />
               <label htmlFor="images">Image</label>
             </div>
-            <button type="submit" className="button-append">
+            <button
+              
+              className="button-save"
+              onClick={() => postReportData()}
+            >
+             Save Data
+            </button>
+            <button
+              type="submit"
+              className="button-append"
+              onClick={() => alert(JSON.stringify(values, null, 2))}
+            >
               Append Data
             </button>
           </div>
@@ -221,7 +267,6 @@ const Report = ({
             <div className="ia-right-box">
               <div className="label-box">
                 <label className="report-label">Date:</label>
-                {/* <label className="report-label">Report ID:</label> */}
                 <label className="report-label">Suspected Disease:</label>
                 <label className="report-label">Findings:</label>
                 <label className="report-label">Name:</label>
@@ -231,24 +276,39 @@ const Report = ({
                 <label className="report-label">Additional Notes:</label>
               </div>
               <div className="input-or-text-box">
-                <div className="report-box">{dateTime}</div>
-                {/* <div className="report-box"></div> */}
+                <div className="report-box">{values.date}</div>
                 <div className="report-box">
                   {selectedOptionReport?.label || ""}
                 </div>
                 <div className="report-box">
-                  <p>
-                    {response ? response.prediction : "No findings available"}
-                  </p>
+                  <p>{values.findings || "No findings available"}</p>
                 </div>
                 <div className="">
-                  <input type="text" className="custom-input" />
+                  <input
+                    type="text"
+                    className="custom-input"
+                    name="name"
+                    value={values.name}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="">
-                  <input type="text" className="custom-input" />
+                  <input
+                    type="text"
+                    className="custom-input"
+                    name="surname"
+                    value={values.surname}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="">
-                  <input type="number" className="custom-input" />
+                  <input
+                    type="number"
+                    className="custom-input"
+                    name="age"
+                    value={values.age}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="checkbox-group">
                   <label>
@@ -257,6 +317,8 @@ const Report = ({
                       className="radio-input"
                       name="sex"
                       value="Male"
+                      checked={values.sex === "Male"}
+                      onChange={handleInputChange}
                     />
                     Male
                   </label>
@@ -266,12 +328,20 @@ const Report = ({
                       className="radio-input"
                       name="sex"
                       value="Female"
+                      checked={values.sex === "Female"}
+                      onChange={handleInputChange}
                     />
                     Female
                   </label>
                 </div>
                 <div className="">
-                  <input type="text" className="custom-input-notes" />
+                  <input
+                    type="text"
+                    className="custom-input-notes"
+                    name="additionalNotes"
+                    value={values.additionalNotes}
+                    onChange={handleInputChange}
+                  />
                 </div>
               </div>
             </div>

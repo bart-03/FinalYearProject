@@ -10,21 +10,17 @@ reports = Blueprint("reports", __name__)
 @reports.route('/generate_report', methods=['POST'])
 def generate_report():
     data = request.get_json()
-
-    user_id = data.get("user_id")
-
-    if not user_id:
-        return jsonify({"error": "Missing user_id"}), 400 
-    
+    print("Received Data:", data) 
+   
     report_data = {
-        "user_id": user_id,
-        "report_title": data.get("report_title", "Untitled Report"),
-        "date_generated": datetime.datetime.now().strftime("%Y-%m-%d"),
-        "content": data.get("content", ""),
-        "metrics": data.get("metrics", {})
+        "user_id": data.get("userID"),
+        "image": data.get("image"),
+        "report_type": data.get("reportType"),
+        "date": data.get("date"),
+        "findings": data.get("findings")
+       
     }
      
-     # Insert report into the "reports" collection
     try:
         insert_result = database.reports.insert_one(report_data)
         return jsonify({"message": "Report created successfully", "report_id": str(insert_result.inserted_id)})

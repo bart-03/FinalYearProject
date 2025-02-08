@@ -90,6 +90,20 @@
     border-radius: 9px;
 }
 
+.button-save {
+    position: absolute;
+    bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+    background-color: #906090;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    position: relative;
+}
+
 .ia-right-box {
     position: absolute;
     right: 0px;
