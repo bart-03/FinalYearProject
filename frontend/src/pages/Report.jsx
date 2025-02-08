@@ -55,6 +55,11 @@ const Report = ({
     sex: "",
     additionalNotes: "",
   });
+
+  // console.log("IA Button Pressed:", iaButtonPressed);
+  // console.log("CD Button Pressed:", cdButtonPressed);
+  // console.log("Both Button Pressed:", bothButtonPressed);
+
   
   useEffect(() => {
     setValues((prevValues) => ({
@@ -77,12 +82,21 @@ const Report = ({
   }, [imageReport]);
 
 const postReportData = async () => {
+
+  
+
+  if(iaButtonPressed && !cdButtonPressed && !bothButtonPressed){
   try {
     const response = await axios.post("http://localhost:8080/generate_report", values);
     console.log("Data successfully posted:", response.data);
   } catch (error) {
     console.error("Error posting data:", error);
   }
+}else if(cdButtonPressed && !iaButtonPressed && !bothButtonPressed){
+console.log("CD Button Pressed");
+}else if(bothButtonPressed){
+  console.log("Both Button Pressed");
+}
 };
 
   // Function to parse the structured clinical data response
@@ -134,6 +148,13 @@ const postReportData = async () => {
             <h1 className="ia-report-title">
              Multi-Report
             </h1>
+            <button
+              
+              className="button-save"
+              onClick={() => postReportData()}
+            >
+             Save Data
+            </button>
             <div
               className="copy-text"
               onClick={() => captureScreenshot("report1")}
@@ -354,6 +375,13 @@ const postReportData = async () => {
       <div className="cd-report-main">
         <div className="cd-report-toolbar">
           <h1 className="cd-report-title">Report</h1>
+          <button
+              
+              className="button-save"
+              onClick={() => postReportData()}
+            >
+             Save Data
+            </button>
           <div
             className="copy-text"
             onClick={() => captureScreenshot("report2")}

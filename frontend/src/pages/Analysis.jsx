@@ -273,10 +273,6 @@ const Analysis = () => {
             <div className="cd-content">
               <Questions2 ref={questions2Ref} />
             </div>
-
-            {/* <button className="image-analysis-button2" onClick={test}>
-              Analyse
-            </button> */}
             <button
               className={`${
                 undefinedData === false
@@ -284,7 +280,7 @@ const Analysis = () => {
                   : "image-analysis-button-disabled"
               }`}
               onClick={test}
-              disabled={!selectedOptions.value || image === null}
+              disabled={undefinedData === true }
             >
               Analyse
             </button>
