@@ -135,14 +135,28 @@ const Analysis = () => {
     setDateTime(dayjs().format("YYYY-MM-DD HH:mm"));
   };
 
-  const test = () => {
-    setIaButtonPressed(true);
+  const handleAnalyseClickBoth = () => {
+    // setIaButtonPressed(true);
     handleAnalysis();
     handleSaveDateTime();
-    setCdButtonPressed(true);
+    // setCdButtonPressed(true);
     handleAnalyseClick();
     setBothButtonPressed(true);
   };
+
+  const handleAnalyseClickCD = () => {
+    setCdButtonPressed(true);
+    handleSaveDateTime();
+    handleAnalysis();
+    handleAnalyseClick();
+  }
+
+  const handleAnalyseClickIA = () => {
+    setIaButtonPressed(true);
+    handleSaveDateTime();
+    handleAnalysis();
+  }
+
 
   useEffect(() => {
     setAnswers({});
@@ -237,7 +251,7 @@ const Analysis = () => {
                   ? "image-analysis-button2"
                   : "image-analysis-button-disabled"
               }`}
-              onClick={test}
+              onClick={handleAnalyseClickIA}
               disabled={!selectedOptions.value || image === null}
             >
               Analyse
@@ -279,7 +293,7 @@ const Analysis = () => {
                   ? "image-analysis-button2-combined"
                   : "image-analysis-button-disabled"
               }`}
-              onClick={test}
+              onClick={handleAnalyseClickCD}
               disabled={undefinedData === true }
             >
               Analyse
@@ -321,7 +335,7 @@ const Analysis = () => {
                   ? "image-analysis-button2-combined"
                   : "image-analysis-button-disabled"
               }`}
-              onClick={test}
+              onClick={handleAnalyseClickBoth}
               disabled={!selectedOptions.value || image === null}
             >
               Analyse

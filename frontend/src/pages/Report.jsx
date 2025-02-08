@@ -43,6 +43,7 @@ const Report = ({
 }) => {
   const [image, setImage] = useState(imageReport);
   const { cdResponse } = useContext(MyContext);
+  const { setreportQandAs } = useContext(MyContext);
   const [values, setValues] = useState({
     userID: localStorage.getItem("user_id"),
     reportType: "Image Analysis",
@@ -56,6 +57,15 @@ const Report = ({
     additionalNotes: "",
   });
 
+  const [valuesCD, setValuesCD] = useState({
+    userID: localStorage.getItem("user_id"),
+    reportType: "Clinical Analysis",
+    date: "",
+    questionsAndAnswers: setreportQandAs,
+    response  : cdResponse,
+  });
+
+  console.log("ValuesCD:", valuesCD);
   // console.log("IA Button Pressed:", iaButtonPressed);
   // console.log("CD Button Pressed:", cdButtonPressed);
   // console.log("Both Button Pressed:", bothButtonPressed);
@@ -69,6 +79,14 @@ const Report = ({
       findings: response?.prediction || prevValues.findings,
     }));
   }, [imageReport, dateTime, response]);
+
+  useEffect(() => {
+    setValuesCD((prevValues) => ({
+      ...prevValues,
+      questionsAndAnswers: setreportQandAs,
+      response: cdResponse,
+    }));
+  }, [setreportQandAs, cdResponse]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -94,8 +112,17 @@ const postReportData = async () => {
   }
 }else if(cdButtonPressed && !iaButtonPressed && !bothButtonPressed){
 console.log("CD Button Pressed");
+console.log("qandas:", setreportQandAs);
+try {
+  const response = await axios.post("http://localhost:8080/generate_report", valuesCD);
+  console.log("Data successfully posted:", response.data);
+} catch (error) {
+  console.error("Error posting data:", error);
+}
+
 }else if(bothButtonPressed){
   console.log("Both Button Pressed");
+  
 }
 };
 

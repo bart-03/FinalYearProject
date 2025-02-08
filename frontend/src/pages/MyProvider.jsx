@@ -5,6 +5,7 @@ export const MyProvider = ({ children }) => {
   const [navbarValue, setNavbarValue] = useState("Default Value");
   const [cdResponse, setCDResponse] = useState(null);
   const [undefinedData, setUndefined] = useState(null);
+  const [setreportQandAs, setReportQandAsYuh] = useState(null);
  
 
 
@@ -15,7 +16,7 @@ export const MyProvider = ({ children }) => {
   
   return (
     <MyContext.Provider
-      value={{ navbarValue, setNavbarValue, cdResponse, setCDResponse,  undefinedData, setUndefined }}
+      value={{ navbarValue, setNavbarValue, cdResponse, setCDResponse,  undefinedData, setUndefined , setreportQandAs, setReportQandAsYuh}}
     >
       {children}
     </MyContext.Provider>
