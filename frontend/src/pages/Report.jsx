@@ -122,7 +122,7 @@ const Report = ({
               <div className="ia-right-box">
                 <div className="label-box">
                   <label className="report-label">Date:</label>
-                  <label className="report-label">Report ID:</label>
+                  {/* <label className="report-label">Report ID:</label> */}
                   <label className="report-label">Suspected Disease:</label>
                   <label className="report-label">Findings:</label>
                   <label className="report-label">Name:</label>
@@ -133,7 +133,7 @@ const Report = ({
                 </div>
                 <div className="input-or-text-box">
                   <div className="report-box">{dateTime}</div>
-                  <div className="report-box"></div>
+                  {/* <div className="report-box"></div> */}
                   <div className="report-box">
                     {selectedOptionReport?.label || ""}
                   </div>
@@ -221,7 +221,7 @@ const Report = ({
             <div className="ia-right-box">
               <div className="label-box">
                 <label className="report-label">Date:</label>
-                <label className="report-label">Report ID:</label>
+                {/* <label className="report-label">Report ID:</label> */}
                 <label className="report-label">Suspected Disease:</label>
                 <label className="report-label">Findings:</label>
                 <label className="report-label">Name:</label>
@@ -232,7 +232,7 @@ const Report = ({
               </div>
               <div className="input-or-text-box">
                 <div className="report-box">{dateTime}</div>
-                <div className="report-box"></div>
+                {/* <div className="report-box"></div> */}
                 <div className="report-box">
                   {selectedOptionReport?.label || ""}
                 </div>

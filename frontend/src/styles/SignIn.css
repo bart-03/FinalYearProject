@@ -74,7 +74,7 @@
     background-color: #948da2;
 }
 
-/* h3{
+.contact-info {
     font-family: 'Roboto', sans-serif;
     position: relative;
     top: 150px;
@@ -82,7 +82,7 @@
     margin-left: 10px;
     margin-top: 10px;
     font-weight: 400;
-} */
+}
 
 h4 {
     font-family: 'Roboto', sans-serif;

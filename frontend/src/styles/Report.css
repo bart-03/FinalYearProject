@@ -208,7 +208,7 @@
     width: 700px;
 }
 
-.cd-report-content {
+/* .cd-report-content {
     position: relative;
     background-color: #ffffff;
     height: 1400px;
@@ -218,6 +218,20 @@
     border: 1px solid #000000;
     padding: 10px;
 
+} */
+
+.cd-report-content {
+    position: relative;
+    background-color: #ffffff;
+    width: 800px;
+    border-radius: 7px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #000000;
+    padding: 10px;
+    min-height: 200px;
+    /* optional, ensures a minimum height */
+    box-sizing: border-box;
+    /* ensures padding doesn't affect the overall width/height */
 }
 
 .cd-report-title {

@@ -20,6 +20,7 @@ const Navbar = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
       window.location.href = "/";
     }
   };
