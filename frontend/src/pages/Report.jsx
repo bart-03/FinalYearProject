@@ -49,6 +49,7 @@ const Report = ({
     reportType: "Image Analysis",
     image: imageReport || "",
     date: dateTime || "",
+    suspectedDisease: selectedOptionReport?.label || "",
     findings: response?.prediction || "",
     name: "",
     surname: "",
@@ -70,6 +71,7 @@ const Report = ({
     reportType: "Combined Analysis",
     image: imageReport || "",
     date: dateTime || "",
+    suspectedDisease: selectedOptionReport?.label || "",
     findings: response?.prediction || "",
     name: "",
     surname: "",
@@ -92,8 +94,9 @@ const Report = ({
       image: imageReport || prevValues.image,
       date: dateTime || prevValues.date,
       findings: response?.prediction || prevValues.findings,
+      suspectedDisease: selectedOptionReport?.label || prevValues.suspectedDisease,
     }));
-  }, [imageReport, dateTime, response]);
+  }, [imageReport, dateTime, response , selectedOptionReport]);
 
   useEffect(() => {
     setValuesCD((prevValues) => ({
@@ -108,11 +111,12 @@ const Report = ({
       ...prevValues,
       image: imageReport || prevValues.image,
       date: dateTime || prevValues.date,
+      suspectedDisease: selectedOptionReport?.label || prevValues.suspectedDisease,
       findings: response?.prediction || prevValues.findings,
       questionsAndAnswers: setreportQandAs,
       response: cdResponse,
     }));
-  }, [setreportQandAs, cdResponse, imageReport, dateTime, response]);
+  }, [setreportQandAs, cdResponse, imageReport, dateTime, response , selectedOptionReport]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -1,58 +1,102 @@
 import React, { useState, useEffect } from "react";
 import "../styles/History.css";
-import {DataTable} from "primereact/datatable";
-import {Column} from "primereact/column";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primereact/resources/primereact.min.css";
 import axios from "axios";
 
 const user_id = localStorage.getItem("user_id");
 
-
-
 const History = () => {
-  
   const [reports, setReports] = useState([]);
+  const [expandedRows, setExpandedRows] = useState({});
 
   useEffect(() => {
     const fetchReports = async () => {
       try {
         const response = await axios.post(
           "http://localhost:8080/get_reports",
-          { user_id }, // Wrap in an object for proper JSON structure
+          { user_id },
           {
             headers: {
-              "Content-Type": "application/json", // Correct header for JSON payload
-            },
+              "Content-Type": "application/json",
+            }
           }
         );
-        console.log("Data successfully posted:", response.data);
         setReports(response.data.data);
       } catch (err) {
         console.error("Error posting data:", err);
       }
     };
-  
+
     fetchReports();
   }, []);
 
-  console.log(reports);
+  // Handle row expansion toggles
+  const toggleViewMore = (rowData, field) => {
+    setExpandedRows((prevState) => ({
+      ...prevState,
+      [rowData.id + field]: !prevState[rowData.id + field]
+    }));
+  };
+
+  // Conditional display template for long text
+  const textTemplate = (rowData, field) => {
+    const isExpanded = expandedRows[rowData.id + field];
+    const content = rowData[field] || "N/A";
+    const displayContent = isExpanded ? content : content.slice(0, 50) + (content.length > 50 ? "..." : "");
+
+    return (
+      <div>
+        <p style={{ whiteSpace: "pre-wrap" }}>{displayContent}</p>
+        {content.length > 50 && (
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              color: "blue",
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+            onClick={() => toggleViewMore(rowData, field)}
+          >
+            {isExpanded ? "View Less" : "View More"}
+          </button>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="history">
       <h1 className="title-history">History</h1>
       <h1 className="report-history">Report History</h1>
       <DataTable value={reports} className="datatable">
-         <Column field="date" header="Date"></Column> 
-         <Column field="report_type" header="Report Type"></Column> 
-         <Column field="findings" header="Findings"></Column> 
-         <Column field="name" header="Name"></Column> 
-         <Column field="surname" header="Surname"></Column> 
-         <Column field="age" header="Age"></Column>
-         <Column field="sex" header="Sex"></Column>  
-         <Column field="additionalNotes" header="Additional Notes"></Column> 
-         <Column field="image" header="Image"></Column> 
-         <Column field="questionAndAnswers" header="QandA's"></Column> 
-         <Column field="responseCD" header="CD Response"></Column> 
+        <Column field="date" header="Date" style={{ width: "100px" }} />
+        <Column field="report_type" header="Report Type" />
+        <Column field="suspected_disease" header="Suspected Disease" />
+        <Column field="findings" header="Findings" />
+        <Column field="name" header="Name" />
+        <Column field="surname" header="Surname" />
+        <Column field="age" header="Age" style={{ width: "70px" }} />
+        <Column field="sex" header="Sex" style={{ width: "70px" }} />
+        <Column field="additionalNotes" header="Additional Notes" />
+        <Column 
+          field="image" 
+          header="Image" 
+          body={(data) => textTemplate(data, "image")} 
+        />
+        <Column 
+          field="QandAs" 
+          header="QandA's" 
+          body={(data) => textTemplate(data, "QandAs")} 
+        />
+        <Column 
+          field="response" 
+          header="CD Response" 
+          body={(data) => textTemplate(data, "response")} 
+        />
       </DataTable>
     </div>
   );

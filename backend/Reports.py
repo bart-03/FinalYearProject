@@ -18,6 +18,7 @@ def generate_report():
         "image": data.get("image"),
         "report_type": data.get("reportType"),
         "date": data.get("date"),
+        "suspected_disease": data.get("suspectedDisease"),
         "findings": data.get("findings")
        
     }
@@ -37,6 +38,7 @@ def generate_report():
         "image": data.get("image"),
         "report_type": data.get("reportType"),
         "date": data.get("date"),
+        "suspected_disease": data.get("suspectedDisease"),
         "findings": data.get("findings"),
         "QandAs": data.get("questionsAndAnswers"),
         "report_type": data.get("reportType"),
