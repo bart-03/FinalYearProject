@@ -205,7 +205,7 @@ const Analysis = () => {
           Nothing selected, plaese select a view.
         </div>
       )}
-      <div className="help-instructions" onClick={handleScrollToComponenttop}></div>
+      <div className="help-instructions" onClick={handleScrollToComponenttop}>Top</div>
       {/* ANALYSIS VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
       {checked1 && !checked2 && (
         <div className="main-container">

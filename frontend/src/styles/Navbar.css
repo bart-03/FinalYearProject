@@ -26,6 +26,12 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
+    color: white;
+    cursor: pointer;
+}
+
+.help-instructions:hover {
+    background-color: #8e8e8e;
 }
 
 
