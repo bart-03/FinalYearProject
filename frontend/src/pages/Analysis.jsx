@@ -24,11 +24,18 @@ const Analysis = () => {
   const [dateTime, setDateTime] = useState("");
   const questions2Ref = useRef();
   const targetRef = useRef(null);
+  const targetRefTop = useRef(null);
   
   const handleScrollToComponent = () => {
     setTimeout(() => {
       targetRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 1000); // 1-second delay
+  };
+
+  const handleScrollToComponenttop = () => {
+    setTimeout(() => {
+      targetRefTop.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }); // 1-second delay
   };
  
 
@@ -176,6 +183,7 @@ const Analysis = () => {
   return (
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
+       <div ref={targetRefTop}></div>
       <h1 className="title-analysis">Analysis</h1>
       <div className="analysis-checbox">
         <div className="checkbox1-Container">
@@ -197,6 +205,7 @@ const Analysis = () => {
           Nothing selected, plaese select a view.
         </div>
       )}
+      <div className="help-instructions" onClick={handleScrollToComponenttop}></div>
       {/* ANALYSIS VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
       {checked1 && !checked2 && (
         <div className="main-container">
