@@ -19,12 +19,18 @@ def generate_report():
         "report_type": data.get("reportType"),
         "date": data.get("date"),
         "suspected_disease": data.get("suspectedDisease"),
-        "findings": data.get("findings")
+        "findings": data.get("findings"),
+        "name": data.get("name"),
+        "surname": data.get("surname"),
+        "age": data.get("age"),
+        "sex": data.get("sex"),
+        "additionalNotes": data.get("additionalNotes"),
        
     }
     elif data.get("reportType") == "Clinical Analysis":
         report_data = {
         "user_id": data.get("userID"),
+        "date": data.get("date"),
         "QandAs": data.get("questionsAndAnswers"),
         "report_type": data.get("reportType"),
         "response": data.get("response"),

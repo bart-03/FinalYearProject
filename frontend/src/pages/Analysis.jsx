@@ -23,6 +23,13 @@ const Analysis = () => {
   const [imageReport, setImageReport] = useState(null);
   const [dateTime, setDateTime] = useState("");
   const questions2Ref = useRef();
+  const targetRef = useRef(null);
+  
+  const handleScrollToComponent = () => {
+    setTimeout(() => {
+      targetRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 1000); // 1-second delay
+  };
  
 
 
@@ -142,6 +149,7 @@ const Analysis = () => {
     // setCdButtonPressed(true);
     handleAnalyseClick();
     setBothButtonPressed(true);
+    handleScrollToComponent();
   };
 
   const handleAnalyseClickCD = () => {
@@ -149,12 +157,15 @@ const Analysis = () => {
     handleSaveDateTime();
     handleAnalysis();
     handleAnalyseClick();
+    handleScrollToComponent();
+    
   }
 
   const handleAnalyseClickIA = () => {
     setIaButtonPressed(true);
     handleSaveDateTime();
     handleAnalysis();
+    handleScrollToComponent();
   }
 
 
@@ -268,7 +279,9 @@ const Analysis = () => {
             imageReport={imageReport}
             dateTime={dateTime}
             selectedOptionReport={selectedOptionReport}
+           
           />
+          <div ref={targetRef}></div>
         </div>
       )}
       {/* CLINICAL DATA VIEW ONLY OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/}
@@ -299,13 +312,16 @@ const Analysis = () => {
               Analyse
             </button>
           </div>
+          <div ref={targetRef}></div>
           <ReusableSection
             checked1={checked1}
             checked2={checked2}
             iaButtonPressed={iaButtonPressed}
             cdButtonPressed={cdButtonPressed}
             bothButtonPressed={bothButtonPressed}
+            dateTime={dateTime}
           />
+          
         </div>
       )}
       {/* DOUBLE VIEW OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */}
@@ -327,6 +343,7 @@ const Analysis = () => {
                 placeholder="Select Disease"
                 menuIsOpen={isDropdownOpen}
                 onMenuOpen={() => setIsDropdownOpen(true)}
+                
               />
             </div>
             <button
@@ -336,7 +353,7 @@ const Analysis = () => {
                   : "image-analysis-button-disabled"
               }`}
               onClick={handleAnalyseClickBoth}
-              disabled={!selectedOptions.value || image === null}
+              disabled={!selectedOptions.value || image === null || undefinedData === true}
             >
               Analyse
             </button>
@@ -386,6 +403,7 @@ const Analysis = () => {
               </div>
             </div>
           </div>
+          <div ref={targetRef}></div>
           <ReusableSection
             checked1={checked1}
             checked2={checked2}
@@ -396,6 +414,7 @@ const Analysis = () => {
             imageReport={imageReport}
             dateTime={dateTime}
             selectedOptionReport={selectedOptionReport}
+
           />
         </div>
       )}

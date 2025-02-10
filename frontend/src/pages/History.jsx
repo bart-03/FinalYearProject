@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/History.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { FilterMatchMode } from "primereact/api";
+import {InputText} from "primereact/inputtext";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primereact/resources/primereact.min.css";
 import axios from "axios";
@@ -12,6 +14,10 @@ const History = () => {
   const [reports, setReports] = useState([]);
   const [expandedRows, setExpandedRows] = useState({});
 
+  const[filters, setFilters] = useState({
+    global: {value: null, matchMode: FilterMatchMode.CONTAINS},
+  });
+
   useEffect(() => {
     const fetchReports = async () => {
       try {
@@ -19,14 +25,12 @@ const History = () => {
           "http://localhost:8080/get_reports",
           { user_id },
           {
-            headers: {
-              "Content-Type": "application/json",
-            }
+            headers: { "Content-Type": "application/json" },
           }
         );
         setReports(response.data.data);
       } catch (err) {
-        console.error("Error posting data:", err);
+        console.error("Error fetching data:", err);
       }
     };
 
@@ -37,7 +41,7 @@ const History = () => {
   const toggleViewMore = (rowData, field) => {
     setExpandedRows((prevState) => ({
       ...prevState,
-      [rowData.id + field]: !prevState[rowData.id + field]
+      [rowData.id + field]: !prevState[rowData.id + field],
     }));
   };
 
@@ -45,12 +49,14 @@ const History = () => {
   const textTemplate = (rowData, field) => {
     const isExpanded = expandedRows[rowData.id + field];
     const content = rowData[field] || "N/A";
-    const displayContent = isExpanded ? content : content.slice(0, 50) + (content.length > 50 ? "..." : "");
+    const displayContent = isExpanded
+      ? content
+      : content.slice(0, 50) + (content.length > 50 ? "..." : "");
 
     return (
       <div>
         <p style={{ whiteSpace: "pre-wrap" }}>{displayContent}</p>
-        {content.length > 50 && (
+        {content.length > 30 && (
           <button
             style={{
               background: "none",
@@ -68,35 +74,47 @@ const History = () => {
     );
   };
 
+  // Dynamically generate columns and apply templates where necessary
+  const columns = [
+    { field: "date", header: "Date", style: { width: "100px" }, sortable: true  },
+    { field: "report_type", header: "Report Type", sortable: true },
+    { field: "suspected_disease", header: "Suspected Disease", sortable: true },
+    { field: "findings", header: "Findings" },
+    { field: "name", header: "Name" },
+    { field: "surname", header: "Surname" },
+    { field: "age", header: "Age", style: { width: "70px" }, sortable: true },
+    { field: "sex", header: "Sex", style: { width: "70px" }, sortable: true },
+    { field: "additionalNotes", header: "Additional Notes", style: { width: "100px" }  },
+    { field: "image", header: "Image", style: { width: "100px" } },
+    { field: "QandAs", header: "QandA's", style: { width: "100px" }  },
+    { field: "response", header: "CD Response", style: { width: "100px" }  },
+  ];
+
   return (
     <div className="history">
       <h1 className="title-history">History</h1>
       <h1 className="report-history">Report History</h1>
-      <DataTable value={reports} className="datatable">
-        <Column field="date" header="Date" style={{ width: "100px" }} />
-        <Column field="report_type" header="Report Type" />
-        <Column field="suspected_disease" header="Suspected Disease" />
-        <Column field="findings" header="Findings" />
-        <Column field="name" header="Name" />
-        <Column field="surname" header="Surname" />
-        <Column field="age" header="Age" style={{ width: "70px" }} />
-        <Column field="sex" header="Sex" style={{ width: "70px" }} />
-        <Column field="additionalNotes" header="Additional Notes" />
-        <Column 
-          field="image" 
-          header="Image" 
-          body={(data) => textTemplate(data, "image")} 
-        />
-        <Column 
-          field="QandAs" 
-          header="QandA's" 
-          body={(data) => textTemplate(data, "QandAs")} 
-        />
-        <Column 
-          field="response" 
-          header="CD Response" 
-          body={(data) => textTemplate(data, "response")} 
-        />
+      <InputText className="p-inputtextSearch" placeholder="Search"
+      onInput={(e) =>
+        setFilters({
+          global: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS },
+        })
+       }/>
+
+      <DataTable value={reports} className="datatable" filters={filters} paginator rows={4}  globalFilter={filters.global.value} emptyMessage="No records found">
+        {columns.map((col) => (
+          <Column
+            key={col.field}
+            field={col.field}
+            header={col.header}
+            style={col.style}
+            body={(data) =>
+              ["findings", "additionalNotes", "image", "QandAs", "response"].includes(col.field)
+                ? textTemplate(data, col.field)
+                : data[col.field]}
+            sortable = {col.sortable}
+          />
+        ))}
       </DataTable>
     </div>
   );

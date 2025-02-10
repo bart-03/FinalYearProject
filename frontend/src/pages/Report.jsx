@@ -44,6 +44,7 @@ const Report = ({
   const [image, setImage] = useState(imageReport);
   const { cdResponse } = useContext(MyContext);
   const { setreportQandAs } = useContext(MyContext);
+ 
   const [values, setValues] = useState({
     userID: localStorage.getItem("user_id"),
     reportType: "Image Analysis",
@@ -57,14 +58,17 @@ const Report = ({
     sex: "",
     additionalNotes: "",
   });
+  
+  console.log("date:", dateTime);
 
   const [valuesCD, setValuesCD] = useState({
     userID: localStorage.getItem("user_id"),
     reportType: "Clinical Analysis",
-    date: "",
+    date: dateTime || "",
     questionsAndAnswers: setreportQandAs,
     response  : cdResponse,
   });
+
 
   const [valuesBoth, setValuesBoth] = useState({
     userID: localStorage.getItem("user_id"),
@@ -82,10 +86,7 @@ const Report = ({
     response  : cdResponse,
   });
   
-  console.log("ValuesBoth:", valuesBoth);
-  // console.log("IA Button Pressed:", iaButtonPressed);
-  // console.log("CD Button Pressed:", cdButtonPressed);
-  // console.log("Both Button Pressed:", bothButtonPressed);
+
 
   
   useEffect(() => {
@@ -102,9 +103,10 @@ const Report = ({
     setValuesCD((prevValues) => ({
       ...prevValues,
       questionsAndAnswers: setreportQandAs,
+      date: dateTime || prevValues.date,
       response: cdResponse,
     }));
-  }, [setreportQandAs, cdResponse]);
+  }, [setreportQandAs, cdResponse, dateTime]);
 
   useEffect(() => {
     setValuesBoth((prevValues) => ({
@@ -205,7 +207,8 @@ try {
 
   if (checked1 && checked2 && bothButtonPressed) {
     content = (
-      <div className="report-main">
+      <div className="report-main" >
+        <div id="report1">
         <div className="ia-report-main-combined">
           <div className="ia-report-toolbar">
             <h1 className="ia-report-title">
@@ -226,16 +229,14 @@ try {
               <p>Copy</p>
             </div>
           </div>
-          <div className="ia-report-content-combined" id="report1">
+          <div className="ia-report-content-combined" >
             <div className="ia-left-box">
             <h2 className="ia-report-title-combined">Clinical Data Report</h2>
               <div className="image-box">
                 <img src={image} alt="placeholder" className="image-report" />
                 <label htmlFor="images">Image</label>
               </div>
-              <button type="submit" className="button-append">
-                Append Data
-              </button>
+              
             </div>
             <form>
               <div className="ia-right-box">
@@ -311,6 +312,7 @@ try {
             </div>
           </div>
         </div>
+        </div>
       </div>
     );
   } else if (checked1 && iaButtonPressed && !checked2) {
@@ -318,6 +320,13 @@ try {
       <div className="ia-report-main">
         <div className="ia-report-toolbar">
           <h1 className="ia-report-title">Report</h1>
+          <button
+              
+              className="button-save"
+              onClick={() => postReportData()}
+            >
+             Save Report
+            </button>
           <div
             className="copy-text"
             onClick={() => captureScreenshot("report1")}
@@ -332,20 +341,7 @@ try {
               <img src={image} alt="placeholder" className="image-report" />
               <label htmlFor="images">Image</label>
             </div>
-            <button
-              
-              className="button-save"
-              onClick={() => postReportData()}
-            >
-             Save Data
-            </button>
-            <button
-              type="submit"
-              className="button-append"
-              onClick={() => alert(JSON.stringify(values, null, 2))}
-            >
-              Append Data
-            </button>
+
           </div>
           <form>
             <div className="ia-right-box">

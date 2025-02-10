@@ -15,7 +15,7 @@ const Questions2 = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({});
   const { setCDResponse, setUndefined, setReportQandAsYuh  } = useContext(MyContext);
   
-  console.log('formattedData', formData);
+
 
   const handleAnalysis = async (formattedData) => {
     await axios
@@ -176,11 +176,11 @@ const Questions2 = forwardRef((props, ref) => {
   );
   
   if (undefinedAnswers.length > 0) {
-    console.log("Questions with undefined answers:");
-    undefinedAnswers.forEach((item) => console.log(item.question));
+    // console.log("Questions with undefined answers:");
+    // undefinedAnswers.forEach((item) => console.log(item.question));
     setUndefined(true);
   } else {
-    console.log("All answers are defined.");
+    // console.log("All answers are defined.");
     setUndefined(false);
     
   }
@@ -199,7 +199,7 @@ useEffect(() => {
   );
 }, [formData]);
 
-console.log("formattedData", formattedData);   
+// console.log("formattedData", formattedData);   
   const handleSubmit = (e) => {
     e.preventDefault();
 
