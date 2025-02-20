@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/History.css";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -8,11 +8,15 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primereact/resources/primereact.min.css";
 import axios from "axios";
 
+
 const user_id = localStorage.getItem("user_id");
 
 const History = () => {
   const [reports, setReports] = useState([]);
   const [expandedRows, setExpandedRows] = useState({});
+
+
+
 
   const[filters, setFilters] = useState({
     global: {value: null, matchMode: FilterMatchMode.CONTAINS},
@@ -53,8 +57,10 @@ const History = () => {
       ? content
       : content.slice(0, 50) + (content.length > 50 ? "..." : "");
 
+       
+
     return (
-      <div>
+      <div >
         <p style={{ whiteSpace: "pre-wrap" }}>{displayContent}</p>
         {content.length > 30 && (
           <button

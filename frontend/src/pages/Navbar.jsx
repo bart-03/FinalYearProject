@@ -5,6 +5,7 @@ import Logout from "../assets/logout.svg";
 import Analysis from "../assets/analyse.svg";
 import History from "../assets/history.svg";
 import { MyContext } from "./MyContext";
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,15 +17,20 @@ const Navbar = () => {
     setNavbarValue(!isOpen);
   };
 
+  
+
   const handleLogout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to log out?");
-    if (confirmLogout) {
+    Swal.fire({
+      title: "Logout",
+      text: "You have been logged out successfully",
+      icon: "success",
+      confirmButtonText: "OK"
+    }).then(() => {
       localStorage.removeItem("token");
       localStorage.removeItem("user_id");
       window.location.href = "/";
-    }
-  };
-
+    });
+};
   return (
     <div className="navbar">
       <div>

@@ -59,7 +59,7 @@ const Report = ({
     additionalNotes: "",
   });
   
-  console.log("date:", dateTime);
+  
 
   const [valuesCD, setValuesCD] = useState({
     userID: localStorage.getItem("user_id"),
@@ -139,8 +139,10 @@ const postReportData = async () => {
   try {
     const response = await axios.post("http://localhost:8080/generate_report", values);
     console.log("Data successfully posted:", response.data);
+    alert("Data successfully posted");
   } catch (error) {
     console.error("Error posting data:", error);
+    alert("Error posting data");
   }
 }else if(cdButtonPressed && !iaButtonPressed && !bothButtonPressed){
 console.log("CD Button Pressed");
@@ -148,8 +150,10 @@ console.log("qandas:", setreportQandAs);
 try {
   const response = await axios.post("http://localhost:8080/generate_report", valuesCD);
   console.log("Data successfully posted:", response.data);
+  alert("Data successfully posted");
 } catch (error) {
   console.error("Error posting data:", error);
+  alert("Error posting data");
 }
 
 }else if(bothButtonPressed){
@@ -157,51 +161,95 @@ try {
   try {
     const response = await axios.post("http://localhost:8080/generate_report", valuesBoth);
     console.log("Data successfully posted:", response.data);
+    alert("Data successfully posted");
   } catch (error) {
     console.error("Error posting data:", error);
+    alert("Error posting data");
   }
   
 }
 };
 
+  // // Function to parse the structured clinical data response
+  // const parseResponse = (response) => {
+  //   if (!response) return null;
+
+  //   const sections = response.split("@@Section:").filter(Boolean); // Split the sections using the marker
+
+  //   return sections.map((section, index) => {
+  //     const lines = section.trim().split("\n");
+  //     const sectionTitle = lines.shift(); // The title of the section
+
+  //     return (
+  //       <div key={index} className="section">
+  //         <br />
+  //         <br />
+  //         <h3 style={{ color: "#800080", fontSize: "24px" }}>{sectionTitle}</h3>
+  //         <br />
+  //         {lines.map((line, idx) => {
+  //           if (line.startsWith("##")) {
+  //             return (
+  //               <ul key={idx} className="section-title">
+  //                 <li>{line.replace("##", "").trim()}</li>
+  //               </ul>
+  //             );
+  //           }
+  //           if (line.startsWith("--")) {
+  //             return (
+  //               <>
+  //               <p key={idx}>{line.replace("--", "*").trim()}</p>
+  //               <br />
+  //               </>
+  //             );
+  //           }
+  //           return <p key={idx}>{line.trim()}</p>;
+  //         })}
+  //       </div>
+  //     );
+  //   });
+  // };
+
   // Function to parse the structured clinical data response
-  const parseResponse = (response) => {
-    if (!response) return null;
+const parseResponse = (response) => {
 
-    const sections = response.split("@@Section:").filter(Boolean); // Split the sections using the marker
+  console.log("Response:", response); 
+  if (!response) return null;
 
-    return sections.map((section, index) => {
-      const lines = section.trim().split("\n");
-      const sectionTitle = lines.shift(); // The title of the section
+  const sections = response.split("@@Section:").filter(Boolean); // Split the sections using the marker
 
-      return (
-        <div key={index} className="section">
-          <br />
-          <br />
-          <h3 style={{ color: "#800080", fontSize: "24px" }}>{sectionTitle}</h3>
-          <br />
-          {lines.map((line, idx) => {
-            if (line.startsWith("##")) {
-              return (
-                <ul key={idx} className="section-title">
-                  <li>{line.replace("##", "").trim()}</li>
-                </ul>
-              );
-            }
-            if (line.startsWith("--")) {
-              return (
-                <>
-                <p key={idx}>{line.replace("--", "").trim()}</p>
+  return sections.map((section, index) => {
+    const lines = section.trim().split("\n");
+    const sectionTitle = lines.shift(); // The title of the section
+
+    return (
+      <div key={index} className="section">
+        <br />
+        <br />
+        <h3 style={{ color: "#800080", fontSize: "24px" }}>{sectionTitle}</h3>
+        <br />
+        {lines.map((line, idx) => {
+          if (line.startsWith("##")) {
+            return (
+              <p key={idx} style={{ fontWeight: "bold" }}>
+                {line.replace("##", "").trim()}
+              </p>
+            );
+          }
+          if (line.startsWith("--")) {
+            return (
+              <>
+                <p key={idx}>{line.replace("--", "*").trim()}</p>
                 <br />
-                </>
-              );
-            }
-            return <p key={idx}>{line.trim()}</p>;
-          })}
-        </div>
-      );
-    });
-  };
+              </>
+            );
+          }
+          return <p key={idx}>{line.trim()}</p>;
+        })}
+      </div>
+    );
+  });
+};
+
 
   let content = null;
 
@@ -219,7 +267,7 @@ try {
               className="button-save"
               onClick={() => postReportData()}
             >
-             Save Data
+             Save Report
             </button>
             <div
               className="copy-text"
@@ -439,7 +487,7 @@ try {
               className="button-save"
               onClick={() => postReportData()}
             >
-             Save Data
+             Save Report
             </button>
           <div
             className="copy-text"
@@ -450,8 +498,10 @@ try {
           </div>
         </div>
         <div className="cd-report-content" id="report2">
-          {/* Render parsed clinical response */}
-          <div className="clinical-response">{parseResponse(cdResponse)}</div>
+
+        {cdResponse == null ? <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>: 
+        parseResponse(cdResponse)
+      }
         </div>
       </div>
     );
