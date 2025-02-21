@@ -59,7 +59,18 @@ const Report = ({
     additionalNotes: "",
   });
   
-  
+  // State for modal
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+
+  // Open image modal
+  const handleImageClick = () => {
+    setIsImageModalOpen(true);
+  };
+
+  // Close image modal
+  const handleCloseModal = () => {
+    setIsImageModalOpen(false);
+  };
 
   const [valuesCD, setValuesCD] = useState({
     userID: localStorage.getItem("user_id"),
@@ -185,6 +196,8 @@ const parseResponse = (response) => {
     const lines = section.trim().split("\n");
     const sectionTitle = lines.shift();
 
+    
+
     return (
       <div key={index} className="section">
         <br />
@@ -245,7 +258,7 @@ const parseResponse = (response) => {
             <div className="ia-left-box">
             <h2 className="ia-report-title-combined">Clinical Data Report</h2>
               <div className="image-box">
-                <img src={image} alt="placeholder" className="image-report" />
+                <img src={image} alt="placeholder" className="image-report" onClick={handleImageClick}/>
                 <label htmlFor="images">Image</label>
               </div>
               
@@ -352,7 +365,7 @@ const parseResponse = (response) => {
         <div className="ia-report-content" id="report1">
           <div className="ia-left-box">
             <div className="image-box">
-              <img src={image} alt="placeholder" className="image-report" />
+              <img src={image} alt="placeholder" className="image-report" onClick={handleImageClick}/>
               <label htmlFor="images">Image</label>
             </div>
 
@@ -470,6 +483,20 @@ const parseResponse = (response) => {
       }
         </div>
       </div>
+    );
+  }
+
+  if (isImageModalOpen) {
+    content = (
+      <>
+        <div className="image-modal-overlay" onClick={handleCloseModal}>
+          <div className="image-modal-content">
+            <span className="close-btn" onClick={handleCloseModal}>X</span>
+            <img src={image} alt="enlarged" className="enlarged-image" />
+          </div>
+        </div>
+        {content}
+      </>
     );
   }
 

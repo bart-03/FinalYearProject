@@ -210,27 +210,7 @@ const SignIn = () => {
 
       <h4>App created by BC</h4>
 
-      {/* Modal */}
-      {/* {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>About XDetect</h2>
-            <p>
-              XDetect is a cutting-edge platform designed to streamline the process of
-              identifying and detecting various types of data. Whether you're a business or
-              an individual, our tool simplifies data management, analysis, and detection,
-              making it easier for you to achieve your goals.
-            </p>
-            <br />
-            <p>
-              Our goal is to empower users with an intuitive interface and powerful
-              features, all aimed at improving efficiency and providing accurate results. 
-              XDetect offers tailored solutions to meet the unique needs of each user.
-            </p>
-            <button className="button-about"  onClick={closeModal}>Close</button>
-          </div>
-        </div>
-      )} */}
+      
       {isModalOpen && (
   <div className="modal-overlay">
     <div className="modal-content">

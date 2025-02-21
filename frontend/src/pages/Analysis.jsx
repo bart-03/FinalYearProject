@@ -54,6 +54,12 @@ const Analysis = () => {
 
   const {undefinedData} = useContext(MyContext);
 
+  const [showModal, setShowModal] = useState(false); // New state for modal visibility
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   let render;
   if (selectedOptions.length === 0) {
     render = (
@@ -185,6 +191,80 @@ const Analysis = () => {
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
        <div ref={targetRefTop}></div>
+       {/* Tooltip Button to trigger the modal */}
+      <button className="tooltip-button" onClick={toggleModal}>
+        ? {/* Tooltip icon */}
+      </button>
+
+      {/* Modal Popup */}
+      {/* {showModal && (
+        <div className="modal-overlay" onClick={toggleModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>Instructions</h2>
+            <p>
+            How the App Works
+Image Analysis View
+
+Select a disease from the dropdown.
+Upload an X-ray image.
+Press Analyse to generate a report.
+Add clinical data to the report.
+Save the report to the database to access it later in the History page.
+Clinical Data View
+
+Answer all the questions presented.
+Press Analyse to generate a report based on your responses.
+Save the report to the database.
+Both View
+
+Select a disease and upload an image (like in Image Analysis).
+Answer the clinical data questions (like in Clinical Data).
+Press Analyse to generate a combined report.
+Save the report to the database
+            </p>
+            <button className="button-about" onClick={toggleModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      )} */}
+      {showModal && (
+  <div className="modal-overlay" onClick={toggleModal}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <h2 className="modal-title">Instructions</h2>
+      <div className="modal-body">
+        <h3>1. Image Analysis View</h3>
+        <ul>
+          <li>Select a disease from the dropdown.</li>
+          <li>Upload an X-ray image.</li>
+          <li>Press *Analyse* to generate a report.</li>
+          <li>Add clinical data to the report.</li>
+          <li>Save the report to the database to access it later in the *History* page.</li>
+        </ul>
+        <br />
+        <h3>2. Clinical Data View</h3>
+        <ul>
+          <li>Answer all the questions presented.</li>
+          <li>Press *Analyse* to generate a report based on your responses.</li>
+          <li>Save the report to the database to access it later in the *History* page.</li>
+        </ul>
+        <br />
+        <h3>3. Both View</h3>
+        <ul>
+          <li>Select a disease and upload an image (like in *Image Analysis*).</li>
+          <li>Answer the clinical data questions (like in *Clinical Data*).</li>
+          <li>Press *Analyse* to generate a combined report.</li>
+          <li>Save the report to the database to access it later in the *History* page.</li>
+        </ul>
+      </div>
+      <button className="button-about" onClick={toggleModal}>
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
       <h1 className="title-analysis">Analysis</h1>
       <div className="analysis-checbox">
         <div className="checkbox1-Container">
