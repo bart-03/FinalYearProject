@@ -42,7 +42,7 @@ const Report = ({
   selectedOptionReport,
 }) => {
   const [image, setImage] = useState(imageReport);
-  const { cdResponse } = useContext(MyContext);
+  const { cdResponse, setCDResponse  } = useContext(MyContext);
   const { setreportQandAs } = useContext(MyContext);
  
   const [values, setValues] = useState({
@@ -87,7 +87,10 @@ const Report = ({
   });
   
 
-
+  useEffect(() => {
+    setCDResponse(null);
+  }, [checked1, checked2, iaButtonPressed, cdButtonPressed, bothButtonPressed]);
+  
   
   useEffect(() => {
     setValues((prevValues) => ({
@@ -315,7 +318,9 @@ const parseResponse = (response) => {
                 <h1 className="cd-report-title-combined">Clinical Data Report</h1>
                 {/* Render parsed clinical response */}
                 <div className="clinical-response">
-                  {parseResponse(cdResponse)}
+                {cdResponse == null ? <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>: 
+        parseResponse(cdResponse)
+      }
                 </div>
               </div>
             </div>
