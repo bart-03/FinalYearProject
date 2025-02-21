@@ -127,7 +127,7 @@ const Report = ({
 
   useEffect(() => {
     if (imageReport) {
-      setImage(imageReport); // Update only when there's a new valid image
+      setImage(imageReport); 
     }
   }, [imageReport]);
 
@@ -170,56 +170,17 @@ try {
 }
 };
 
-  // // Function to parse the structured clinical data response
-  // const parseResponse = (response) => {
-  //   if (!response) return null;
-
-  //   const sections = response.split("@@Section:").filter(Boolean); // Split the sections using the marker
-
-  //   return sections.map((section, index) => {
-  //     const lines = section.trim().split("\n");
-  //     const sectionTitle = lines.shift(); // The title of the section
-
-  //     return (
-  //       <div key={index} className="section">
-  //         <br />
-  //         <br />
-  //         <h3 style={{ color: "#800080", fontSize: "24px" }}>{sectionTitle}</h3>
-  //         <br />
-  //         {lines.map((line, idx) => {
-  //           if (line.startsWith("##")) {
-  //             return (
-  //               <ul key={idx} className="section-title">
-  //                 <li>{line.replace("##", "").trim()}</li>
-  //               </ul>
-  //             );
-  //           }
-  //           if (line.startsWith("--")) {
-  //             return (
-  //               <>
-  //               <p key={idx}>{line.replace("--", "*").trim()}</p>
-  //               <br />
-  //               </>
-  //             );
-  //           }
-  //           return <p key={idx}>{line.trim()}</p>;
-  //         })}
-  //       </div>
-  //     );
-  //   });
-  // };
-
   // Function to parse the structured clinical data response
 const parseResponse = (response) => {
 
   console.log("Response:", response); 
   if (!response) return null;
 
-  const sections = response.split("@@Section:").filter(Boolean); // Split the sections using the marker
+  const sections = response.split("@@Section:").filter(Boolean);
 
   return sections.map((section, index) => {
     const lines = section.trim().split("\n");
-    const sectionTitle = lines.shift(); // The title of the section
+    const sectionTitle = lines.shift();
 
     return (
       <div key={index} className="section">

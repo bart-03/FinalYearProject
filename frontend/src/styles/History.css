@@ -1,8 +1,14 @@
 .history {
     background-color: #EEE5EE;
-    height: 100vh;
-    /* height: 1200px; */
+    height: 900px;
 }
+
+.history-blur {
+    background-color: #EEE5EE;
+    filter: blur(10px);
+    padding-top: 80px;
+}
+
 
 .title-history {
     position: absolute;
@@ -20,6 +26,7 @@
     top: 200px;
     left: 50px;
     width: 90%;
+    padding-bottom: 50px;
 
 }
 
@@ -46,6 +53,7 @@
 .p-datatable {
     width: 90%;
 
+
 }
 
 .p-datatable-tbody>tr>td {
@@ -53,6 +61,8 @@
     white-space: pre-wrap;
     word-break: break-word;
 }
+
+
 
 .text-toggle-button {
     background: none;

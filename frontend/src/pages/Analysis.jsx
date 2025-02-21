@@ -87,6 +87,7 @@ const Analysis = () => {
     setIaButtonPressed(false);
     setCdButtonPressed(false);
     setBothButtonPressed(false);
+    setImageLocal(null);
   }, [checked1, checked2]);
 
   const handleChange = (id, value) => {
