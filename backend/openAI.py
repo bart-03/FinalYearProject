@@ -1,19 +1,15 @@
 from flask import Blueprint, jsonify, request
-# from flask_cors import CORS
 import openai
 
-# Define the Flask blueprint
 OpenAI = Blueprint("OpenAI", __name__)
 
-# Set up OpenAI API key
 api_key = "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"
 openai.api_key = api_key
 
-# Route for generating medical diagnostic suggestions
 @OpenAI.route('/OpenAI', methods=['POST'])
 def diagnose():
     try:
-        # Get patient information from the request body
+       
         data = request.get_json()
         print(data["formattedData"])
      
@@ -21,7 +17,6 @@ def diagnose():
 
         
 
-        # OpenAI API call to generate completion
         response = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
