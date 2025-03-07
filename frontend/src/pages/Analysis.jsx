@@ -74,7 +74,7 @@ const Analysis = () => {
   const options = [
     { value: "disease1", label: "Pnuemonia" },
     { value: "disease2", label: "Pulmonary Edema" },
-    { value: "disease3", label: "Disease 3" },
+    { value: "disease3", label: "Tuberculosis" },
   ];
 
   useEffect(() => {
