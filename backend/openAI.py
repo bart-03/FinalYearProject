@@ -24,7 +24,7 @@ def diagnose():
                     "role": "developer",
                     "content": """You are an advanced medical assistant tasked with helping healthcare professionals assess thoracic diseases and conditions. Based on the patient information provided:
 
-1. Estimate the most likely diagnosis and provide a percentage likelihood for each suspected disease, give top 5 suspected.  
+1. Estimate the most likely diagnosis and provide a percentage likelihood for each suspected disease, give top 5 suspected, very important for the percentages to sum to 100%.  
 2. Suggest alternative diagnoses that should be considered.  
 3. Recommend additional examinations, diagnostic tests, or medical referrals necessary to confirm or rule out the suspected conditions.  
 4. If the information is inconclusive, suggest questions or further information that could aid diagnosis.
