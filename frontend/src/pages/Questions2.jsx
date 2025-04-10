@@ -176,11 +176,10 @@ const Questions2 = forwardRef((props, ref) => {
   );
   
   if (undefinedAnswers.length > 0) {
-    // console.log("Questions with undefined answers:");
-    // undefinedAnswers.forEach((item) => console.log(item.question));
+    
     setUndefined(true);
   } else {
-    // console.log("All answers are defined.");
+    
     setUndefined(false);
     
   }
@@ -189,7 +188,7 @@ const [formattedData, setFormattedData] = useState(
   questionsAndAnswers.map((q) => `${q.question} Answer: ${q.answer}`).join("\n")
 );
 
-// const [formattedData, setFormattedData] = useState("");
+
 
 useEffect(() => {
   setFormattedData(
@@ -199,16 +198,10 @@ useEffect(() => {
   );
 }, [formData]);
 
-// console.log("formattedData", formattedData);   
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // const formattedData = questionsAndAnswers
-    //   .map((q) => `${q.question} Answer: ${q.answer}`)
-    //   .join("\n");
-
     handleAnalysis(formattedData);
-
   };
 
   useImperativeHandle(ref, () => ({

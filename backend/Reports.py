@@ -68,19 +68,16 @@ def get_report():
     print("Received Data:", data) 
     user_id = data.get("user_id")
 
-    # Fetch reports from the database
-    results = database.reports.find({"user_id": user_id})
 
-    # Convert the MongoDB cursor to a list of JSON-serializable dictionaries
+    results = database.reports.find({"user_id": user_id})
     reports_list = [doc for doc in results]
     
-    # Ensure documents are serializable by converting ObjectId to string, if necessary
+   
     for report in reports_list:
-        report["_id"] = str(report.get("_id", ""))  # Handle MongoDB ObjectId
+        report["_id"] = str(report.get("_id", ""))  
     
     print("Reports Retrieved:", reports_list)
 
-    # Return reports in the response
     return jsonify({"data": reports_list})
 
 

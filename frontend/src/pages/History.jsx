@@ -73,7 +73,7 @@ const History = () => {
     );
   };
 
-  // Define table columns
+  
   const columns = [
     { field: "date", header: "Date", style: { width: "100px" }, sortable: true },
     { field: "report_type", header: "Report Type", sortable: true },

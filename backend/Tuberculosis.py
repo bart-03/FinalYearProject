@@ -6,10 +6,9 @@ from PIL import Image
 from torchvision import transforms
 from io import BytesIO
 
-# Define Flask Blueprint
+
 Tuberculosis = Blueprint("Tuberculosis", __name__)
 
-# Define the CNN Model class (must match the one used for training)
 class CNNModel(nn.Module):
     def __init__(self, num_classes=3):
         super(CNNModel, self).__init__()
@@ -37,45 +36,40 @@ class CNNModel(nn.Module):
         x = self.fc_layers(x)
         return x
 
-# Load model checkpoint
+
 checkpoint_path = "./TBModel/disease_classification_cnn.pth"
 
-# Initialize the model
+
 model = CNNModel(num_classes=3)
 model.load_state_dict(torch.load(checkpoint_path, map_location=torch.device('cpu')))
-model.eval()  # Set to evaluation mode
+model.eval()  # evaluation mode
 
-# Define image transformations
+# image transformations
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 ])
 
-# Class labels
+
 id2label = {0: "Normal", 1: "Tuberculosis", 2: "Unknown"}
 
-# Route for predicting Tuberculosis from an image
+
 @Tuberculosis.route('/TBpredict', methods=['POST'])
 def predict():
     try:
-        # Get the image from the POST request
+      
         img = request.files['image'].read()
-
-        # Convert the byte image to a PIL image
         image = Image.open(BytesIO(img)).convert("RGB")
+        input_tensor = transform(image).unsqueeze(0) 
 
-        # Preprocess the image
-        input_tensor = transform(image).unsqueeze(0)  # Add batch dimension
-
-        # Perform inference
+     
         with torch.no_grad():
             outputs = model(input_tensor)
             _, predicted_class_idx = torch.max(outputs, 1)
         
         predicted_class = id2label[predicted_class_idx.item()]
 
-        # Return the prediction as a JSON response
         return jsonify({'prediction': predicted_class})
 
     except Exception as e:

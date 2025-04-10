@@ -9,7 +9,7 @@ const Layout = () => {
     return (
         <div>
             {location.pathname !== "/" && <Navbar />}
-            <Outlet />  {/* This renders the current route's component */}
+            <Outlet />
         </div>
     );
 };

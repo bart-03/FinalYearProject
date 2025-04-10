@@ -3,7 +3,7 @@ import openai
 
 OpenAI = Blueprint("OpenAI", __name__)
 
-api_key = "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"
+api_key = ""
 openai.api_key = api_key
 
 @OpenAI.route('/OpenAI', methods=['POST'])

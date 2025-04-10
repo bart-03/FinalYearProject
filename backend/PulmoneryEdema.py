@@ -13,7 +13,7 @@ PulmonaryEdema = Blueprint("PulmonaryEdema", __name__)
 model_path = "./model"
 model = AutoModelForImageClassification.from_pretrained(model_path)
 
-# Set the model to evaluation mode
+# evaluation mode
 model.eval()
 
 transform = transforms.Compose([
@@ -22,32 +22,24 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 ])
 
-# Map labels
+
 id2label = {0: "No Edema", 1: "Edema"}
 
-# Route for predicting Edema from an image
 @PulmonaryEdema.route('/EdemaPredict', methods=['POST'])
 def predict():
     try:
-        # Get the image from the POST request
+        
         img = request.files['image'].read()
-
-        # Convert the byte image to a PIL image
-        image = Image.open(BytesIO(img)).convert("RGB")
-
-        # Preprocess the image
-        input_tensor = transform(image).unsqueeze(0)  # Add batch dimension
-
-        # Perform inference
+        image = Image.open(BytesIO(img)).convert("RGB")     
+        input_tensor = transform(image).unsqueeze(0) 
+        
         with torch.no_grad():
             outputs = model(input_tensor)
             logits = outputs.logits
 
-        # Get the predicted class
         predicted_class_idx = torch.argmax(logits, dim=-1).item()
         predicted_class = id2label[predicted_class_idx]
 
-        # Return the prediction as a JSON response
         return jsonify({'prediction': predicted_class})
 
     except Exception as e:

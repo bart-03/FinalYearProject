@@ -59,15 +59,13 @@ const Report = ({
     additionalNotes: "",
   });
   
-  // State for modal
+
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
-  // Open image modal
   const handleImageClick = () => {
     setIsImageModalOpen(true);
   };
 
-  // Close image modal
   const handleCloseModal = () => {
     setIsImageModalOpen(false);
   };
@@ -184,7 +182,6 @@ try {
 }
 };
 
-  // Function to parse the structured clinical data response
 const parseResponse = (response) => {
 
   console.log("Response:", response); 
@@ -267,7 +264,6 @@ const parseResponse = (response) => {
               <div className="ia-right-box">
                 <div className="label-box">
                   <label className="report-label">Date:</label>
-                  {/* <label className="report-label">Report ID:</label> */}
                   <label className="report-label">Suspected Disease:</label>
                   <label className="report-label">Findings:</label>
                   <label className="report-label">Name:</label>
@@ -278,7 +274,6 @@ const parseResponse = (response) => {
                 </div>
                 <div className="input-or-text-box">
                   <div className="report-box">{dateTime}</div>
-                  {/* <div className="report-box"></div> */}
                   <div className="report-box">
                     {selectedOptionReport?.label || ""}
                   </div>
@@ -329,7 +324,6 @@ const parseResponse = (response) => {
             <div className="both-cd-report-main">
               <div className="cd-report-content" id="report2">
                 <h1 className="cd-report-title-combined">Clinical Data Report</h1>
-                {/* Render parsed clinical response */}
                 <div className="clinical-response">
                 {cdResponse == null ? <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>: 
         parseResponse(cdResponse)

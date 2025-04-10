@@ -79,7 +79,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-      {/* <div className="help-instructions"></div> */}
+   
     </div>
   );
 };

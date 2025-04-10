@@ -54,7 +54,7 @@ const Analysis = () => {
 
   const {undefinedData} = useContext(MyContext);
 
-  const [showModal, setShowModal] = useState(false); // New state for modal visibility
+  const [showModal, setShowModal] = useState(false); 
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -176,10 +176,8 @@ const Analysis = () => {
   };
 
   const handleAnalyseClickBoth = () => {
-    // setIaButtonPressed(true);
     handleAnalysis();
     handleSaveDateTime();
-    // setCdButtonPressed(true);
     handleAnalyseClick();
     setBothButtonPressed(true);
     handleScrollToComponent();
@@ -210,43 +208,11 @@ const Analysis = () => {
     // MAIN CONTAINER OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     <div className={isNavbarOpen ? "analysis-blur" : "analysis"}>
        <div ref={targetRefTop}></div>
-       {/* Tooltip Button to trigger the modal */}
+    
       <button className="tooltip-button" onClick={toggleModal}>
-        ? {/* Tooltip icon */}
+        ? 
       </button>
 
-      {/* Modal Popup */}
-      {/* {showModal && (
-        <div className="modal-overlay" onClick={toggleModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>Instructions</h2>
-            <p>
-            How the App Works
-Image Analysis View
-
-Select a disease from the dropdown.
-Upload an X-ray image.
-Press Analyse to generate a report.
-Add clinical data to the report.
-Save the report to the database to access it later in the History page.
-Clinical Data View
-
-Answer all the questions presented.
-Press Analyse to generate a report based on your responses.
-Save the report to the database.
-Both View
-
-Select a disease and upload an image (like in Image Analysis).
-Answer the clinical data questions (like in Clinical Data).
-Press Analyse to generate a combined report.
-Save the report to the database
-            </p>
-            <button className="button-about" onClick={toggleModal}>
-              Close
-            </button>
-          </div>
-        </div>
-      )} */}
       {showModal && (
   <div className="modal-overlay" onClick={toggleModal}>
     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
